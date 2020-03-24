@@ -488,12 +488,21 @@ fi
 
 #################### ssh ####################
 
-sshlazy() {
-    if [[ ! $(ssh-add -l 2>/dev/null) =~ [0-9]+ ]]; then
-        eval $(ssh-agent -s)
-        find "$HOME/.ssh" -type f -name "*rsa" -print0 | xargs -0 -n1 ssh-add
+if [[ -d ~/.ssh ]]; then
+    if type ssh-agent &>/dev/null; then
+        sshlazy() {
+            if [[ ! $(ssh-add -l 2>/dev/null) =~ [0-9]+ ]]; then
+                eval $(ssh-agent -s)
+                find "$HOME/.ssh" -type f -name "*rsa" -print0 | xargs -0 -n1 ssh-add
+            fi
+        }
     fi
-}
+
+    ssh-fix-permissions() {
+        chmod 700 ~/.ssh
+        find ~/.ssh -type f -print0 | xargs -0 chmod 600
+    }
+fi
 
 #################### sudo ####################
 
