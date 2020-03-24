@@ -2,32 +2,255 @@
 
 REPOS_DIR="$HOME/repos"
 OPEN_SOURCE_REPOS_DIR="$REPOS_DIR/opensource"
+OPEN_SOURCE_ALGORITHMS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/algorithms"
 OPEN_SOURCE_C_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c"
+OPEN_SOURCE_CPP_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c++"
+OPEN_SOURCE_DOCKERFILE_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/dockerfiles"
+OPEN_SOURCE_DOCS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/docs"
+OPEN_SOURCE_GO_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/go"
+OPEN_SOURCE_JAVASCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/javascript"
+OPEN_SOURCE_LUA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/lua"
+OPEN_SOURCE_PYTHON_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python"
+OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python_async"
+OPEN_SOURCE_SHELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/shell"
+OPEN_SOURCE_TYPESCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/typescript"
+
+OPEN_SOURCE_ALGORITHMS_REPOS=(
+    https://github.com/TheAlgorithms/Algorithms-Explanation
+    https://github.com/TheAlgorithms/C
+    https://github.com/TheAlgorithms/C-Plus-Plus
+    https://github.com/TheAlgorithms/Go
+    https://github.com/TheAlgorithms/Javascript
+    https://github.com/TheAlgorithms/Python
+)
 
 OPEN_SOURCE_C_REPOS=(
+    https://gcc.gnu.org/git/gcc.git
+    https://git.savannah.gnu.org/git/bash.git
+    https://git.savannah.gnu.org/git/basics.git
+    https://git.savannah.gnu.org/git/coreutils.git
+    https://git.savannah.gnu.org/git/findutils.git
+    https://git.savannah.gnu.org/git/gawk.git
+    https://git.savannah.gnu.org/git/make.git
+    https://git.savannah.gnu.org/git/sed.git
+    https://git.savannah.gnu.org/git/tar.git
+    https://git.savannah.gnu.org/git/wget.git
+    https://github.com/AndyA/rsync
+    https://github.com/Perl/perl5
     https://github.com/antirez/redis
-    https://github.com/bminor/glibc
+    https://github.com/awesomeWM/awesome
+    https://github.com/git/git
     https://github.com/lua/lua
-    https://github.com/lxml/lxml
     https://github.com/nginx/nginx
+    https://github.com/openssh/openssh-portable
+    https://github.com/postgres/postgres
     https://github.com/python/cpython
     https://github.com/python/devguide
+    https://github.com/stedolan/jq
     https://github.com/torvalds/linux
     https://github.com/vim/vim
+    https://github.com/zsh-users/zsh
+    https://gitlab.gnome.org/GNOME/libxml2.git
+    https://gitlab.gnome.org/GNOME/libxslt.git
+    https://sourceware.org/git/binutils-gdb.git
+    https://sourceware.org/git/dm.git
+    https://sourceware.org/git/glibc.git
+    https://sourceware.org/git/lvm2.git
+)
+
+OPEN_SOURCE_CPP_REPOS=(
+    https://github.com/alembic/alembic
+    https://github.com/fish-shell/fish-shell
+    https://github.com/grpc/grpc
+    https://github.com/mongodb/mongo
+    https://github.com/nodejs/node
+    https://github.com/v8/v8
+)
+
+OPEN_SOURCE_DOCKERFILE_REPOS=(
+    https://github.com/pyca/infra
+    https://github.com/jessfraz/dockerfiles
+)
+
+OPEN_SOURCE_DOCS_REPOS=(
+    https://github.com/ericdouglas/ES6-Learning
+    https://github.com/jorgebucaran/awesome-fish
+    https://github.com/sorrycc/awesome-javascript
+)
+
+OPEN_SOURCE_GO_REPOS=(
+    https://github.com/docker/docker-ce
+    https://github.com/docker/machine
+    https://github.com/etcd-io/etcd
+    https://github.com/flynn/flynn
+    https://github.com/golang/go
+    https://github.com/golang/net
+    https://github.com/golang/tools
+    https://github.com/gomodule/redigo
+    https://github.com/grpc/grpc-go
+    https://github.com/hashicorp/consul
+    https://github.com/hashicorp/packer
+    https://github.com/hashicorp/terraform
+    https://github.com/hashicorp/vault
+    https://github.com/helm/charts
+    https://github.com/influxdata/telegraf
+    https://github.com/istio/istio
+    https://github.com/itchyny/gojq
+    https://github.com/kubernetes/kubernetes
+    https://github.com/mongodb/mongo-go-driver
+)
+
+OPEN_SOURCE_JAVASCRIPT_REPOS=(
+    https://github.com/LLK/scratch-blocks
+    https://github.com/LLK/scratch-gui
+    https://github.com/LLK/scratch-render
+    https://github.com/LLK/scratch-vm
+    https://github.com/LLK/scratch-www
+    https://github.com/LLK/scratchjr
+    https://github.com/facebook/react
+    https://github.com/jfo8000/ScratchJr-Desktop
+    https://github.com/yarnpkg/yarn
+)
+
+OPEN_SOURCE_LUA_REPOS=(
+    https://github.com/Kong/kong
+)
+
+OPEN_SOURCE_PYTHON_REPOS=(
+    https://git.savannah.gnu.org/git/ranger.git
+    https://github.com/Julian/jsonschema
+    https://github.com/MagicStack/httptools
+    https://github.com/andymccurdy/redis-py
+    https://github.com/benoitc/gunicorn
+    https://github.com/boto/boto3
+    https://github.com/docker/compose
+    https://github.com/geopy/geopy
+    https://github.com/jakubroztocil/httpie
+    https://github.com/lxml/lxml
+    https://github.com/marshmallow-code/marshmallow
+    https://github.com/mongodb/mongo-python-driver
+    https://github.com/mvantellingen/python-zeep
+    https://github.com/pallets/flask
+    https://github.com/pallets/jinja
+    https://github.com/powerline/powerline
+    https://github.com/psf/requests
+    https://github.com/psycopg/psycopg2
+    https://github.com/pyca/bcrypt
+    https://github.com/pyca/cryptography
+    https://github.com/pyca/pyopenssl
+    https://github.com/pytest-dev/pytest
+    https://github.com/python-pillow/Pillow
+    https://github.com/sanand0/xmljson
+    https://github.com/seatgeek/fuzzywuzzy
+    https://github.com/sqlalchemy/alembic
+    https://github.com/sqlalchemy/sqlalchemy
+    https://github.com/stub42/pytz
+    https://github.com/ultrajson/ultrajson
+)
+
+OPEN_SOURCE_PYTHON_ASYNC_REPOS=(
+    https://github.com/MagicStack/asyncpg
+    https://github.com/MagicStack/uvloop
+    https://github.com/aio-libs/aiobotocore
+    https://github.com/aio-libs/aiohttp
+    https://github.com/aio-libs/aioredis
+    https://gitlab.com/pgjones/hypercorn
+    https://gitlab.com/pgjones/quart
+)
+
+OPEN_SOURCE_SHELL_REPOS=(
+    https://github.com/Bash-it/bash-it
+    https://github.com/nvm-sh/nvm
+    https://github.com/oh-my-fish/oh-my-fish
+    https://github.com/ohmyzsh/ohmyzsh
+    https://github.com/paoloantinori/hhighlighter
+    https://github.com/pyenv/pyenv
+    https://github.com/rupa/z
+)
+
+OPEN_SOURCE_TYPESCRIPT_REPOS=(
+    https://github.com/angular/angular
+    https://github.com/microsoft/TypeScript
 )
 
 clone-opensource() {
     oldpwd=$(pwd)
+    mkdir -p "$OPEN_SOURCE_ALGORITHMS_REPOS_DIR"
+    cd "$OPEN_SOURCE_ALGORITHMS_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_ALGORITHMS_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_C_REPOS_DIR"
     cd "$OPEN_SOURCE_C_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_C_REPOS[@]}"; do
-        git clone $repo
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_CPP_REPOS_DIR"
+    cd "$OPEN_SOURCE_CPP_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_CPP_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_DOCKERFILE_REPOS_DIR"
+    cd "$OPEN_SOURCE_DOCKERFILE_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_DOCKERFILE_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_DOCS_REPOS_DIR"
+    cd "$OPEN_SOURCE_DOCS_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_DOCS_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_GO_REPOS_DIR"
+    cd "$OPEN_SOURCE_GO_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_GO_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR"
+    cd "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_JAVASCRIPT_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_LUA_REPOS_DIR"
+    cd "$OPEN_SOURCE_LUA_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_LUA_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_PYTHON_REPOS_DIR"
+    cd "$OPEN_SOURCE_PYTHON_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_PYTHON_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR"
+    cd "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_PYTHON_ASYNC_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_SHELL_REPOS_DIR"
+    cd "$OPEN_SOURCE_SHELL_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_SHELL_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR"
+    cd "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_TYPESCRIPT_REPOS[@]}"; do
+        git clone --recursive $repo
     done
     cd "$oldpwd"
 }
 
 [[ -d "$REPOS_DIR" ]] && repos() { cd "$REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_ALGORITHMS_REPOS_DIR" ]] && opensource-algorithms-repos() { cd "$OPEN_SOURCE_ALGORITHMS_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_C_REPOS_DIR" ]] && opensource-c-repos() { cd "$OPEN_SOURCE_C_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_CPP_REPOS_DIR" ]] && opensource-cpp-repos() { cd "$OPEN_SOURCE_CPP_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_DOCKERFILE_REPOS_DIR" ]] && opensource-dockerfile-repos() { cd "$OPEN_SOURCE_DOCKERFILE_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_DOCS_REPOS_DIR" ]] && opensource-docs-repos() { cd "$OPEN_SOURCE_DOCS_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_GO_REPOS_DIR" ]] && opensource-go-repos() { cd "$OPEN_SOURCE_GO_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR" ]] && opensource-javascript-repos() { cd "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_LUA_REPOS_DIR" ]] && opensource-lua-repos() { cd "$OPEN_SOURCE_LUA_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_PYTHON_REPOS_DIR" ]] && opensource-python-repos() { cd "$OPEN_SOURCE_PYTHON_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR" ]] && opensource-python-async-repos() { cd "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_SHELL_REPOS_DIR" ]] && opensource-shell-repos() { cd "$OPEN_SOURCE_SHELL_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR" ]] && opensource-typescript-repos() { cd "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR"; }
 
 # Add aliases for ..
 alias ..="cd .."
