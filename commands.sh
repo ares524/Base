@@ -46,26 +46,12 @@ fi
 
 # Use GNU xargs and sort if on a Mac
 if [[ $(uname) == "Darwin" ]]; then
-    which gxargs &>/dev/null
-    [[ $? -eq 0 ]] && alias xargs=gxargs
-    which gsort &>/dev/null
-    [[ $? -eq 0 ]] && alias sort=gsort
-fi
-
-# Setup pyenv (on linux)
-if [[ $(uname) != "Darwin" && -d $HOME/.pyenv ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    if command -v pyenv 1>/dev/null 2>&1; then
-        eval "$(pyenv init -)"
+    if type gxargs &>/dev/null; then
+        alias xargs=gxargs
     fi
-fi
-
-# Setup nvm (node version manager)
-if [[ -d $HOME/.nvm ]]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+    if type gsort &>/dev/null; then
+        alias sort=gsort
+    fi
 fi
 
 #################### bash/zsh setup ####################
@@ -271,8 +257,7 @@ crontab-active() {
 
 #################### dig ####################
 
-which dig &>/dev/null
-if [[ $? -eq 0 ]]; then
+if type dig &>/dev/null; then
     dig-short() {
         dig $@ ANY +noall +answer
     }
@@ -280,16 +265,14 @@ fi
 
 #################### feh ####################
 
-which feh &>/dev/null
-if [[ $? -eq 0 ]]; then
+if type feh &>/dev/null; then
     alias feh="feh -x --scale-down"
     alias fehf="feh -F --zoom max"
 fi
 
 #################### git ####################
 
-which git &>/dev/null
-if [[ $? -eq 0 ]]; then
+if type git &>/dev/null; then
     git-merge-in() {
         localbranch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
         if [[ -z "$localbranch" ]]; then
@@ -430,8 +413,7 @@ helpme() {
 
 #################### scrot ####################
 
-which scrot &>/dev/null
-if [[ $? -eq 0 ]]; then
+if type scrot &>/dev/null; then
     screenshot() {
         scrot -s '%Y_%m%d--%H%M_%S--'$(hostname)'--$wx$h.png'
     }
@@ -460,61 +442,76 @@ sshlazy() {
 
 #################### sudo ####################
 
-if [[ -f /usr/bin/apt-get && -n "$(groups | grep sudo)" ]]; then
-    alias hardware="sudo lshw -short"
+if [[ -n "$(groups | grep -E '(sudo|admin)')" ]]; then
     alias lsof-ports-ipv4="sudo lsof -Pn -i4"
-    alias nmap-local-machines10="sudo nmap -sS -p22,7777 10.0.0.0/24"
-    alias nmap-local-machines192="sudo nmap -sS -p22,7777 192.168.1.0/24"
-    alias sudo-users="getent group sudo"
-    alias uninstall-hard="sudo apt-get purge --auto-remove -y"
-    APT_SECURITY_ONLY="/etc/apt/sources.security.only.list"
 
-    make-security-only-list() {
-        sudo sh -c "grep ^deb /etc/apt/sources.list | grep security > $APT_SECURITY_ONLY"
-    }
+    if type nmap &>/dev/null; then
+        alias nmap-local-machines10="sudo nmap -sS -p22,7777 10.0.0.0/24"
+        alias nmap-local-machines192="sudo nmap -sS -p22,7777 192.168.1.0/24"
+    fi
 
-    do-security-upgrades() {
-        [[ ! -f $APT_SECURITY_ONLY ]] && make-security-only-list
-        sudo apt-get update
-        apt-get -s dist-upgrade -o Dir::Etc::SourceList=$APT_SECURITY_ONLY -o Dir::Etc::SourceParts=/dev/null |
-        grep '^Inst' |
-        cut -d' ' -f2 |
-        sudo xargs apt-get install -y -o Dir::Etc::SourceList=$APT_SECURITY_ONLY
-    }
+    if type lshw &>/dev/null; then
+        alias hardware="sudo lshw -short"
+    fi
 
-    ntp-sync-now() {
-        sudo service ntp stop && sudo ntpd -gq && sudo service ntp start
-    }
+    if type getent &>/dev/null; then
+        alias sudo-users="getent group sudo"
+    fi
 
-    set-hostname() {
-        newhostname=$1
-        if [[ -z "$newhostname" ]]; then
-            echo "Expected the new hostname as first argument" >&2
-            return 1
-        fi
-        sudo hostnamectl set-hostname $newhostname || return 1
+    if [[ -f /usr/bin/apt-get ]]; then
+        alias uninstall-hard="sudo apt-get purge --auto-remove -y"
+        APT_SECURITY_ONLY="/etc/apt/sources.security.only.list"
 
-        # Modify/append line of /etc/hosts to set `127.0.1.1 $newhostname`
-        matched=$(grep 127.0.1.1 /etc/hosts)
-        if [[ -z "$matched" ]]; then
-            sudo sh -c "echo 127.0.1.1    $newhostname >> /etc/hosts"
-        else
-            sudo sh -c "sed -i \"/127.0.1.1/c\127.0.1.1    $newhostname\" /etc/hosts" 2>/dev/null
-        fi
+        make-security-only-list() {
+            sudo sh -c "grep ^deb /etc/apt/sources.list | grep security > $APT_SECURITY_ONLY"
+        }
 
-        echo -e "results of 'hostname' command:"
-        hostname
-        echo -e "\ncontents of '/etc/hostname' file:"
-        cat /etc/hostname
-        echo -e "\ngrep of '127.0.1.1' in '/etc/hosts' file:"
-        grep 127.0.1.1 /etc/hosts
-    }
+        do-security-upgrades() {
+            [[ ! -f $APT_SECURITY_ONLY ]] && make-security-only-list
+            sudo apt-get update
+            apt-get -s dist-upgrade -o Dir::Etc::SourceList=$APT_SECURITY_ONLY -o Dir::Etc::SourceParts=/dev/null |
+            grep '^Inst' |
+            cut -d' ' -f2 |
+            sudo xargs apt-get install -y -o Dir::Etc::SourceList=$APT_SECURITY_ONLY
+        }
+    fi
+
+    if type ntp &>/dev/null; then
+        ntp-sync-now() {
+            sudo service ntp stop && sudo ntpd -gq && sudo service ntp start
+        }
+    fi
+
+    if type hostnamectl &>/dev/null; then
+        set-hostname() {
+            newhostname=$1
+            if [[ -z "$newhostname" ]]; then
+                echo "Expected the new hostname as first argument" >&2
+                return 1
+            fi
+            sudo hostnamectl set-hostname $newhostname || return 1
+
+            # Modify/append line of /etc/hosts to set `127.0.1.1 $newhostname`
+            matched=$(grep 127.0.1.1 /etc/hosts)
+            if [[ -z "$matched" ]]; then
+                sudo sh -c "echo 127.0.1.1    $newhostname >> /etc/hosts"
+            else
+                sudo sh -c "sed -i \"/127.0.1.1/c\127.0.1.1    $newhostname\" /etc/hosts" 2>/dev/null
+            fi
+
+            echo -e "results of 'hostname' command:"
+            hostname
+            echo -e "\ncontents of '/etc/hostname' file:"
+            cat /etc/hostname
+            echo -e "\ngrep of '127.0.1.1' in '/etc/hosts' file:"
+            grep 127.0.1.1 /etc/hosts
+        }
+    fi
 fi
 
 #################### tmux ####################
 
-which tmux &>/dev/null
-if [[ $? -eq 0 ]]; then
+if type tmux &>/dev/null; then
     Tmux() {
         session_name="${1-0}"
         tmux -2 attach-session -t $session_name -d 2>/dev/null || tmux -2 new-session -s $session_name
@@ -523,8 +520,7 @@ fi
 
 #################### urxvt ####################
 
-which urxvt &>/dev/null
-if [[ $? -eq 0 ]]; then
+if type urxvt &>/dev/null; then
     fontsize() {
         printf '\33]50;%s' "xft:Inconsolata:size=$1"
     }
@@ -583,8 +579,7 @@ if [[ -s "/Applications/VLC.app/Contents/MacOS/VLC" ]]; then
     alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 fi
 
-which vlc &>/dev/null
-if [[ $? -eq 0 ]]; then
+if type vlc &>/dev/null; then
     vlcf() {
         vlc --fullscreen "$@" &>/dev/null &
     }
@@ -605,8 +600,7 @@ weather-forecast() {
 
 #################### xrandr ####################
 
-which xrandr &>/dev/null
-if [[ $? -eq 0 ]]; then
+if type xrandr &>/dev/null; then
     xrandr-connected-displays() {
         xrandr -q | grep -e '\bconnected\b' | perl -pe 's/^([\S]+).* (\d+x\d+).*/$1:$2/'
     }
@@ -644,4 +638,22 @@ if [[ $? -eq 0 ]]; then
             eval "$cmd"
         done
     }
+fi
+
+#################### Environment managers ####################
+
+# Setup pyenv (on linux)
+if [[ $(uname) != "Darwin" && -d $HOME/.pyenv ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+    fi
+fi
+
+# Setup nvm (node version manager)
+if [[ -d $HOME/.nvm ]]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 fi
