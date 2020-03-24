@@ -109,8 +109,9 @@ elif [[ -n "$ZSH_VERSION" ]]; then
     # Set tab completion and matching options
     zstyle ':completion:*' completer _expand _complete _ignored _approximate
     zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
+    zstyle ':completion:*' rehash true
     autoload -Uz compinit
-    compinit
+    compinit -i
 
     # Set number of commands stored in memory and in the history file
     HISTSIZE=50000
@@ -143,16 +144,54 @@ fi
 
 #################### completions ####################
 
+bash_completion_dir="$(brew --prefix 2>/dev/null)/etc/bash_completion.d"
+bash_completion_file="$(dirname $bash_completion_dir)/bash_completion"
+if [[ $(uname) != "Darwin" && -z "$(groups | grep sudo)" ]]; then
+    bash_completion_dir="$HOME/.downloaded-completions"
+    mkdir -p "$bash_completion_dir" 2>/dev/null
+    bash_completion_file="$HOME/.bash_completion"
+fi
+
+_get_zsh_custom_fpath() {
+    [[ -z "$ZSH_VERSION" ]] && return
+
+    # Determine if there is a custom dir in $fpath already, or make $HOME/.zsh/completions
+    custom_fpaths=()
+    for some_path in "${fpath[@]}"; do
+        if [[ "${some_path:0:11}" != "/usr/local/" && "${some_path:0:11}" != "/usr/share/" ]]; then
+            custom_fpaths+=("$some_path")
+        fi
+    done
+    if [[ -n "$custom_fpaths" ]]; then
+        custom_fpath="${custom_fpaths[1]}"
+    else
+        custom_fpath="$HOME/.zsh/completion"
+    fi
+    if [[ ! -d "$custom_fpath" ]]; then
+        echo -e "\n$ mkdir -pv $custom_fpath"
+        mkdir -pv "$custom_fpath"
+    fi
+    echo "$custom_fpath"
+}
+
 # Make sure bash/zsh (tab) completions are enabled for git, docker, & docker-compose
 get-completions() {
+    custom_fpath="$(_get_zsh_custom_fpath)"
+    [[ -z "$custom_fpath" ]] && custom_fpath="$HOME/.zsh/completion"
+
     if [[ "$1" == "clean" ]]; then
-        echo -e "\nDeleting ~/.git-completion.bash ~/.docker-completion.bash, and ~/.docker-compose-completion.bash"
-        rm -f ~/.git-completion.bash ~/.docker-completion.bash, and ~/.docker-compose-completion.bash 2>/dev/null
-        bash_completion_dir="$(brew --prefix 2>/dev/null)/etc/bash_completion.d"
-        echo -e "\n Deleting from $bash_completion_dir: docker, docker-compose, git-completion.bash"
-        sudo rm -f $bash_completion_dir/docker $bash_completion_dir/docker-compose $bash_completion_dir/git-completion.bash 2>/dev/null
-        echo -e "\n Deleting from ~/.zsh/completion: _docker, _docker-compose, git-completion.zsh"
-        rm -f ~/.zsh/completion/_docker ~/.zsh/completion/_docker-compose ~/.zsh/completion/git-completion.zsh 2>/dev/null
+        if [[ ! "$bash_completion_dir" =~ ${HOME}.* ]]; then
+            if [[ -n "$(groups | grep -E '(sudo|admin)')" ]]; then
+                echo -e "\n Deleting from $bash_completion_dir: docker, docker-compose, git-completion.bash"
+                sudo rm -f $bash_completion_dir/docker $bash_completion_dir/docker-compose $bash_completion_dir/git-completion.bash 2>/dev/null
+            fi
+        else
+            echo -e "\n Deleting from $bash_completion_dir: docker, docker-compose, git-completion.bash"
+            rm -f $bash_completion_dir/docker $bash_completion_dir/docker-compose $bash_completion_dir/git-completion.bash 2>/dev/null
+        fi
+
+        echo -e "\n Deleting from $custom_fpath: _docker, _docker-compose, git-completion.zsh"
+        rm -f "$custom_fpath/_docker" "$custom_fpath/_docker-compose" "$custom_fpath/git-completion.zsh" 2>/dev/null
     fi
 
     git_version=$(git --version | perl -pe 's/^git version (\S+).*$/$1/')
@@ -169,22 +208,6 @@ get-completions() {
         https://raw.githubusercontent.com/docker/compose/$docker_compose_version/contrib/completion/bash/docker-compose
     )
     if [[ -n "$ZSH_VERSION" ]]; then
-        # Determine if there is a custom dir in $fpath already, or make $HOME/.zsh/completions
-        custom_fpaths=()
-        for some_path in "${fpath[@]}"; do
-            if [[ "${some_path:0:11}" != "/usr/local/" && "${some_path:0:11}" != "/usr/share/" ]]; then
-                custom_fpaths+=("$some_path")
-            fi
-        done
-        if [[ -n "$custom_fpaths" ]]; then
-            custom_fpath="${custom_fpaths[1]}"
-        else
-            custom_fpath="$HOME/.zsh/completion"
-        fi
-        if [[ ! -d "$custom_fpath" ]]; then
-            echo -e "\n$ mkdir -pv $custom_fpath"
-            mkdir -pv "$custom_fpath"
-        fi
         # Copy the completion files
         for url in "${zsh_urls[@]}"; do
             fname=$(basename "$url")
@@ -193,20 +216,10 @@ get-completions() {
                 curl -L "$url" > "${custom_fpath}/$fname" || return 1
             fi
         done
-        # Make sure custom_fpath is set in fpath and that compinit is loaded
-        fpath_set=$(grep fpath $HOME/.zshrc | egrep "($custom_fpath|HOME)")
-        if [[ -z "$fpath_set" ]]; then
-            echo -e "\nfpath=($custom_fpath \$fpath)" >> $HOME/.zshrc
-        fi
-        compinit_set=$(grep compinit $HOME/.zshrc)
-        if [[ -z "$compinit_set" ]]; then
-            echo -e "\nautoload -Uz compinit && compinit -i" >> $HOME/.zshrc
-        fi
     elif [[ -n "$BASH_VERSION" ]]; then
-        # Make sure bash-completion package is installed and set bash_completion_* vars
+        # Make sure bash-completion package is installed
         if [[ $(uname) == "Darwin" ]]; then
-            brew_version=$(brew --version 2>/dev/null | head -n 1)
-            if [[ -z "$brew_version" ]]; then
+            if ! type brew &>/dev/null; then
                 echo -e "\nHomebrew not found"
                 return 1
             fi
@@ -215,17 +228,9 @@ get-completions() {
                 echo -e "\n$ brew install bash-completion"
                 brew install bash-completion || return 1
             fi
-            bash_completion_dir="$(brew --prefix)/etc/bash_completion.d"
-            bash_completion_file="$(brew --prefix)/etc/bash_completion"
         elif [[ -f /usr/bin/apt-get && -n "$(groups | grep sudo)" ]]; then
             echo -e "\n$ sudo apt-get install -y bash-completion"
             sudo apt-get install -y bash-completion
-            bash_completion_dir="/etc/bash_completion.d"
-            bash_completion_file="/etc/bash_completion"
-        else
-            bash_completion_dir="$HOME/.downloaded-completions"
-            mkdir -p "$bash_completion_dir" 2>/dev/null
-            bash_completion_file="$HOME/.bash_completion"
         fi
         # Copy the completion files
         if [[ "$bash_completion_dir" =~ ${HOME}.* ]]; then
@@ -248,6 +253,16 @@ get-completions() {
         fi
     fi
 }
+
+custom_fpath="$(_get_zsh_custom_fpath)"
+if [[ -n "$BASH_VERSION" ]]; then
+    [[ ! -f $bash_completion_dir/docker ]] && get-completions
+    source "$bash_completion_file"
+elif [[ -n "$ZSH_VERSION" ]]; then
+    [[ ! -f "$custom_fpath/_docker" ]] && get-completions
+    [[ -z "$(echo ${fpath[@]} | grep $custom_fpath)" ]] && fpath=($custom_fpath $fpath)
+    compinit -i
+fi
 
 #################### crontab ####################
 
