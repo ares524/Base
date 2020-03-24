@@ -167,6 +167,9 @@
       languages, and is used in most parts of the world
     - Scratch 3.x is a completely new JavaScript-based code base made up of
       multiple components
+- 2006 <https://en.wikipedia.org/wiki/Sass_(stylesheet_language)>
+    - a preprocessor scripting language that is interpreted or compiled into
+      Cascading Style Sheets (CSS)
 - 2006 <https://en.wikipedia.org/wiki/Roblox>
     - a massively multiplayer online video game and game creation system that
       allows users to design their own games and play a wide variety of
@@ -444,6 +447,15 @@
     - abbreviation for Simple Object Access Protocol
     - uses XML Information Set for its message format, and relies on application
       layer protocols, most often Hypertext Transfer Protocol (HTTP)
+- <https://en.wikipedia.org/wiki/Web_Services_Description_Language>
+    - an XML-based interface description language that is used for describing
+      the functionality offered by a web service
+    - often used in combination with SOAP and an XML Schema
+    - describes services as collections of network endpoints, or ports
+        - port is defined by associating a network address with a reusable binding
+        - collection of ports defines a service
+        - messages are abstract descriptions of the data being exchanged
+        - port types are abstract collections of supported operations
 - <https://en.wikipedia.org/wiki/JSON>
     - an open standard file format, and data interchange format, that uses
       human-readable text to store and transmit data objects consisting of
