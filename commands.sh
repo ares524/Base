@@ -12,6 +12,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/javascript"
 OPEN_SOURCE_LUA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/lua"
 OPEN_SOURCE_PYTHON_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python"
 OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python_async"
+OPEN_SOURCE_SASS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/sass"
 OPEN_SOURCE_SHELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/shell"
 OPEN_SOURCE_TYPESCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/typescript"
 
@@ -39,7 +40,9 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/Perl/perl5
     https://github.com/antirez/redis
     https://github.com/awesomeWM/awesome
+    https://github.com/curl/curl
     https://github.com/git/git
+    https://github.com/libuv/libuv
     https://github.com/lua/lua
     https://github.com/nginx/nginx
     https://github.com/openssh/openssh-portable
@@ -47,6 +50,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/python/cpython
     https://github.com/python/devguide
     https://github.com/stedolan/jq
+    https://github.com/tmux/tmux
     https://github.com/torvalds/linux
     https://github.com/vim/vim
     https://github.com/zsh-users/zsh
@@ -60,44 +64,83 @@ OPEN_SOURCE_C_REPOS=(
 
 OPEN_SOURCE_CPP_REPOS=(
     https://github.com/alembic/alembic
+    https://github.com/apple/swift
+    https://github.com/bitcoin/bitcoin
     https://github.com/fish-shell/fish-shell
     https://github.com/grpc/grpc
     https://github.com/mongodb/mongo
     https://github.com/nodejs/node
+    https://github.com/protocolbuffers/protobuf
+    https://github.com/tesseract-ocr/tesseract
     https://github.com/v8/v8
 )
 
 OPEN_SOURCE_DOCKERFILE_REPOS=(
-    https://github.com/pyca/infra
     https://github.com/jessfraz/dockerfiles
+    https://github.com/pyca/infra
 )
 
 OPEN_SOURCE_DOCS_REPOS=(
+    https://github.com/30-seconds/30-seconds-of-code
+    https://github.com/Hack-with-Github/Awesome-Hacking
+    https://github.com/airbnb/javascript
+    https://github.com/alebcay/awesome-shell
+    https://github.com/avelino/awesome-go
+    https://github.com/awesomedata/awesome-public-datasets
+    https://github.com/braydie/HowToBeAProgrammer
+    https://github.com/charlax/professional-programming
+    https://github.com/cjbarber/ToolsOfTheTrade
+    https://github.com/danistefanovic/build-your-own-x
+    https://github.com/donnemartin/system-design-primer
+    https://github.com/dylanaraps/pure-bash-bible
     https://github.com/ericdouglas/ES6-Learning
+    https://github.com/getify/You-Dont-Know-JS
+    https://github.com/git-tips/tips
+    https://github.com/jlevy/the-art-of-command-line
     https://github.com/jorgebucaran/awesome-fish
+    https://github.com/mtdvio/every-programmer-should-know
+    https://github.com/nefe/You-Dont-Need-jQuery
+    https://github.com/ossu/computer-science
+    https://github.com/papers-we-love/papers-we-love
+    https://github.com/public-apis/public-apis
+    https://github.com/sindresorhus/awesome
     https://github.com/sorrycc/awesome-javascript
+    https://github.com/trimstray/the-book-of-secret-knowledge
+    https://github.com/tuvtran/project-based-learning
+    https://github.com/vinta/awesome-python
+    https://github.com/vuejs/awesome-vue
+    https://github.com/you-dont-need/You-Dont-Need-JavaScript
+    https://github.com/ziishaned/learn-regex
 )
 
 OPEN_SOURCE_GO_REPOS=(
+    https://github.com/caddyserver/caddy
     https://github.com/docker/docker-ce
     https://github.com/docker/machine
     https://github.com/etcd-io/etcd
+    https://github.com/etcd-io/etcd
     https://github.com/flynn/flynn
+    https://github.com/gohugoio/hugo
     https://github.com/golang/go
     https://github.com/golang/net
     https://github.com/golang/tools
     https://github.com/gomodule/redigo
+    https://github.com/grafana/grafana
     https://github.com/grpc/grpc-go
     https://github.com/hashicorp/consul
     https://github.com/hashicorp/packer
     https://github.com/hashicorp/terraform
     https://github.com/hashicorp/vault
     https://github.com/helm/charts
+    https://github.com/helm/helm
     https://github.com/influxdata/telegraf
     https://github.com/istio/istio
     https://github.com/itchyny/gojq
     https://github.com/kubernetes/kubernetes
+    https://github.com/kubernetes/minikube
+    https://github.com/moby/moby
     https://github.com/mongodb/mongo-go-driver
+    https://github.com/rancher/rancher
 )
 
 OPEN_SOURCE_JAVASCRIPT_REPOS=(
@@ -107,8 +150,28 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/LLK/scratch-vm
     https://github.com/LLK/scratch-www
     https://github.com/LLK/scratchjr
+    https://github.com/Leaflet/Leaflet
+    https://github.com/Unitech/pm2
+    https://github.com/babel/babel
+    https://github.com/chalk/chalk
+    https://github.com/chartjs/Chart.js
+    https://github.com/cypress-io/cypress
+    https://github.com/d3/d3
+    https://github.com/eslint/eslint
+    https://github.com/expressjs/express
+    https://github.com/facebook/create-react-app
     https://github.com/facebook/react
+    https://github.com/freeCodeCamp/freeCodeCamp
+    https://github.com/hakimel/reveal.js
     https://github.com/jfo8000/ScratchJr-Desktop
+    https://github.com/lodash/lodash
+    https://github.com/serverless/serverless
+    https://github.com/socketio/socket.io
+    https://github.com/statsd/statsd
+    https://github.com/tj/commander.js
+    https://github.com/typicode/json-server
+    https://github.com/vuejs/vue
+    https://github.com/winstonjs/winston
     https://github.com/yarnpkg/yarn
 )
 
@@ -121,18 +184,28 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/Julian/jsonschema
     https://github.com/MagicStack/httptools
     https://github.com/andymccurdy/redis-py
+    https://github.com/ansible/ansible
+    https://github.com/apache/airflow
     https://github.com/benoitc/gunicorn
+    https://github.com/bokeh/bokeh
     https://github.com/boto/boto3
+    https://github.com/certbot/certbot
     https://github.com/docker/compose
     https://github.com/geopy/geopy
+    https://github.com/ipython/ipython
     https://github.com/jakubroztocil/httpie
+    https://github.com/keon/algorithms
     https://github.com/lxml/lxml
     https://github.com/marshmallow-code/marshmallow
     https://github.com/mongodb/mongo-python-driver
     https://github.com/mvantellingen/python-zeep
+    https://github.com/numpy/numpy
+    https://github.com/odoo/odoo
     https://github.com/pallets/flask
     https://github.com/pallets/jinja
+    https://github.com/pandas-dev/pandas
     https://github.com/powerline/powerline
+    https://github.com/psf/black
     https://github.com/psf/requests
     https://github.com/psycopg/psycopg2
     https://github.com/pyca/bcrypt
@@ -141,6 +214,8 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/pytest-dev/pytest
     https://github.com/python-pillow/Pillow
     https://github.com/sanand0/xmljson
+    https://github.com/scikit-learn/scikit-learn
+    https://github.com/scrapy/scrapy
     https://github.com/seatgeek/fuzzywuzzy
     https://github.com/sqlalchemy/alembic
     https://github.com/sqlalchemy/sqlalchemy
@@ -154,8 +229,14 @@ OPEN_SOURCE_PYTHON_ASYNC_REPOS=(
     https://github.com/aio-libs/aiobotocore
     https://github.com/aio-libs/aiohttp
     https://github.com/aio-libs/aioredis
+    https://github.com/ashleysommer/sanic-cors
+    https://github.com/huge-success/sanic
     https://gitlab.com/pgjones/hypercorn
     https://gitlab.com/pgjones/quart
+)
+
+OPEN_SOURCE_SASS_REPOS=(
+    https://github.com/jgthms/bulma
 )
 
 OPEN_SOURCE_SHELL_REPOS=(
@@ -170,7 +251,11 @@ OPEN_SOURCE_SHELL_REPOS=(
 
 OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/angular/angular
+    https://github.com/graphql/graphql-js
+    https://github.com/ionic-team/ionic
     https://github.com/microsoft/TypeScript
+    https://github.com/mrdoob/three.js
+    https://github.com/typicode/husky
 )
 
 clone-opensource() {
@@ -223,6 +308,11 @@ clone-opensource() {
     mkdir -p "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR"
     cd "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_PYTHON_ASYNC_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_SASS_REPOS_DIR"
+    cd "$OPEN_SOURCE_SASS_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_SASS_REPOS[@]}"; do
         git clone --recursive $repo
     done
     mkdir -p "$OPEN_SOURCE_SHELL_REPOS_DIR"
