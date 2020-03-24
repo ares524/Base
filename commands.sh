@@ -264,6 +264,22 @@ elif [[ -n "$ZSH_VERSION" ]]; then
     compinit -i
 fi
 
+#################### compgen ####################
+
+if type compgen &>/dev/null; then
+    funcs-list() {
+        compgen -A function | grep -v -E '(^_|nvm_)' | LL_COLLATE=c sort | less -FX
+    }
+
+    funcs-list-all() {
+        compgen -A function | LL_COLLATE=c sort | less -FX
+    }
+
+    funcs-list-hidden() {
+        compgen -A function | grep '^_' | LL_COLLATE=c sort | less -FX
+    }
+fi
+
 #################### crontab ####################
 
 crontab-active() {
@@ -384,6 +400,15 @@ grep-history-comments() {
 }
 
 #################### helpme ####################
+
+commands-functions-aliases() {
+    out="$HOME/commands-functions-aliases.txt"
+    alias > "$out"
+    typeset -f >> "$out"
+    echo $PATH | tr ':' '\0' |
+         xargs -0 -I {} bash -c 'echo -e "\n"; ls -lhdF {}/* 2>/dev/null' >> "$out"
+    less -FX "$out"
+}
 
 helpme() {
     cmd=$1
