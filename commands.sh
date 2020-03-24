@@ -86,13 +86,13 @@ if [[ -n "$BASH_VERSION" ]]; then
     {
         COMPREPLY=()
         cur="${COMP_WORDS[COMP_CWORD]}"
-        comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
+        comp_ssh_hosts=`cat ~/.ssh/known_hosts 2>/dev/null | \
             egrep -v '^(\||\[|#)' | \
             cut -f 1 -d ' ' | \
             cut -f 1 -d ',' | \
             grep -v ':' | \
             uniq ;
-        cat ~/.ssh/config | \
+        cat ~/.ssh/config 2>/dev/null | \
             grep "^Host " | \
             awk '{print $2}'`
         COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
