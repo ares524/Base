@@ -100,6 +100,9 @@ if [[ -n "$BASH_VERSION" ]]; then
     }
     complete -F _complete_ssh_hosts ssh
 
+    # Use vi keybindings to navigate command line
+    set -o vi
+
     # Append to history file instead of overwriting
     shopt -s histappend
 
