@@ -286,6 +286,21 @@ crontab-active() {
     crontab -l | grep -vE '(^#|^$)'
 }
 
+#################### curl ####################
+
+if type curl &>/dev/null; then
+    weather-now() {
+        location=$1
+        # See https://github.com/chubin/wttr.in#one-line-output for output options
+        curl "https://wttr.in/${location}?format='%c+%C+%t+%w+%p'"
+    }
+
+    weather-forecast() {
+        location=$1
+        curl "https://wttr.in/${location}"
+    }
+fi
+
 #################### dig ####################
 
 if type dig &>/dev/null; then
@@ -624,19 +639,6 @@ if type vlc &>/dev/null; then
         vlc --fullscreen "$@" &>/dev/null &
     }
 fi
-
-#################### weather ####################
-
-weather-now() {
-    location=$1
-    # See https://github.com/chubin/wttr.in#one-line-output for output options
-    curl "https://wttr.in/${location}?format='%c+%C+%t+%w+%p'"
-}
-
-weather-forecast() {
-    location=$1
-    curl "https://wttr.in/${location}"
-}
 
 #################### xrandr ####################
 
