@@ -537,6 +537,9 @@ if [[ -n "$(groups | grep -E '(sudo|admin)')" ]]; then
                 echo -e "\n$ sudo su - $username -c 'ls -ltrhA ~'"
                 sudo su - $username -c 'ls -ltrhA ~'
             fi
+
+            # Set permissions for the user's home directory
+            sudo chmod 700 /home/$username
         }
 
         newusergit() {
