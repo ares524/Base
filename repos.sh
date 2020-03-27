@@ -98,6 +98,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/git-tips/tips
     https://github.com/jlevy/the-art-of-command-line
     https://github.com/jorgebucaran/awesome-fish
+    https://github.com/letsencrypt/website/
     https://github.com/mtdvio/every-programmer-should-know
     https://github.com/nefe/You-Dont-Need-jQuery
     https://github.com/ossu/computer-science
@@ -136,8 +137,10 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/influxdata/telegraf
     https://github.com/istio/istio
     https://github.com/itchyny/gojq
+    https://github.com/jwilder/docker-gen
     https://github.com/kubernetes/kubernetes
     https://github.com/kubernetes/minikube
+    https://github.com/letsencrypt/boulder
     https://github.com/moby/moby
     https://github.com/mongodb/mongo-go-driver
     https://github.com/rancher/rancher
@@ -182,6 +185,7 @@ OPEN_SOURCE_LUA_REPOS=(
 OPEN_SOURCE_PYTHON_REPOS=(
     https://git.savannah.gnu.org/git/ranger.git
     https://github.com/Julian/jsonschema
+    https://github.com/Legrandin/pycryptodome
     https://github.com/MagicStack/httptools
     https://github.com/andymccurdy/redis-py
     https://github.com/ansible/ansible
@@ -194,6 +198,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/geopy/geopy
     https://github.com/ipython/ipython
     https://github.com/jakubroztocil/httpie
+    https://github.com/jpadilla/pyjwt
     https://github.com/keon/algorithms
     https://github.com/lxml/lxml
     https://github.com/marshmallow-code/marshmallow
@@ -241,12 +246,16 @@ OPEN_SOURCE_SASS_REPOS=(
 
 OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/Bash-it/bash-it
+    https://github.com/acmesh-official/acme.sh
+    https://github.com/nginx-proxy/docker-letsencrypt-nginx-proxy-companion
+    https://github.com/nginx-proxy/nginx-proxy
     https://github.com/nvm-sh/nvm
     https://github.com/oh-my-fish/oh-my-fish
     https://github.com/ohmyzsh/ohmyzsh
     https://github.com/paoloantinori/hhighlighter
     https://github.com/pyenv/pyenv
     https://github.com/rupa/z
+    https://github.com/wmnnd/nginx-certbot
 )
 
 OPEN_SOURCE_TYPESCRIPT_REPOS=(
