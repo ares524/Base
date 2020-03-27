@@ -664,18 +664,53 @@ fi
 
 #################### Environment managers ####################
 
-# Setup pyenv (on linux)
-if [[ $(uname) != "Darwin" && -d $HOME/.pyenv ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    if command -v pyenv 1>/dev/null 2>&1; then
-        eval "$(pyenv init -)"
+nvm-install() {
+    if [[ "$clean" == "clean" && -d ~/.nvm ]]; then
+        echo -e "\nDeleting ~/.nvm and ~/.npm"
+        rm -rf ~/.nvm ~/.npm 2>/dev/null
+        unset NVM_DIR
     fi
+
+    if [[ ! -d ~/.nvm ]]; then
+        echo -e "\nInstalling nvm and latest 'long term support' version of node..."
+        unset NVM_DIR
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+        export NVM_DIR="$HOME/.nvm"
+        source "$NVM_DIR/nvm.sh"
+        source "$NVM_DIR/bash_completion"
+        nvm install --lts
+    fi
+}
+
+# Enable nvm (node version manager)
+if [[ -d $HOME/.nvm && -z "$NVM_DIR" ]]; then
+    export NVM_DIR="$HOME/.nvm"
+    source "$NVM_DIR/nvm.sh"
+    source "$NVM_DIR/bash_completion"
 fi
 
-# Setup nvm (node version manager)
-if [[ -d $HOME/.nvm ]]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+pyenv-install() {
+    if [[ "$clean" == "clean" && $(uname) != "Darwin" && -d ~/.pyenv ]]; then
+        echo -e "\nDeleting ~/.pyenv"
+        rm -rf ~/.pyenv
+    fi
+
+    if [[ ! -d ~/.pyenv ]]; then
+        echo -e "\nInstalling pyenv..."
+        git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+        export PYENV_ROOT="$HOME/.pyenv"
+        export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init -)"
+        echo -e "\nInstalling Python 3.8.2..."
+        pyenv install 3.8.2
+    fi
+}
+
+# Enable pyenv (on linux)
+if [[ $(uname) != "Darwin" && -d $HOME/.pyenv && -z "$PYENV_ROOT" ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    if type pyenv &>/dev/null; then
+        eval "$(pyenv init -)"
+    fi
 fi

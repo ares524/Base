@@ -9,17 +9,6 @@
 [[ "$1" == "extras" || "$2" == "extras" || "$3" == "extras" ]] && extras=yes
 [[ "$1" == "gui" || "$2" == "gui" || "$3" == "gui" ]] && gui=yes
 
-# Remove some directories in $HOME if doing a "clean" install
-if [[ "$clean" == "clean" ]]; then
-    echo -e "\nDeleting ~/.nvm and ~/.npm"
-    rm -rf ~/.nvm ~/.npm 2>/dev/null
-    unset NVM_DIR
-    if [[ $(uname) != "Darwin" && -d ~/.pyenv ]]; then
-        echo -e "\nDeleting ~/.pyenv"
-        rm -rf ~/.pyenv
-    fi
-fi
-
 do_install() {
     if [[ -f /usr/bin/apt-get && -n "$(groups | grep sudo)" ]]; then
         echo -e "\nUpdating apt-get package listing"
@@ -59,25 +48,6 @@ do_install() {
         #     sudo apt-get update
         # fi
         # sudo apt-get install -y yarn
-
-        if [[ ! -d ~/.pyenv ]]; then
-            echo -e "\nInstalling pyenv..."
-            git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-            export PYENV_ROOT="$HOME/.pyenv"
-            export PATH="$PYENV_ROOT/bin:$PATH"
-            eval "$(pyenv init -)"
-            echo -e "\nInstalling Python 3.8..."
-            pyenv install 3.8.2
-        fi
-
-        if [[ ! -d ~/.nvm ]]; then
-            echo -e "\nInstalling nvm and latest 'long term support' version of node..."
-            unset NVM_DIR
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
-            source "$NVM_DIR/nvm.sh"
-            nvm install --lts
-        fi
 
         if [[ -n "$gui" ]]; then
             echo -e "\nInstalling Xorg and GUI packages"
