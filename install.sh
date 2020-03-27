@@ -120,5 +120,5 @@ do_install() {
 }
 
 do_install
-source "$HOME/commands.sh"
+[[ -s "$HOME/commands.sh" ]] && source "$HOME/commands.sh" || return
 [[ "$clean" == "clean" ]] && get-completions clean
