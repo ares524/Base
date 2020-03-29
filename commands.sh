@@ -15,14 +15,21 @@ else
     alias p="ps -eo user,pid,ppid,tty,cmd:200 | grep -v ' \['"
 fi
 
-# Use GNU xargs and sort if on a Mac
+# Use GNU find, sort, and xargs if on a Mac
 if [[ $(uname) == "Darwin" ]]; then
-    if type gxargs &>/dev/null; then
-        alias xargs=gxargs
+    if type gfind &>/dev/null; then
+        alias find=gfind
     fi
     if type gsort &>/dev/null; then
         alias sort=gsort
     fi
+    if type gxargs &>/dev/null; then
+        alias xargs=gxargs
+    fi
+fi
+
+if [[ $(find . -maxdepth 1 -type f -executable &>/dev/null; echo $?) -eq 0 ]]; then
+    find_executables=yes
 fi
 
 #################### bash/zsh setup ####################
