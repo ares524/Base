@@ -511,18 +511,25 @@ if [[ -n "$(groups | grep -E '(sudo|admin)')" ]]; then
             echo -e "\nsudo useradd -m -s $shell_path $username" >&2
             sudo useradd -m -s $shell_path $username || return 1
 
+            # Set permissions for the user's home directory
+            sudo chmod 700 /home/$username
+
             # Add the user to groups
             if [[ "$2" == sudo ]]; then
                 sudo usermod -aG sudo,docker,audio,video,plugdev,netdev $username
             else
-                sudo usermod -aG audio,docker,video,plugdev,netdev $username
+                sudo usermod -aG docker,audio,video,plugdev,netdev $username
             fi
 
             # Add an empty zshrc file so zsh doesn't bug you on first login
-            if [[ "$shell_path" =~ .*zsh.* ]]; then
-                sudo touch /home/$username/.zshrc
-                sudo chown $username:$username /home/$username/.zshrc
-            fi
+            [[ "$shell_path" =~ .*zsh.* ]] && sudo touch /home/$username/.zshrc
+
+            # Make empty ~/.ssh/authorized_keys file
+            sudo mkdir /home/$username/.ssh
+            sudo chmod 700 /home/$username/.ssh
+            sudo touch /home/$username/.ssh/authorized_keys
+            sudo chmod 600 /home/$username/.ssh/authorized_keys
+            sudo chown -R $username:$username /home/$username
 
             # Set a password for the user
             echo -e "\nsudo passwd $username" >&2
@@ -537,9 +544,6 @@ if [[ -n "$(groups | grep -E '(sudo|admin)')" ]]; then
                 echo -e "\n$ sudo su - $username -c 'ls -ltrhA ~'"
                 sudo su - $username -c 'ls -ltrhA ~'
             fi
-
-            # Set permissions for the user's home directory
-            sudo chmod 700 /home/$username
         }
 
         newusergit() {
