@@ -1,8 +1,10 @@
 # Source this script with optional args "clean", "extras" and/or "gui"
 
-# Create symbolic link to commands.sh
+# Create symbolic link to commands.sh and bin/
 [[ -L "$HOME/commands.sh" ]] && rm "$HOME/commands.sh"
+[[ -L "$HOME/bin-base" ]] && rm "$HOME/bin-base"
 [[ -f ./commands.sh ]] && ln -s "$(pwd)/commands.sh" "$HOME/commands.sh"
+[[ -d ./bin ]] && ln -s "$(pwd)/bin" "$HOME/bin-base"
 
 # Set clean, extras, and gui vars
 [[ "$1" == "clean" || "$2" == "clean" || "$3" == "clean" ]] && clean=clean

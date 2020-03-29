@@ -812,3 +812,9 @@ if [[ $(uname) != "Darwin" && -d $HOME/.pyenv && -z "$PYENV_ROOT" ]]; then
         eval "$(pyenv init -)"
     fi
 fi
+
+#################### PATH ####################
+
+if [[ -d "$HOME/bin-base" && -z "$(echo $PATH | grep bin-base)" ]]; then
+    PATH="$HOME/bin-base:$PATH"
+fi
