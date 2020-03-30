@@ -287,6 +287,16 @@ if type dig &>/dev/null; then
     }
 fi
 
+#################### /etc ####################
+
+etc-group() {
+    grep -vE '(^#|:$)' /etc/group
+}
+
+etc-passwd() {
+    grep -vE '(^#|nologin$|false$)' /etc/passwd
+}
+
 #################### feh ####################
 
 if type feh &>/dev/null; then
@@ -486,6 +496,12 @@ fi
 
 if [[ -n "$(groups | grep -E '(sudo|admin)')" ]]; then
     alias lsof-ports-ipv4="sudo lsof -Pn -i4"
+
+    if [[ -s /etc/shadow ]]; then
+        etc-shadow() {
+            sudo cat /etc/shadow | grep -vE '(^[^:]+:\*|^$)'
+        }
+    fi
 
     if type nmap &>/dev/null; then
         alias nmap-local-machines10="sudo nmap -sS -p22,7777 10.0.0.0/24"
