@@ -172,19 +172,23 @@ get-completions() {
         rm -f "$custom_fpath/_docker" "$custom_fpath/_docker-compose" "$custom_fpath/git-completion.zsh" 2>/dev/null
     fi
 
-    git_version=$(git --version | perl -pe 's/^git version (\S+).*$/$1/')
-    docker_version=$(docker --version | perl -pe 's/^Docker version (\S+),.*/$1/')
-    docker_compose_version=$(docker-compose --version | perl -pe 's/^docker-compose version (\S+),.*/$1/')
-    zsh_urls=(
-        https://raw.githubusercontent.com/git/git/v$git_version/contrib/completion/git-completion.zsh
-        https://raw.githubusercontent.com/docker/cli/v$docker_version/contrib/completion/zsh/_docker
-        https://raw.githubusercontent.com/docker/compose/$docker_compose_version/contrib/completion/zsh/_docker-compose
-    )
-    bash_urls=(
-        https://raw.githubusercontent.com/git/git/v$git_version/contrib/completion/git-completion.bash
-        https://raw.githubusercontent.com/docker/cli/v$docker_version/contrib/completion/bash/docker
-        https://raw.githubusercontent.com/docker/compose/$docker_compose_version/contrib/completion/bash/docker-compose
-    )
+    git_version=$(git --version 2>/dev/null | perl -pe 's/^git version (\S+).*$/$1/')
+    docker_version=$(docker --version 2>/dev/null | perl -pe 's/^Docker version (\S+),.*/$1/')
+    docker_compose_version=$(docker-compose --version 2>/dev/null | perl -pe 's/^docker-compose version (\S+),.*/$1/')
+    zsh_urls=()
+    bash_urls=()
+    if [[ -n "$git_version" ]]; then
+        zsh_urls+=(https://raw.githubusercontent.com/git/git/v$git_version/contrib/completion/git-completion.zsh)
+        bash_urls+=(https://raw.githubusercontent.com/git/git/v$git_version/contrib/completion/git-completion.bash)
+    fi
+    if [[ -n "$docker_version" ]]; then
+        zsh_urls+=(https://raw.githubusercontent.com/docker/cli/v$docker_version/contrib/completion/zsh/_docker)
+        bash_urls+=(https://raw.githubusercontent.com/docker/cli/v$docker_version/contrib/completion/bash/docker)
+    fi
+    if [[ -n "$docker_compose_version" ]]; then
+        zsh_urls+=(https://raw.githubusercontent.com/docker/compose/$docker_compose_version/contrib/completion/zsh/_docker-compose)
+        bash_urls+=(https://raw.githubusercontent.com/docker/compose/$docker_compose_version/contrib/completion/bash/docker-compose)
+    fi
     if [[ -n "$ZSH_VERSION" ]]; then
         # Copy the completion files
         for url in "${zsh_urls[@]}"; do
