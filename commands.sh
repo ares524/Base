@@ -160,15 +160,15 @@ get-completions() {
     if [[ "$1" == "clean" ]]; then
         if [[ ! "$bash_completion_dir" =~ ${HOME}.* ]]; then
             if [[ -n "$(groups | grep -E '(sudo|admin)')" ]]; then
-                echo -e "\n Deleting from $bash_completion_dir: docker, docker-compose, git-completion.bash"
+                echo -e "\nDeleting from $bash_completion_dir: docker, docker-compose, git-completion.bash"
                 sudo rm -f $bash_completion_dir/docker $bash_completion_dir/docker-compose $bash_completion_dir/git-completion.bash 2>/dev/null
             fi
         else
-            echo -e "\n Deleting from $bash_completion_dir: docker, docker-compose, git-completion.bash"
+            echo -e "\nDeleting from $bash_completion_dir: docker, docker-compose, git-completion.bash"
             rm -f $bash_completion_dir/docker $bash_completion_dir/docker-compose $bash_completion_dir/git-completion.bash 2>/dev/null
         fi
 
-        echo -e "\n Deleting from $custom_fpath: _docker, _docker-compose, git-completion.zsh"
+        echo -e "\nDeleting from $custom_fpath: _docker, _docker-compose, git-completion.zsh"
         rm -f "$custom_fpath/_docker" "$custom_fpath/_docker-compose" "$custom_fpath/git-completion.zsh" 2>/dev/null
     fi
 
