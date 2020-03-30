@@ -12,7 +12,7 @@
 [[ "$1" == "gui" || "$2" == "gui" || "$3" == "gui" ]] && gui=yes
 
 do_install() {
-    if [[ -f /usr/bin/apt-get && -n "$(groups | grep sudo)" ]]; then
+    if [[ -f /usr/bin/apt-get && -n "$(groups | grep -E '(sudo|root)')" ]]; then
         echo -e "\nUpdating apt-get package listing"
         sudo apt-get update || return 1
 

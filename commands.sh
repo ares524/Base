@@ -124,7 +124,7 @@ fi
 
 bash_completion_dir="$(brew --prefix 2>/dev/null)/etc/bash_completion.d"
 bash_completion_file="$(dirname $bash_completion_dir)/bash_completion"
-if [[ $(uname) != "Darwin" && -z "$(groups | grep sudo)" ]]; then
+if [[ $(uname) != "Darwin" && -z "$(groups | grep -E '(sudo|root)')" ]]; then
     bash_completion_dir="$HOME/.downloaded-completions"
     mkdir -p "$bash_completion_dir" 2>/dev/null
     bash_completion_file="$HOME/.bash_completion"
@@ -158,8 +158,8 @@ get-completions() {
     [[ -z "$custom_fpath" ]] && custom_fpath="$HOME/.zsh/completion"
 
     if [[ "$1" == "clean" ]]; then
-        if [[ ! "$bash_completion_dir" =~ ${HOME}.* ]]; then
-            if [[ -n "$(groups | grep -E '(sudo|admin)')" ]]; then
+        if [[ ! "$bash_completion_dir" =~ ${HOME}.* && ! "$bash_completion_dir" =~ \/root\/.* ]]; then
+            if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
                 echo -e "\nDeleting from $bash_completion_dir: docker, docker-compose, git-completion.bash"
                 sudo rm -f $bash_completion_dir/docker $bash_completion_dir/docker-compose $bash_completion_dir/git-completion.bash 2>/dev/null
             fi
@@ -210,12 +210,12 @@ get-completions() {
                 echo -e "\n$ brew install bash-completion"
                 brew install bash-completion || return 1
             fi
-        elif [[ -f /usr/bin/apt-get && -n "$(groups | grep sudo)" ]]; then
+        elif [[ -f /usr/bin/apt-get && -n "$(groups | grep -E '(sudo|root)')" ]]; then
             echo -e "\n$ sudo apt-get install -y bash-completion"
             sudo apt-get install -y bash-completion
         fi
         # Copy the completion files
-        if [[ "$bash_completion_dir" =~ ${HOME}.* ]]; then
+        if [[ "$bash_completion_dir" =~ ${HOME}.* || "$bash_completion_dir" =~ \/root\/.* ]]; then
             for url in "${bash_urls[@]}"; do
                 fname=$(basename "$url")
                 if [[ ! -f $bash_completion_dir/$fname ]]; then
@@ -238,10 +238,10 @@ get-completions() {
 
 custom_fpath="$(_get_zsh_custom_fpath)"
 if [[ -n "$BASH_VERSION" ]]; then
-    [[ ! -f $bash_completion_dir/docker ]] && get-completions
+    [[ ! -f $bash_completion_dir/git-completion.bash ]] && get-completions
     source "$bash_completion_file"
 elif [[ -n "$ZSH_VERSION" ]]; then
-    [[ ! -f "$custom_fpath/_docker" ]] && get-completions
+    [[ ! -f "$custom_fpath/git-completion.zsh" ]] && get-completions
     [[ -z "$(echo ${fpath[@]} | grep $custom_fpath)" ]] && fpath=($custom_fpath $fpath)
     compinit -i
 fi
@@ -504,7 +504,7 @@ fi
 
 #################### sudo ####################
 
-if [[ -n "$(groups | grep -E '(sudo|admin)')" ]]; then
+if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
     alias lsof-ports-ipv4="sudo lsof -Pn -i4"
 
     if [[ -s /etc/shadow ]]; then
