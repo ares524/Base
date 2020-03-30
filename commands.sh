@@ -454,6 +454,12 @@ helpme() {
     less -FX $outfile
 }
 
+#################### man ####################
+
+man-f() {
+    man -f "$@" 2> /dev/null
+}
+
 #################### scrot ####################
 
 if type scrot &>/dev/null; then
