@@ -136,6 +136,13 @@ elif [[ -n "$ZSH_VERSION" ]]; then
     # Search through command history with vi search keys (in vi command mode)
     bindkey -M vicmd '?' history-incremental-pattern-search-backward
     bindkey -M vicmd '/' history-incremental-pattern-search-forward
+
+    # Enable fish-style syntax highlighting
+    if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+        source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    elif [[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    fi
 fi
 
 #################### completions ####################
