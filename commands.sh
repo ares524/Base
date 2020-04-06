@@ -264,6 +264,18 @@ elif [[ -n "$ZSH_VERSION" ]]; then
     compinit -i
 fi
 
+#################### aws ####################
+
+if type aws &>/dev/null; then
+    beanstalk-versions-by-app() {
+        aws elasticbeanstalk describe-application-versions | grep ApplicationName | sort | uniq -c | sort -nr
+    }
+
+    beanstalk-total-versions() {
+        aws elasticbeanstalk describe-application-versions | grep ApplicationVersionArn | wc -l
+    }
+fi
+
 #################### compgen ####################
 
 if type compgen &>/dev/null; then
@@ -309,6 +321,12 @@ if type dig &>/dev/null; then
     }
 fi
 
+#################### echo ####################
+
+paths() {
+    echo $PATH | tr ':' '\n'
+}
+
 #################### /etc ####################
 
 etc-group() {
@@ -329,6 +347,17 @@ fi
 #################### git ####################
 
 if type git &>/dev/null; then
+    git-email-address() {
+        unset path _email_line
+        path=$(pwd)
+        while [[ ! -d "$path/.git" && "$path" != "/" ]]; do
+            path="$(dirname $path)"
+        done
+        [[ "$path" != "/" ]] && _email_line=$(grep email "$path/.git/config")
+        [[ -z "$_email_line" ]] && _email_line=$(grep email ~/.gitconfig 2>/dev/null)
+        [[ -n "$_email_line" ]] && echo $_email_line | perl -pe 's/^.*email\s*=\s*(.*?)$/$1/'
+    }
+
     git-merge-in() {
         localbranch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
         if [[ -z "$localbranch" ]]; then
