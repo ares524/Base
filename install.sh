@@ -22,7 +22,7 @@ do_install() {
 
         if [[ -n "$extras" ]]; then
             echo -e "\nInstalling/upgrading other useful CLI packages..."
-            sudo apt-get install -y vim zsh tmux htop glances pmount acpi dkms openssh-server colordiff tree ncdu ranger nnn w3m w3m-img nmap mtr sqlite3 imagemagick
+            sudo apt-get install -y vim zsh zsh-syntax-highlighting fish tmux htop glances pmount acpi dkms openssh-server colordiff tree ncdu ranger nnn w3m w3m-img nmap mtr sqlite3 imagemagick
         fi
 
         echo -e "\nInstalling ntp..."
@@ -94,7 +94,7 @@ do_install() {
 
         if [[ -n "$extras" ]]; then
             echo -e "\nInstalling/upgrading other useful CLI packages ..."
-            _brew_install_or_upgrade coreutils findutils wget colordiff tree ncdu ranger nnn glances nmap mtr watch sqlite3
+            _brew_install_or_upgrade coreutils findutils grep wget watch vim zsh-syntax-highlighting fish htop glances pstree openssh colordiff tree ncdu ranger nnn w3m nmap mtr sqlite3 imagemagick
         fi
 
         if [[ -n "$gui" ]]; then
