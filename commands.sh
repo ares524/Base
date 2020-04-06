@@ -7,18 +7,13 @@ alias ....="cd ../../.."
 
 cdd() { mkdir -p "$1" && cd "$1" && pwd; }
 
-if [[ $(uname) == "Darwin" ]]; then
-    alias dfh="df -lPh"
-    alias p="ps aux | egrep -v '(^_|^root)'"
-else
-    alias dfh="df -Th --total | egrep -v '(^none|^udev|^tmpfs|^cgmfs)'"
-    alias p="ps -eo user,pid,ppid,tty,cmd:200 | grep -v ' \['"
-fi
-
-# Use GNU find, sort, and xargs if on a Mac
+# Use GNU find, grep, sort, and xargs if on a Mac
 if [[ $(uname) == "Darwin" ]]; then
     if type gfind &>/dev/null; then
         alias find=gfind
+    fi
+    if type ggrep &>/dev/null; then
+        alias grep=ggrep
     fi
     if type gsort &>/dev/null; then
         alias sort=gsort
@@ -28,8 +23,31 @@ if [[ $(uname) == "Darwin" ]]; then
     fi
 fi
 
-if [[ $(find . -maxdepth 1 -type f -executable &>/dev/null; echo $?) -eq 0 ]]; then
+if find . -maxdepth 1 -type f -executable &>/dev/null; then
     find_executables=yes
+fi
+
+if echo | grep -P '' &>/dev/null; then
+    grep_perl=yes
+fi
+
+if [[ $(uname) == "Darwin" ]]; then
+    alias dfh="df -lPh"
+    alias p="ps -eo user,pid,ppid,tty,%cpu,%mem,command | grep -vE '(^_|^root)' | less -FX"
+    alias pa="ps -eo user,pid,ppid,tty,%cpu,%mem,command | less -FX"
+    alias psome="p | grep -vE '(/Applications/.*\.app/|/Library/.*\.app/|/System/Library|/usr/libexec|/usr/sbin|com\.docker\.|ssh-agent|bash$|zsh$|fish$)' | less -FX"
+    if [[ -n "$grep_perl" ]]; then
+        alias papps="p | grep -oP '/(Applications|Library)/.*?\.app/' | sort | uniq -c | sort -nr | less -FX"
+    fi
+    if type pstree &>/dev/null; then
+        alias pst="pstree -u $USER | less -FX"
+    fi
+else
+    alias dfh="df -Th --total | grep -vE '(^none|^udev|^tmpfs|^cgmfs)'"
+    alias p="ps -eo user,pid,ppid,tty,cmd:200 | grep -v ' \[' | less -FX"
+    alias pa="ps -eo user,pid,ppid,tty,cmd:200 | less -FX"
+    alias psome="p | grep -vE '(chromium|firefox| \/usr\/| \/lib\/| \/sbin\/|dbus-launch|nm-applet|cinnamon|blueberry|avahi-daemon|ssh-agent|sshd:|bash$|zsh$|fish$) | less -FX"
+    alias pst="pstree -np | less -FX"
 fi
 
 #################### bash/zsh setup ####################
