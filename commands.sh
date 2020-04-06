@@ -51,7 +51,7 @@ if [[ -n "$BASH_VERSION" ]]; then
         COMPREPLY=()
         cur="${COMP_WORDS[COMP_CWORD]}"
         comp_ssh_hosts=`cat ~/.ssh/known_hosts 2>/dev/null | \
-            egrep -v '^(\||\[|#)' | \
+            grep -vE '^(\||\[|#)' | \
             cut -f 1 -d ' ' | \
             cut -f 1 -d ',' | \
             grep -v ':' | \
