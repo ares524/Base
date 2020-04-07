@@ -1,5 +1,12 @@
 > Links and text pulled directly from <https://en.wikipedia.org/wiki/Wikipedia>
 
+Jump to:
+
+- [Languages](https://github.com/kenjyco/base/blob/master/HISTORY.md#programming-languages-and-textstream-editing-tools)
+- [Companies/Organizations](https://github.com/kenjyco/base/blob/master/HISTORY.md#companies-and-groups)
+- [Misc](https://github.com/kenjyco/base/blob/master/HISTORY.md#misc)
+- [People](https://github.com/kenjyco/base/blob/master/HISTORY.md#people)
+
 ### Programming languages and text/stream editing tools
 
 - 1957 <https://en.wikipedia.org/wiki/Fortran>
