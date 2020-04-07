@@ -13,6 +13,9 @@
 [[ "$1" == "extras" || "$2" == "extras" || "$3" == "extras" ]] && extras=yes
 [[ "$1" == "gui" || "$2" == "gui" || "$3" == "gui" ]] && gui=yes
 
+# Determine if using Windows Subsystem for Linux
+[[ -n "$(echo $PATH | grep -E '(WINDOWS|Program Files)')" ]] && wsl=yes
+
 do_install() {
     if [[ -f /usr/bin/apt-get && -n "$(groups | grep -E '(sudo|root)')" ]]; then
         echo -e "\nUpdating apt-get package listing"
@@ -33,17 +36,19 @@ do_install() {
         echo -e "\nRefreshing Ubuntu keys..."
         sudo apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
 
-        echo -e "\nInstalling/upgrading docker and docker-compose..."
-        sudo apt-get install -y software-properties-common apt-transport-https ca-certificates
-        if [[ -z "$(grep docker /etc/apt/sources.list)" ]]; then
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-            sudo apt-get update
+        if [[ -z "$wsl" ]]; then
+            echo -e "\nInstalling/upgrading docker and docker-compose..."
+            sudo apt-get install -y software-properties-common apt-transport-https ca-certificates
+            if [[ -z "$(grep docker /etc/apt/sources.list)" ]]; then
+                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+                sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                sudo apt-get update
+            fi
+            sudo apt-get install -y docker-ce
+            sudo usermod -aG docker ${USER}
+            sudo su -c 'curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose'
+            sudo chmod +x /usr/local/bin/docker-compose
         fi
-        sudo apt-get install -y docker-ce
-        sudo usermod -aG docker ${USER}
-        sudo su -c 'curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose'
-        sudo chmod +x /usr/local/bin/docker-compose
 
         # echo -e "\nInstalling/upgrading yarn..."
         # if [[ -z "$(grep yarn -R /etc/apt/sources.list.d)" ]]; then
@@ -54,8 +59,11 @@ do_install() {
         # sudo apt-get install -y yarn
 
         if [[ -n "$gui" ]]; then
-            echo -e "\nInstalling Xorg and GUI packages"
-            sudo apt-get install -y xserver-xorg-core xserver-xorg-video-intel xserver-xorg-input-kbd xserver-xorg-input-libinput
+            if [[ -z "$wsl" ]]; then
+                echo -e "\nInstalling Xorg..."
+                sudo apt-get install -y xserver-xorg-core xserver-xorg-video-intel xserver-xorg-input-kbd xserver-xorg-input-libinput
+            fi
+            echo -e "\nInstalling GUI packages..."
             sudo apt-get install -y xinit xclip xbindkeys awesome rxvt-unicode-256color feh scrot fonts-inconsolata
         fi
     elif [[ $(uname) == "Darwin" ]]; then
