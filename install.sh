@@ -70,6 +70,9 @@ do_install() {
         if [[ ! -f /usr/local/bin/brew ]]; then
             echo -e "\nInstalling homebrew..."
             /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" || return 1
+        elif [[ ! -w /usr/local/Cellar ]]; then
+            echo -e "\nNot attempting to install/upgrade packages with brew..."
+            return
         fi
 
         echo -e "\nGetting the list of packages already installed with brew..."
