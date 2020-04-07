@@ -137,6 +137,12 @@ elif [[ -n "$ZSH_VERSION" ]]; then
     bindkey -M vicmd '?' history-incremental-pattern-search-backward
     bindkey -M vicmd '/' history-incremental-pattern-search-forward
 
+    # Set help
+    unalias run-help 2>/dev/null
+    autoload -Uz run-help
+    HELPDIR=$(find /usr/share/zsh -type d -name help)
+    alias help=run-help
+
     # Enable fish-style syntax highlighting
     if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
         source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
