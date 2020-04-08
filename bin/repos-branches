@@ -12,8 +12,8 @@ _doit() {
         cd "$repo"
         branchname=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
         tracking=$(git branch -r | grep "$branchname" | grep -v HEAD | perl -pe 's/^\s+(.*)$/$1/')
-        remote_matches=$(git branch -r | grep -i "$pattern" | grep -v HEAD)
-        local_matches=$(git branch | grep -i "$pattern")
+        remote_matches=$(git branch -r | grep -iE "$pattern" | grep -v HEAD)
+        local_matches=$(git branch | grep -iE "$pattern")
         if [[ -n "$check_for_head" && "$branchname" = [Hh][Ee][Aa][Dd] ]]; then
             echo -e "\n===============\n$repo ($branchname)"
         elif [[ -n "$remote_matches" || -n "$local_matches" ]]; then

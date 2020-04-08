@@ -11,7 +11,7 @@ _doit() {
         [[ ! "$(pwd)" =~ "$the_list".* ]] && cd "$the_list"
         branchname=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
         output=$(git ls-tree -r --name-only HEAD 2>/dev/null |
-        grep "$pattern" |
+        grep -iE "$pattern" |
         while read filename; do
             echo "$(git log --diff-filter=A --format="%ai %ar" -- "$filename") $filename"
         done | sort -n)
@@ -21,7 +21,7 @@ _doit() {
             cd "$repo"
             branchname=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
             output=$(git ls-tree -r --name-only HEAD 2>/dev/null |
-            grep "$pattern" |
+            grep -iE "$pattern" |
             while read filename; do
                 echo "$(git log --diff-filter=A --format="%ai %ar" -- "$filename") $filename"
             done | sort -n)
