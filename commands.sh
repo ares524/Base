@@ -404,6 +404,76 @@ if type git &>/dev/null; then
     }
 fi
 
+#################### grep ####################
+
+
+system-info() {
+    prompt_char="\$"
+    [[ -n "ZSH_VERSION" ]] && prompt_char="%"
+    if [[ -f /etc/os-release ]]; then
+        echo -e "$prompt_char cat /etc/os-release | grep ..."
+        grep -E '(\bNAME\b|\bVERSION\b|ID_LIKE|SUPPORT_URL)' /etc/os-release    # | grep --color '^[A-Z_]*'
+        echo
+    fi
+    echo -e "$prompt_char uptime\n$(uptime)\n"
+    echo -e "$prompt_char date\n$(date)\n"
+    echo -e "$prompt_char echo \$DISPLAY\n$(echo $DISPLAY)\n"
+    echo -e "$prompt_char whoami\n$(whoami)\n"
+    echo -e "$prompt_char hostname\n$(hostname)\n"
+    if type ifconfig &>/dev/null; then
+        echo -e "$prompt_char ifconfig | grep ... | awk '{print $2}'"
+        ifconfig | grep "inet addr" | egrep -v ":(127|172)" | awk '{print $2}' | cut -c 6-
+        ifconfig | grep "inet [12]" | egrep -v "(127|172)" | awk '{print $2}'
+        echo
+    fi
+    if type wget &>/dev/null; then
+        echo -e "$prompt_char wget https://httpbin.org/ip -qO - | grep origin | perl -pe 's/^.*\"(.*)\".*\$/\$1/'"
+        wget https://httpbin.org/ip -qO - | grep origin | perl -pe 's/^.*\"(.*)\".*$/$1/'
+        echo
+    fi
+    if type ss &>/dev/null; then
+        echo -e "$prompt_char ss | grep -vE '(/var/run|/run/systemd|^$|^u_str *ESTAB *0 *0 *\* [0-9]*)'"
+        ss | grep -vE '(/var/run|/run/systemd|^$|^u_str *ESTAB *0 *0 *\* [0-9]*)'
+        echo
+
+    fi
+    if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+        echo -e "$prompt_char sudo lsof -Pn -i4"
+        sudo lsof -Pn -i4
+        echo
+        if type lshw &>/dev/null; then
+            echo -e "$prompt_char sudo lshw -short"
+            sudo lshw -short
+            echo
+            echo -e "$prompt_char alias dfh\n$(alias dfh)\n"
+            echo -e "$prompt_char dfh\n$(dfh)\n"
+        else
+            echo -e "$prompt_char alias dfh\n$(alias dfh)\n"
+            echo -e "$prompt_char dfh\n$(dfh)\n"
+        fi
+        if type getent &>/dev/null; then
+            echo -e "$prompt_char getent group sudo"
+            getent group sudo
+            echo
+        fi
+        if [[ -s /etc/shadow ]]; then
+            echo -e "$prompt_char sudo cat /etc/shadow | grep -vE '(^[^:]+:\*|^$)'"
+            sudo cat /etc/shadow | grep -vE '(^[^:]+:\*|^$)'
+            echo
+        fi
+    else
+        echo -e "$prompt_char alias dfh\n$(alias dfh)\n"
+        echo -e "$prompt_char dfh\n$(dfh)\n"
+    fi
+    if type tmux &>/dev/null; then echo -e "$prompt_char tmux ls\n$(tmux ls)\n"; fi
+    if type free &>/dev/null; then echo -e "$prompt_char free -h\n$(free -h)\n"; fi
+    echo -e "$prompt_char grep -vE '(^#|:$)' /etc/group"
+    grep -vE '(^#|:$)' /etc/group
+    echo -e "\n$prompt_char grep -vE '(^#|nologin$|false$)' /etc/passwd"
+    grep -vE '(^#|nologin$|false$)' /etc/passwd
+    echo
+}
+
 #################### grepit ####################
 
 grepit() {
