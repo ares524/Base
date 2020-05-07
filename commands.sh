@@ -421,7 +421,7 @@ system-info() {
     echo -e "$prompt_char whoami\n$(whoami)\n"
     echo -e "$prompt_char hostname\n$(hostname)\n"
     if type ifconfig &>/dev/null; then
-        echo -e "$prompt_char ifconfig | grep ... | awk '{print $2}'"
+        echo -e "$prompt_char ifconfig | grep ... | awk '{print \$2}'"
         ifconfig | grep "inet addr" | egrep -v ":(127|172)" | awk '{print $2}' | cut -c 6-
         ifconfig | grep "inet [12]" | egrep -v "(127|172)" | awk '{print $2}'
         echo
@@ -438,8 +438,8 @@ system-info() {
 
     fi
     if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
-        echo -e "$prompt_char sudo lsof -Pn -i4"
-        sudo lsof -Pn -i4
+        echo -e "$prompt_char sudo lsof -Pn -i4 | grep -E '(ESTABLISHED|LISTEN)'"
+        sudo lsof -Pn -i4 | grep -E '(ESTABLISHED|LISTEN)'
         echo
         if type lshw &>/dev/null; then
             echo -e "$prompt_char sudo lshw -short"
@@ -457,20 +457,20 @@ system-info() {
             echo
         fi
         if [[ -s /etc/shadow ]]; then
-            echo -e "$prompt_char sudo cat /etc/shadow | grep -vE '(^[^:]+:\*|^$)'"
-            sudo cat /etc/shadow | grep -vE '(^[^:]+:\*|^$)'
+            echo -e "$prompt_char sudo cat /etc/shadow | grep -vE '(^[^:]+:\*|^$)' | sort"
+            sudo cat /etc/shadow | grep -vE '(^[^:]+:\*|^$)' | sort
             echo
         fi
     else
         echo -e "$prompt_char alias dfh\n$(alias dfh)\n"
         echo -e "$prompt_char dfh\n$(dfh)\n"
     fi
-    if type tmux &>/dev/null; then echo -e "$prompt_char tmux ls\n$(tmux ls)\n"; fi
+    if type tmux &>/dev/null; then echo -e "$prompt_char tmux ls 2>&1\n$(tmux ls 2>&1)\n"; fi
     if type free &>/dev/null; then echo -e "$prompt_char free -h\n$(free -h)\n"; fi
-    echo -e "$prompt_char grep -vE '(^#|:$)' /etc/group"
-    grep -vE '(^#|:$)' /etc/group
-    echo -e "\n$prompt_char grep -vE '(^#|nologin$|false$)' /etc/passwd"
-    grep -vE '(^#|nologin$|false$)' /etc/passwd
+    echo -e "$prompt_char grep -vE '(^#|^_|:$)' /etc/group | sort"
+    grep -vE '(^#|^_|:$)' /etc/group | sort
+    echo -e "\n$prompt_char grep -vE '(^#|^_|nologin$|false$)' /etc/passwd | sort"
+    grep -vE '(^#|^_|nologin$|false$)' /etc/passwd | sort
     echo
 }
 
