@@ -343,11 +343,11 @@ paths() {
 #################### /etc ####################
 
 etc-group() {
-    grep -vE '(^#|:$)' /etc/group
+    grep -vE '(^#|^_|:$)' /etc/group
 }
 
 etc-passwd() {
-    grep -vE '(^#|nologin$|false$)' /etc/passwd
+    grep -vE '(^#|^_|nologin$|false$)' /etc/passwd
 }
 
 #################### feh ####################
@@ -405,7 +405,6 @@ if type git &>/dev/null; then
 fi
 
 #################### grep ####################
-
 
 system-info() {
     prompt_char="\$"
