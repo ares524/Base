@@ -7,7 +7,8 @@ alias ....="cd ../../.."
 
 cdd() { mkdir -p "$1" && cd "$1" && pwd; }
 
-[[ -f "$HOME/.base_path" ]] && base-repo() { cd $(cat "$HOME/.base_path"); }
+[[ -f "$HOME/.base_path" ]] && base() { cd $(cat "$HOME/.base_path"); }
+[[ -f "$HOME/.dotfiles_path" ]] && dotfiles() { cd $(cat "$HOME/.dotfiles_path"); }
 
 # Use GNU find, grep, sort, and xargs if on a Mac
 if [[ $(uname) == "Darwin" ]]; then
