@@ -159,6 +159,7 @@ if type bash &>/dev/null; then
     fi
 fi
 if type fish &>/dev/null; then
+    [[ ! -d "$HOME/.config/fish" ]] && mkdir -p "$HOME/.config/fish"
     [[ ! -s "$HOME/.config/fish/config.fish" ]] && touch "$HOME/.config/fish/config.fish"
     if [[ -z "$(grep commands.fish $HOME/.config/fish/config.fish)" ]]; then
         echo -e '\nif test -f "$HOME/commands.fish" && ! type dfh &>/dev/null; source "$HOME/commands.fish"; end' >> $HOME/.config/fish/config.fish
