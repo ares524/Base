@@ -7,6 +7,7 @@
 [[ -f ./commands.sh ]] && ln -s "$(pwd)/commands.sh" "$HOME/commands.sh"
 [[ -f ./commands.fish ]] && ln -s "$(pwd)/commands.fish" "$HOME/commands.fish"
 [[ -d ./bin ]] && ln -s "$(pwd)/bin" "$HOME/bin-base"
+[[ "$(basename $PWD)" == "base" ]] && echo "$PWD" > "$HOME/.base_path"
 
 # Set clean, extras, and gui vars
 [[ "$1" == "clean" || "$2" == "clean" || "$3" == "clean" ]] && clean=clean
