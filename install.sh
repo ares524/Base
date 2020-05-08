@@ -64,7 +64,7 @@ do_install() {
                 sudo apt-get install -y xserver-xorg-core xserver-xorg-video-intel xserver-xorg-input-kbd xserver-xorg-input-libinput
             fi
             echo -e "\nInstalling GUI packages..."
-            sudo apt-get install -y xinit xclip xbindkeys awesome rxvt-unicode-256color feh scrot fonts-inconsolata
+            sudo apt-get install -y xinit xclip xbindkeys awesome rxvt-unicode-256color feh scrot fonts-inconsolata vlc
         fi
     elif [[ $(uname) == "Darwin" ]]; then
         if [[ ! -f /usr/local/bin/brew ]]; then
