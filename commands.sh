@@ -587,6 +587,20 @@ helpme() {
     less -FX $outfile
 }
 
+#################### ls ####################
+
+f() {
+    ls -gothrA "$@" | grep '^-' | less -FX
+}
+
+d() {
+    ls -gothrA "$@" | grep '^d' | less -FX
+}
+
+l() {
+    ls -gothrA "$@" | grep '^l' | less -FX
+}
+
 #################### man ####################
 
 man-f() {
