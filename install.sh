@@ -144,3 +144,23 @@ else
     [[ -s "$HOME/commands.sh" ]] && source "$HOME/commands.sh" || return
     [[ "$clean" == "clean" ]] && get-completions clean
 fi
+
+if type zsh &>/dev/null; then
+    [[ ! -s "$HOME/.zshrc" ]] && touch "$HOME/.zshrc"
+    if [[ -z "$(grep commands.sh $HOME/.zshrc)" ]]; then
+        echo -e '\nif test -f "$HOME/commands.sh" && ! type dfh &>/dev/null; then source "$HOME/commands.sh"; fi' >> $HOME/.zshrc
+    fi
+fi
+if type bash &>/dev/null; then
+    [[ ! -s "$HOME/.bashrc" ]] && touch "$HOME/.bashrc"
+    [[ ! -s "$HOME/.bash_profile" ]] && echo '[[ -f "$HOME/.bashrc" ]] && source "$HOME/.bashrc"' > $HOME/.bash_profile
+    if [[ -z "$(grep commands.sh $HOME/.bashrc)" ]]; then
+        echo -e '\nif test -f "$HOME/commands.sh" && ! type dfh &>/dev/null; then source "$HOME/commands.sh"; fi' >> $HOME/.bashrc
+    fi
+fi
+if type fish &>/dev/null; then
+    [[ ! -s "$HOME/.config/fish/config.fish" ]] && touch "$HOME/.config/fish/config.fish"
+    if [[ -z "$(grep commands.fish $HOME/.config/fish/config.fish)" ]]; then
+        echo -e '\nif test -f "$HOME/commands.fish" && ! type dfh &>/dev/null; source "$HOME/commands.fish"; end' >> $HOME/.config/fish/config.fish
+    fi
+fi
