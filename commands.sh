@@ -589,14 +589,17 @@ helpme() {
 
 #################### ls ####################
 
+unalias f 2>/dev/null
 f() {
     ls -gothrA "$@" | grep '^-' | less -FX
 }
 
+unalias d 2>/dev/null
 d() {
     ls -gothrA "$@" | grep '^d' | less -FX
 }
 
+unalias l 2>/dev/null
 l() {
     ls -gothrA "$@" | grep '^l' | less -FX
 }
