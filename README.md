@@ -69,6 +69,7 @@ passed in:
   `vim`, `tmux`, `tree`, `ncdu`, `glances`, `nnn` and more
 - **`gui`**: also installs some light-weight GUI packges for Linux (including
   xorg-server, `awesome`, `rxvt-unicode`, `feh`, `scrot`, etc) or Mac (iTerm, vlc)
+- **`all`**: clean extras gui
 
 # Update
 

@@ -1,4 +1,5 @@
-# Source this script with optional args "clean", "extras" and/or "gui"
+# Source this script with optional args: "clean" "extras" "gui" "all"
+#    - all means "clean extra gui"
 
 # Create symbolic link to commands.sh and bin/
 [[ -L "$HOME/commands.sh" ]] && rm "$HOME/commands.sh"
@@ -13,6 +14,7 @@
 [[ "$1" == "clean" || "$2" == "clean" || "$3" == "clean" ]] && clean=clean
 [[ "$1" == "extras" || "$2" == "extras" || "$3" == "extras" ]] && extras=yes
 [[ "$1" == "gui" || "$2" == "gui" || "$3" == "gui" ]] && gui=yes
+[[ "$1" == "all" || "$2" == "all" || "$3" == "all" ]] && clean=clean; extras=yes; gui=yes
 
 # Determine if using Windows Subsystem for Linux
 [[ -n "$(echo $PATH | grep -E '(WINDOWS|Program Files)')" ]] && wsl=yes
