@@ -7,7 +7,7 @@ for repo in $(repos-list "$path" | tr '\n' '\0' | xargs -0); do
     cd "$repo"
     echo -e "\n===============\n$repo"
     unset remote
-    remote=$(grep "remote \"origin\"" -A 2 .git/config | grep url | perl -pe 's/^\s+url = (.*)$/$1/')
+    remote=$(grep "remote \"origin\"" -A 2 .git/config 2>/dev/null| grep url | perl -pe 's/^\s+url = (.*)$/$1/')
     tracking=$(git branch -r | grep "$branch" | grep -v HEAD | perl -pe 's/^\s+(.*)$/$1/')
     if [[ -z "$remote" ]]; then
         echo " - Local-only repo, not updating"

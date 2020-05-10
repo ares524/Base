@@ -3,7 +3,7 @@
 path="${1:-.}"
 path="$(realpath ${path%/})"        # remove trailing slash if there
 test_path="$path"
-while [[ ! -d "$test_path/.git" && "$test_path" != "/" ]]; do
+while [[ ! -s "$test_path/.git" && "$test_path" != "/" ]]; do
     test_path=$(dirname $test_path)
 done
 if [[ "$test_path" != "/" ]]; then
