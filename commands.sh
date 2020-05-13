@@ -837,8 +837,9 @@ if type urxvt &>/dev/null; then
 
     windowsize() {
         size=$1
+        title=$2
         [[ ! "$size" =~ [0-9]+ ]] && size=11
-        urxvt -title "size-$size" -geometry 90x25 -fn "xft:Inconsolata:size=$size" -e zsh &
+        urxvt -title "(size-$size) $title" -geometry 90x25 -fn "xft:Inconsolata:size=$size" -e zsh &
         [[ $? -eq 0 ]] && disown && exit
     }
 
