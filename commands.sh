@@ -613,6 +613,10 @@ man-f() {
     man -f "$@" 2> /dev/null
 }
 
+man-list() {
+    ls /usr/share/man/man[1-8]/* | less -FX
+}
+
 #################### scrot ####################
 
 if type scrot &>/dev/null; then
