@@ -697,11 +697,13 @@ if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
             sudo chmod 700 /home/$username
 
             # Add the user to groups
-            if [[ "$2" == sudo ]]; then
-                sudo usermod -aG sudo,docker,audio,video,plugdev,netdev $username
-            else
-                sudo usermod -aG docker,audio,video,plugdev,netdev $username
+            group_names="audio,video,plugdev,netdev"
+            if [[ "$2" == "sudo" || "$3" == "sudo" ]]; then
+                group_names="sudo,$group_names"
+            elif [[ "$2" == "docker" || "$3" == "docker" ]]; then
+                group_names="docker,$group_names"
             fi
+            sudo usermod -aG $group_names $username
 
             # Add an empty zshrc file so zsh doesn't bug you on first login
             [[ "$shell_path" =~ .*zsh.* ]] && sudo touch /home/$username/.zshrc
@@ -721,7 +723,7 @@ if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
             if type git &>/dev/null; then
                 echo -e "\n$ sudo su - $username -c 'git clone https://github.com/kenjyco/base ~/repos/base'"
                 sudo su - $username -c 'git clone https://github.com/kenjyco/base ~/repos/base'
-                echo -e "\n$ sudo su - $username -c 'cd ~/repos/base; source ./install'"
+                echo -e "\n$ sudo su - $username -c 'cd ~/repos/base; source ./install.sh'"
                 sudo su - $username -c 'cd ~/repos/base; source ./install.sh'
                 echo -e "\n$ sudo su - $username -c 'ls -ltrhA ~'"
                 sudo su - $username -c 'ls -ltrhA ~'
