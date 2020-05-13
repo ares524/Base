@@ -1,6 +1,9 @@
 base
 ====
 
+- Jump to [Usage section](https://github.com/kenjyco/base/blob/master/README.md#usage)
+  below for examples
+
 Use `base` as an **easy way** to install the minimum essential libs/programs
 for opensource exploration and development. Works for Linux (Debian-based
 for now with more distros coming), Mac (includes installing homebrew), and
@@ -81,4 +84,41 @@ passed in:
 
 # Usage
 
-> TODO
+> Note: these shell functions and scripts are named for easy tab-complete
+> (typing part of the command's name, then hitting the `<Tab>` key to fill in
+> the rest, or `<Tab>` twice to show all the commands that match what was typed
+> so far).
+
+### Working with `repos-` commands
+
+> These are all scripts in <https://github.com/kenjyco/base/tree/master/bin>
+
+```
+$ repos-list            # List all git repos (or abs path of current repo)
+
+$ repos-dirs            # List directories that have git repos in them (with counts)
+
+$ repos-fetch           # Perform a git fetch on repos found and output updates only
+
+$ repos-status          # Show repos with any changes, untracked files, or stashes
+                        # Also show if branch is behind or ahead of remote
+
+$ repos-files           # List files in current directory (recursive) by commit date
+                        # Arg passed in to filter list of files matched/returned
+
+$ repos-commits         # Show latest commits on all repos (args passed to git log)
+                        # (i.e "--since 2.days", "--grep alias -5", etc)
+
+$ repos-branches        # Show remote branches by last commit and local by name
+                        # Arg passed in to filter list of branch names matched
+
+$ repos-last-tag        # List last tag of git repos that have tags
+
+$ repos-diffs           # List all git repos and show diff
+
+$ repos-update          # Stash changes and git pull --rebase (then git stash pop)
+
+$ repos-commits-not-on-master   # Show commits on an origin branch not on origin/master
+
+$ repos-commits-since-last-tag  # Show commits since the last tag for each repo
+```
