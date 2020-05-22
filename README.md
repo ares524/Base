@@ -122,3 +122,81 @@ $ repos-commits-not-on-master   # Show commits on an origin branch not on origin
 
 $ repos-commits-since-last-tag  # Show commits since the last tag for each repo
 ```
+
+### The `findit` command
+
+```
+$ findit --help
+Usage: findit [dir] [options]
+
+  Wrapper to the find command
+
+Options:
+
+  --depth number              maxdepth to search for files
+  --type character            regular (f)ile, (d)irectory, symbolic (l)ink, (s)ocket, (b)lock special
+  --pattern string            comma-separated list of filename patterns
+  --ipattern string           comma-separated list of filename patterns (case insensitive)
+  --complex string            raw options passed directly to 'find'
+  --exclude_dirs string       comma-separated list of directories/patterns to exclude
+  --iexclude_dirs string      comma-separated list of directories/patterns to exclude (case insensitive)
+  --exclude_exts string       comma-separated list of extensions to exclude
+  --iexclude_exts string      comma-separated list of extensions to exclude (case insensitive)
+  --exclude string            comma-separated list of filename patterns to exclude
+  --iexclude string           comma-separated list of filename patterns to exclude (case insensitive)
+  --exts string               comma-separated list of extensions to include
+  --iexts string              comma-separated list of extensions to include (case insensitive)
+  --sizes string              comma-separated list of sizes, prefixed with +/- and unit of k M or G (i.e. +2G)
+  --empty                     only match files that are empty
+  --not_empty                 only match files that are not empty
+  --months number             only match files modified in a number of months
+  --weeks number              only match files modified in a number of weeks
+  --days number               only match files modified in a number of days
+  --hours number              only match files modified in a number of hours
+  --minutes number            only match files modified in a number of minutes
+  --pipe command              pipe files to a SINGLE command
+  --pipesort command          pipe sorted files to a SINGLE command
+  --zero                      print matching filenames delimited by null char (-print0)... to pipe to 'xargs -0 -I {}' manually
+  --stamp                     prepend timestamps to output
+  --help                      show this message and exit
+
+Examples:
+
+  findit --exts "md" --weeks 1 --stamp
+  findit --exts "md" --weeks 1 --pipesort "cp -av {} /tmp/stuff"
+  findit ~ --exts "md, txt" --exclude_dirs "venv, node_modules, Library" --months 2 --depth 3
+  findit --pattern ".*.sw[po]" --pipe "ls -gothr"
+  findit --exts "mp4, mkv" --pipesort "vlc --fullscreen"
+  findit --exts "jpg, jpeg, png, gif" --pipe "du -sch"
+  findit --exts "xml" --pipesort "grep --color {{[^}]*}}"
+  findit --depth 3 --exts "log" --not_empty --pipesort "wc -l"
+  findit --complex "-iname '*.log' -type f ! -size 0"
+  findit --complex "-iname '*.log' -type f -empty -delete"
+  findit --pattern "node_modules" --type d
+  findit --sizes "+1G" --pipesort "du -sh"
+  findit --depth 4 --sizes "+1M, -10M" --exclude_dirs ".cache" --pipesort "du -sh"
+  findit --type d --exclude_dirs ".git" --depth 2
+  findit --exclude_dirs "node_modules, .git, venv, build, alembic, __pycache__, .pytest_cache" --exclude_exts "json, yml, xml, txt, md" --pipe "wc -l"
+  findit --exclude_dirs "venv, env" --exclude_exts "js, json, java, map, htm, html, pyc" --pattern "test*" --pipe "grep assert" | egrep "(==|!=)"
+  findit --pattern "__init__.py" --exclude_dirs "venv" --not_empty --pipesort "wc -l" | sort -n
+  findit --depth 4 --type d --exclude_dirs ".git, *.egg-info, venv" --not_empty --pipesort "du -sh {}" | sort -h
+  findit --exclude_dirs "venv" --pattern "settings.ini" --zero | xargs -0 -I {} sh -c "echo \"\n\n\n==================\n{}\"; cat {}"
+```
+
+### The `grepit` commands
+
+- **`grepit`**: recursively search current directory for matching lines (`-HnI
+  --color -R` in use, as well as `--exclude` for many file extensions` and
+  `--exclude-dir` for many directories); any options received get passed to `grep`
+    - `-i pattern` to ignore case in search
+    - `-E '(pattern1|pattern2|..)'` to match multiple patterns (i.e. `egrep`)
+    - `-B 1 -A 2 pattern` to show context lines (1 before match and 2 after)
+    - `\bpattern\b` to only match when pattern is surrounded by a "word
+      boundary" character (i.e. don't match a sub-string in a longer word)
+- **`grepit-count`**: use `grepit` to show how many times pattern is matched in
+  files (sorted by count and not showing zero matches)
+- **`grepit-no-docs`**: use `grepit`, but also ignore txt/md/rst files
+- **`grepit-py`**: similar to `grepit`, but only include .py files and ignore
+  common directories
+- **`grepit-py-no-tests`**: similar to `grepit-py`, but also exclude .py files
+  in test directories
