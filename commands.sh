@@ -599,7 +599,7 @@ f() {
 
 unalias d 2>/dev/null
 d() {
-    ls -gothrA "$@" | grep '^d' | less -FX
+    ls -gothrAd "$@" | grep '^d' | less -FX
 }
 
 unalias l 2>/dev/null
