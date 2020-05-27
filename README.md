@@ -109,7 +109,7 @@ $ repos-files           # List files in current directory (recursive) by commit 
 $ repos-commits         # Show latest commits on all repos (args passed to git log)
                         # (i.e "--since 2.days", "--grep alias -5", etc)
 
-$ repos-branches        # Show remote branches by last commit and local by name
+$ repos-branches        # Show latest 10 remote branches and all local branches
                         # Arg passed in to filter list of branch names matched
 
 $ repos-last-tag        # List last tag of git repos that have tags

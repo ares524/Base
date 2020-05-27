@@ -21,7 +21,7 @@ _doit() {
             if [[ -n "$remote_matches" ]]; then
                 for branch in $(echo "$remote_matches" | tr '\n' '\0' | xargs -0); do
                     echo "$(git show --format='%ai' $branch | head -n 1) $branch"
-                done | sort -n | tail -n 10
+                done | sort -n
             fi
             [[ -n "$local_matches" ]] && echo "$local_matches"
         fi
