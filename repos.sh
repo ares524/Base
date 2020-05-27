@@ -95,9 +95,11 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/vim/vim
     https://github.com/wmcbrine/PDCurses
     https://github.com/zsh-users/zsh
+    https://gitlab.com/libvirt/libvirt
     https://gitlab.gnome.org/GNOME/libxml2.git
     https://gitlab.gnome.org/GNOME/libxslt.git
     https://gitlab.kitware.com/cmake/cmake
+    https://repo.or.cz/sqlite.git
     https://sourceware.org/git/binutils-gdb.git
     https://sourceware.org/git/dm.git
     https://sourceware.org/git/glibc.git
@@ -106,6 +108,7 @@ OPEN_SOURCE_C_REPOS=(
 
 OPEN_SOURCE_CPP_REPOS=(
     https://github.com/alembic/alembic
+    https://github.com/apache/arrow
     https://github.com/apple/swift
     https://github.com/bast/cmake-example
     https://github.com/bitcoin/bitcoin
@@ -116,6 +119,7 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/mongodb/mongo
     https://github.com/nodejs/node
     https://github.com/protocolbuffers/protobuf
+    https://github.com/sqlitebrowser/sqlitebrowser
     https://github.com/tesseract-ocr/tesseract
     https://github.com/ttroy50/cmake-examples
     https://github.com/v8/v8
@@ -256,6 +260,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/jwilder/docker-gen
     https://github.com/keybase/client
     https://github.com/kubeless/kubeless
+    https://github.com/kubernetes-sigs/kind
     https://github.com/kubernetes/kubernetes
     https://github.com/kubernetes/minikube
     https://github.com/letsencrypt/boulder
@@ -264,6 +269,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/nanomsg/mangos
     https://github.com/pebbe/zmq4
     https://github.com/pingcap/tidb
+    https://github.com/rancher/k3s
     https://github.com/rancher/rancher
     https://github.com/uber/aresdb
     https://github.com/uber/kraken
@@ -287,6 +293,8 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/apache/dubbo
     https://github.com/apache/kafka
     https://github.com/apache/lucene-solr
+    https://github.com/apache/tomcat
+    https://github.com/apache/zeppelin
     https://github.com/bazelbuild/bazel
     https://github.com/dbeaver/dbeaver
     https://github.com/elastic/elasticsearch
@@ -301,6 +309,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/square/okhttp
     https://github.com/square/retrofit
     https://github.com/termux/termux-app
+    https://github.com/twosigma/beakerx
     https://github.com/uber/AthenaX
 )
 
@@ -383,6 +392,11 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/winstonjs/winston
     https://github.com/xojs/xo
     https://github.com/yarnpkg/yarn
+    https://github.com/yhat/rodeo
+)
+
+OPEN_SOURCE_JUPYTER_REPOS=(
+    https://github.com/binder-examples/requirements
 )
 
 OPEN_SOURCE_LUA_REPOS=(
@@ -397,6 +411,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/Julian/jsonschema
     https://github.com/Legrandin/pycryptodome
     https://github.com/MagicStack/httptools
+    https://github.com/Mailu/Mailu
     https://github.com/Miserlou/Zappa
     https://github.com/Netflix/aminator
     https://github.com/Netflix/bless
@@ -471,6 +486,11 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/joke2k/faker
     https://github.com/jpadilla/pyjwt
     https://github.com/jupyter/jupyter
+    https://github.com/jupyter/nbconvert
+    https://github.com/jupyter/notebook
+    https://github.com/jupyterhub/binderhub
+    https://github.com/jupyterhub/jupyterhub
+    https://github.com/jupyterhub/the-littlest-jupyterhub
     https://github.com/keon/algorithms
     https://github.com/keras-team/keras
     https://github.com/kivy/kivy
@@ -547,6 +567,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/uber/h3-py-notebooks
     https://github.com/uber/focuson
     https://github.com/uber/ludwig
+    https://github.com/ubuntu/microk8s
     https://github.com/ultrajson/ultrajson
     https://github.com/unitedstates/congress
     https://github.com/unitedstates/python-us
@@ -616,6 +637,8 @@ OPEN_SOURCE_SASS_REPOS=(
 )
 
 OPEN_SOURCE_SCALA_REPOS=(
+    https://github.com/RedisLabs/spark-redis
+    https://github.com/apache/spark
     https://github.com/prisma/prisma
 )
 
@@ -626,6 +649,8 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/alpinelinux/alpine-chroot-install
     https://github.com/asdf-vm/asdf
     https://github.com/graphql/graphql-spec
+    https://github.com/iredmail/iRedMail
+    https://github.com/kubernetes-sigs/kubespray
     https://github.com/nginx-proxy/docker-letsencrypt-nginx-proxy-companion
     https://github.com/nginx-proxy/nginx-proxy
     https://github.com/nvm-sh/nvm
