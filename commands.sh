@@ -360,6 +360,12 @@ if type feh &>/dev/null; then
     alias fehf="feh -F --zoom max"
 fi
 
+#################### findit ####################
+
+swps() {
+    findit "$@" --pattern ".*sw[po]" --exclude_dirs "node_modules, venv, .git" --stamp 2>/dev/null | sort
+}
+
 #################### git ####################
 
 if type git &>/dev/null; then
@@ -596,15 +602,33 @@ unalias f 2>/dev/null
 f() {
     ls -gothrA "$@" | grep '^-' | less -FX
 }
+f5() {
+    f "$@" | tail -n 5
+}
+f10() {
+    f "$@" | tail -n 5
+}
 
 unalias d 2>/dev/null
 d() {
     ls -gothrAd "$@" | grep '^d' | less -FX
 }
+d5() {
+    d "$@" | tail -n 5
+}
+d10() {
+    d "$@" | tail -n 5
+}
 
 unalias l 2>/dev/null
 l() {
     ls -gothrA "$@" | grep '^l' | less -FX
+}
+l5() {
+    l "$@" | tail -n 5
+}
+l10() {
+    l "$@" | tail -n 5
 }
 
 #################### man ####################
