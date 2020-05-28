@@ -11,10 +11,11 @@
 [[ "$(basename $PWD)" == "base" ]] && echo "$PWD" > "$HOME/.base_path"
 
 # Set clean, extras, and gui vars
+unset clean extras gui all
 [[ "$1" == "clean" || "$2" == "clean" || "$3" == "clean" ]] && clean=clean
 [[ "$1" == "extras" || "$2" == "extras" || "$3" == "extras" ]] && extras=yes
 [[ "$1" == "gui" || "$2" == "gui" || "$3" == "gui" ]] && gui=yes
-[[ "$1" == "all" || "$2" == "all" || "$3" == "all" ]] && clean=clean; extras=yes; gui=yes
+[[ "$1" == "all" || "$2" == "all" || "$3" == "all" ]] && clean=clean && extras=yes && gui=yes
 
 # Determine if using Windows Subsystem for Linux
 [[ -n "$(echo $PATH | grep -E '(WINDOWS|Program Files)')" ]] && wsl=yes
