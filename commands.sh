@@ -55,6 +55,11 @@ fi
 
 #################### bash/zsh setup ####################
 
+# Function to get name of current git branch
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 if [[ -n "$BASH_VERSION" ]]; then
     # Enable tab-completion
     if [[ -f /etc/bash_completion ]]; then
@@ -104,6 +109,19 @@ if [[ -n "$BASH_VERSION" ]]; then
 
     # Use '**' in pathname expansions like in ZSH
     shopt -s globstar
+
+    # Set prompt
+    PS1="[\h] \[\e[1;33m\]\[\e[1;33m\]\W\[\e[1;32m\]\$(parse_git_branch) \$\[\e[0m\] "
+
+    # Add function to switch to a verbose prompt
+    prompt-verbose() {
+        PS1="\n\[\e[1;32m\]\u@\h:\[\e[0m\]\w\[\e[1;32m\]\$(parse_git_branch)\n\[\e[1;33m\]\$ \[\e[0m\]"
+    }
+
+    # Add function to switch to a terse prompt (default)
+    prompt-terse() {
+        PS1="[\h] \[\e[1;33m\]\[\e[1;33m\]\W\[\e[1;32m\]\$(parse_git_branch) \$\[\e[0m\] "
+    }
 elif [[ -n "$ZSH_VERSION" ]]; then
     # Set tab completion and matching options
     zstyle ':completion:*' completer _expand _complete _ignored _approximate
@@ -152,6 +170,24 @@ elif [[ -n "$ZSH_VERSION" ]]; then
     elif [[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     fi
+
+    autoload -U colors && colors
+    setopt PROMPT_SUBST
+
+    # Set prompt
+    PROMPT="[%m] %{$fg_bold[yellow]%}%c%{$fg[green]%}\$(parse_git_branch) %# %{$reset_color%}"
+
+    # Add function to switch to a verbose prompt
+    prompt-verbose() {
+        PROMPT="
+%{$fg_bold[green]%}%n@%m:%{$fg[white]%}%~%{$fg[green]%}\$(parse_git_branch)
+%{$fg[yellow]%}%# %{$reset_color%}"
+    }
+
+    # Add function to switch to a terse prompt (default)
+    prompt-terse() {
+         PROMPT="[%m] %{$fg_bold[yellow]%}%c%{$fg[green]%}\$(parse_git_branch) %# %{$reset_color%}"
+    }
 fi
 
 #################### completions ####################
