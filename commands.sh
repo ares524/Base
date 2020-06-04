@@ -1095,3 +1095,5 @@ fi
 if [[ -d "$HOME/bin-base" && -z "$(echo $PATH | grep bin-base)" ]]; then
     PATH="$HOME/bin-base:$PATH"
 fi
+
+[[ -s "$HOME/private.sh" ]] && source "$HOME/private.sh"
