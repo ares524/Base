@@ -636,35 +636,70 @@ helpme() {
 
 unalias f 2>/dev/null
 f() {
+    ls -gothr "$@" | grep '^-' | less -FX
+}
+fa() {
     ls -gothrA "$@" | grep '^-' | less -FX
 }
 f5() {
     f "$@" | tail -n 5
 }
+fa5() {
+    fa "$@" | tail -n 5
+}
 f10() {
-    f "$@" | tail -n 5
+    f "$@" | tail -n 10
+}
+fa10() {
+    fa "$@" | tail -n 10
 }
 
 unalias d 2>/dev/null
 d() {
-    ls -gothrAd "$@" | grep '^d' | less -FX
+    if [[ -z "$@" || "$1" == "$HOME" ]]; then
+        ls -gothr "$@" | grep '^d' | less -FX
+    else
+        ls -gothrd "$@" | grep '^d' | less -FX
+    fi
+}
+da() {
+    if [[ -z "$@" || "$1" == "$HOME" ]]; then
+        ls -gothrA "$@" | grep '^d' | less -FX
+    else
+        ls -gothrAd "$@" | grep '^d' | less -FX
+    fi
 }
 d5() {
     d "$@" | tail -n 5
 }
+da5() {
+    da "$@" | tail -n 5
+}
 d10() {
-    d "$@" | tail -n 5
+    d "$@" | tail -n 10
+}
+da10() {
+    da "$@" | tail -n 10
 }
 
 unalias l 2>/dev/null
 l() {
+    ls -gothr "$@" | grep '^l' | less -FX
+}
+la() {
     ls -gothrA "$@" | grep '^l' | less -FX
 }
 l5() {
     l "$@" | tail -n 5
 }
+la5() {
+    la "$@" | tail -n 5
+}
 l10() {
-    l "$@" | tail -n 5
+    l "$@" | tail -n 10
+}
+la10() {
+    la "$@" | tail -n 10
 }
 
 #################### man ####################
