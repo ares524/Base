@@ -169,3 +169,12 @@ if type fish &>/dev/null; then
         echo -e '\nif test -f "$HOME/commands.fish" && ! type dfh &>/dev/null; source "$HOME/commands.fish"; end' >> $HOME/.config/fish/config.fish
     fi
 fi
+
+if type vim &>/dev/null || type tmux &>/dev/null; then
+    if [[ ! -s "$HOME/.vimrc" && ! -s "$HOME/.tmux.conf" && -f "$HOME/.base_path" ]]; then
+        echo -e "\nCloning dotfiles repo since vim and/or tmux installed, but no local conf found"
+        base_parent=$(dirname $(cat "$HOME/.base_path"))
+        git clone https://github.com/kenjyco/dotfiles "$base_parent/dotfiles"
+        "$base_parent/dotfiles/setup.bash"
+    fi
+fi
