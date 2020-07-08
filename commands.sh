@@ -638,6 +638,7 @@ unalias f 2>/dev/null
 f() {
     ls -gothr "$@" | grep '^-' | less -FX
 }
+unalias fa 2>/dev/null
 fa() {
     ls -gothrA "$@" | grep '^-' | less -FX
 }
@@ -662,6 +663,7 @@ d() {
         ls -gothrd "$@" | grep '^d' | less -FX
     fi
 }
+unalias da 2>/dev/null
 da() {
     if [[ -z "$@" || "$1" == "$HOME" ]]; then
         ls -gothrA "$@" | grep '^d' | less -FX
@@ -686,6 +688,7 @@ unalias l 2>/dev/null
 l() {
     ls -gothr "$@" | grep '^l' | less -FX
 }
+unalias la 2>/dev/null
 la() {
     ls -gothrA "$@" | grep '^l' | less -FX
 }
