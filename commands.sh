@@ -986,6 +986,12 @@ venv-site-packages() {
     fi
 }
 
+#################### vim ####################
+
+if type vim &>/dev/null; then
+    [[ -z "$EDITOR" ]] && export EDITOR=$(which vim)
+fi
+
 #################### vlc ####################
 
 if [[ -s "/Applications/VLC.app/Contents/MacOS/VLC" ]]; then
