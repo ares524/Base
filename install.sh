@@ -145,7 +145,11 @@ if ps | grep "^$parent_pid" | grep 'fish$'; then
     [[ -s "$HOME/commands.fish" ]] && echo -e "Install complete! Be sure to run the following...\n\n    source $HOME/commands.fish"
 else
     # The install.sh was sourced by bash or zsh
-    [[ -s "$HOME/commands.sh" ]] && source "$HOME/commands.sh" || return
+    if [[ -s "$HOME/commands.sh" ]]; then
+        source "$HOME/commands.sh"
+    else
+        return
+    fi
     [[ "$clean" == "clean" ]] && get-completions clean
 fi
 
