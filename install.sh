@@ -22,6 +22,14 @@ unset clean extras gui all
 
 do_install() {
     if [[ -f /usr/bin/apt-get && -n "$(groups | grep -E '(sudo|root)')" ]]; then
+        codename=$(lsb_release -cs)
+        if [[ -s /etc/apt/sources.list.d/official-package-repositories.list ]]; then
+            # This is a distro based on Ubuntu (like Linux Mint), so get codename of Ubuntu
+            codename=$(grep archive.ubuntu.com/ubuntu /etc/apt/sources.list.d/official-package-repositories.list |
+                awk '{print $3}' | grep -o '^[a-z]*' | uniq
+            )
+        fi
+
         echo -e "\nUpdating apt-get package listing"
         sudo apt-get update || return 1
 
@@ -45,7 +53,7 @@ do_install() {
             sudo apt-get install -y software-properties-common apt-transport-https ca-certificates
             if [[ -z "$(grep docker /etc/apt/sources.list)" ]]; then
                 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-                sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $codename stable"
                 sudo apt-get update
             fi
             sudo apt-get install -y docker-ce
