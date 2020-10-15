@@ -1085,8 +1085,8 @@ pyenv-install() {
         export PYENV_ROOT="$HOME/.pyenv"
         export PATH="$PYENV_ROOT/bin:$PATH"
         eval "$(pyenv init -)"
-        echo -e "\nInstalling Python 3.8.2..."
-        pyenv install 3.8.2
+        echo -e "\nInstalling Python 3.8.5..."
+        pyenv install 3.8.5
     fi
 }
 
