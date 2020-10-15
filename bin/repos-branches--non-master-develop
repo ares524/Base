@@ -3,4 +3,4 @@
 path=
 [[ -d "$1" ]] && path="$1"
 
-repos-branches-short "$path" | grep -v -E '(master|develop)' | less -FX
+repos-branches-short "$path" | grep -v -E '(\(master\)|\(develop\))' | less -FX
