@@ -264,6 +264,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/kubernetes/kubernetes
     https://github.com/kubernetes/minikube
     https://github.com/letsencrypt/boulder
+    https://github.com/linkerd/linkerd2
     https://github.com/moby/moby
     https://github.com/mongodb/mongo-go-driver
     https://github.com/nanomsg/mangos
@@ -628,8 +629,14 @@ OPEN_SOURCE_RUBY_REPOS=(
 
 OPEN_SOURCE_RUST_REPOS=(
     https://github.com/RedBeardLab/rediSQL
+    https://github.com/actix/actix-web
     https://github.com/erickt/rust-zmq
+    https://github.com/hyperium/hyper
     https://github.com/gyscos/cursive
+    https://github.com/mitsuhiko/redis-rs
+    https://github.com/rust-lang/cargo/
+    https://github.com/rust-lang/rust
+    https://github.com/tokio-rs/tokio
 )
 
 OPEN_SOURCE_SASS_REPOS=(
