@@ -1090,13 +1090,15 @@ pyenv-install() {
     fi
 }
 
-# Enable pyenv (on linux)
+# Prep pyenv (on linux)
 if [[ $(uname) != "Darwin" && -d $HOME/.pyenv && -z "$PYENV_ROOT" ]]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
-    if type pyenv &>/dev/null; then
-        eval "$(pyenv init -)"
-    fi
+fi
+
+# Enable pyenv (on linux/mac)
+if type pyenv &>/dev/null; then
+    eval "$(pyenv init -)"
 fi
 
 #################### PATH ####################
