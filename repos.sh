@@ -159,6 +159,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/ericdouglas/ES6-Learning
     https://github.com/getify/You-Dont-Know-JS
     https://github.com/git-tips/tips
+    https://github.com/golang-standards/project-layout
     https://github.com/gto76/python-cheatsheet
     https://github.com/h4cc/awesome-elixir
     https://github.com/hubtee/awesome-opensource-documents
@@ -245,6 +246,10 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/golang/net
     https://github.com/golang/tools
     https://github.com/gomodule/redigo
+    https://github.com/gorilla/handlers
+    https://github.com/gorilla/mux
+    https://github.com/gorilla/sessions
+    https://github.com/gorilla/websocket
     https://github.com/grafana/grafana
     https://github.com/graphql-go/graphql
     https://github.com/grpc/grpc-go
