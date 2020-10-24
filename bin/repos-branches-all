@@ -7,7 +7,7 @@ check_for_head=
 [[ -z "$pattern" || "$pattern" == [Hh][Ee][Aa][Dd] ]] && check_for_head=yes
 
 _doit() {
-    [[ -n "$pattern" ]] && echo -e "\nShowing branches that match \"$pattern\""
+    [[ -n "$pattern" ]] && echo -e "\nShowing branches that match \"$pattern\"" >&2
     for repo in $(repos-list "$path" | tr '\n' '\0' | xargs -0); do
         cd "$repo"
         branchname=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)

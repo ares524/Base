@@ -5,7 +5,7 @@ path=
 pattern="$1"
 
 _doit() {
-    [[ -n "$pattern" ]] && echo -e "\nShowing files that match \"$pattern\""
+    [[ -n "$pattern" ]] && echo -e "\nShowing files that match \"$pattern\"" >&2
     the_list=$(repos-list "$path")
     if [[ $(echo -e "$the_list" | wc -l) -eq 1 ]]; then
         [[ ! "$(pwd)" =~ "$the_list".* ]] && cd "$the_list"
