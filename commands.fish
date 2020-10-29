@@ -42,7 +42,7 @@ if test (uname) = "Darwin"
         p | grep -vE '(/Applications/.*\.app/|/Library/.*\.app/|/System/Library|/usr/libexec|/usr/sbin|com\.docker\.|ssh-agent|bash$|zsh$|fish$)' | less -FX
     end
     if test -n "$grep_perl"
-        alias papps="p | grep -oP '/(Applications|Library)/.*?\.app/' | sort | uniq -c | sort -nr | less -FX"
+        alias papps="p | grep -oP '/(Applications|Library)/.*?\.app/' | sort | uniq -c | sort -k1,1nr -k2 | less -FX"
     end
     if type pstree &>/dev/null
         alias pst="pstree -u $USER | less -FX"

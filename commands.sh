@@ -40,7 +40,7 @@ if [[ $(uname) == "Darwin" ]]; then
     alias pa="ps -eo user,pid,ppid,tty,%cpu,%mem,command | less -FX"
     alias psome="p | grep -vE '(/Applications/.*\.app/|/Library/.*\.app/|/System/Library|/usr/libexec|/usr/sbin|com\.docker\.|ssh-agent|bash$|zsh$|fish$)' | less -FX"
     if [[ -n "$grep_perl" ]]; then
-        alias papps="p | grep -oP '/(Applications|Library)/.*?\.app/' | sort | uniq -c | sort -nr | less -FX"
+        alias papps="p | grep -oP '/(Applications|Library)/.*?\.app/' | sort | uniq -c | sort -k1,1nr -k2 | less -FX"
     fi
     if type pstree &>/dev/null; then
         alias pst="pstree -u $USER | less -FX"
@@ -320,7 +320,7 @@ fi
 
 if type aws &>/dev/null; then
     beanstalk-versions-by-app() {
-        aws elasticbeanstalk describe-application-versions | grep ApplicationName | sort | uniq -c | sort -nr
+        aws elasticbeanstalk describe-application-versions | grep ApplicationName | sort | uniq -c | sort -k1,1nr -k2
     }
 
     beanstalk-total-versions() {
@@ -526,7 +526,7 @@ grepit() {
 }
 
 grepit-count() {
-    grepit -c "$@" | grep -v '0$' | sort -nr -k2,2 -t ':' | less -FX
+    grepit -c "$@" | grep -v '0$' | sort -k2,2nr -k1,1 -t ':' | less -FX
 }
 
 grepit-py() {
@@ -562,7 +562,7 @@ grep-object-info() {
     object="$1"
     [[ -z "$object" ]] && return 1
     grepit-no-docs "\b$object\b" | egrep -o "($object\(|$object(\.\w+)+\(?)" |
-    sort | uniq -c | sort -nr | egrep -v '.(js|py)$'
+    sort | uniq -c | sort -k1,1nr -k2 | egrep -v '.(js|py)$'
 }
 
 grep-history() {
