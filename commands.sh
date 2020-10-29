@@ -1107,5 +1107,9 @@ if [[ -d "$HOME/bin-base" && -z "$(echo $PATH | grep bin-base)" ]]; then
     PATH="$HOME/bin-base:$PATH"
 fi
 
+if [[ -z $(echo $PATH | grep $HOME/bin:) && -z $(echo $PATH | grep $HOME/bin$) ]]; then
+    PATH="$HOME/bin:$PATH"
+fi
+
 [[ -s "$HOME/private.sh" ]] && source "$HOME/private.sh"
 [[ $(whoami) == "root" ]] && prompt-verbose
