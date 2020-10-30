@@ -58,7 +58,7 @@ do_install() {
             fi
             sudo apt-get install -y docker-ce
             sudo usermod -aG docker ${USER}
-            sudo su -c 'curl -L https://github.com/docker/compose/releases/download/1.25.5/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose'
+            sudo su -c 'curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose'
             sudo chmod +x /usr/local/bin/docker-compose
         fi
 
