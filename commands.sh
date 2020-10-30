@@ -1101,6 +1101,55 @@ if type pyenv &>/dev/null; then
     eval "$(pyenv init -)"
 fi
 
+#################### Tools ####################
+
+kubectl-install() {
+    unset yn
+    if type kubectl &>/dev/null; then
+        kubectl_path=$(which kubectl)
+        echo -e "kubectl found at $kubectl_path\n"
+        kubectl version --client
+        echo
+        if [[ -n "$BASH_VERSION" ]]; then
+            read -p "Replace this version? [y/n] " yn
+        elif [[ -n "$ZSH_VERSION" ]]; then
+            vared -p "Replace this version? [y/n] " -c yn
+        fi
+        [[ ! "$yn" =~ [yY].* ]] && return
+    fi
+
+    version="$1"
+    [[ -n "$version" && ! "$version" =~ ^v ]] && version="v$version"
+    [[ -z "$version" ]] && version=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+
+    echo "version -> $version"
+    oldpwd=$(pwd)
+    cd /tmp
+    if [[ $(uname) == "Darwin" ]]; then
+        curl -LO https://storage.googleapis.com/kubernetes-release/release/$version/bin/darwin/amd64/kubectl
+    else
+        curl -LO https://storage.googleapis.com/kubernetes-release/release/$version/bin/linux/amd64/kubectl
+    fi
+    if [[ -n "$(file kubectl | grep executable)" ]]; then
+        chmod +x ./kubectl
+        if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+            echo -e "$ sudo mv ./kubectl /usr/local/bin/kubectl"
+            sudo mv -v ./kubectl /usr/local/bin/kubectl
+            if [[ $? -ne 0 ]]; then
+                mkdir -p "$HOME/bin"
+                mv -v ./kubectl "$HOME/bin/kubectl"
+            fi
+        else
+            mkdir -p "$HOME/bin"
+            mv -v ./kubectl "$HOME/bin/kubectl"
+        fi
+    else
+        # invalid version; details in the xml file downloaded
+        cat ./kubectl
+    fi
+    cd "$oldpwd"
+}
+
 #################### PATH ####################
 
 if [[ -d "$HOME/bin-base" && -z "$(echo $PATH | grep bin-base)" ]]; then
