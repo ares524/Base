@@ -1150,6 +1150,30 @@ kubectl-install() {
     cd "$oldpwd"
 }
 
+kind-install() {
+    type kind &>/dev/null && return
+    oldpwd=$(pwd)
+    cd /tmp
+    if [[ $(uname) == "Darwin" ]]; then
+        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.9.0/kind-darwin-amd64
+    else
+        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.9.0/kind-linux-amd64
+    fi
+    chmod +x ./kind
+    if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+        echo -e "$ sudo mv ./kind /usr/local/bin/kind"
+        sudo mv -v ./kind /usr/local/bin/kind
+        if [[ $? -ne 0 ]]; then
+            mkdir -p "$HOME/bin"
+            mv -v ./kind "$HOME/bin/kind"
+        fi
+    else
+        mkdir -p "$HOME/bin"
+        mv -v ./kind "$HOME/bin/kind"
+    fi
+    cd "$oldpwd"
+}
+
 #################### PATH ####################
 
 if [[ -d "$HOME/bin-base" && -z "$(echo $PATH | grep bin-base)" ]]; then
