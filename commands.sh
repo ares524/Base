@@ -715,6 +715,27 @@ man-list() {
     ls /usr/share/man/man[1-8]/* | less -FX
 }
 
+#################### pandoc ####################
+
+if type pandoc &>/dev/null; then
+    mdless () {
+        pandoc -t plain $@ | less -FX
+    }
+
+    if type lynx &>/dev/null; then
+        mdview () {
+            pandoc $@ | lynx -stdin
+        }
+    fi
+
+    to_rst() {
+        fname="$1"
+        [[ -z "$fname" ]] && echo "No filename specified" && exit 1
+        [[ ! "$fname" =~ .*[mM][dD] ]] && echo "Not a markdown file" && exit 1
+        pandoc --from=markdown --to=rst --output="${fname%.*}.rst" "$fname"
+    }
+fi
+
 #################### scrot ####################
 
 if type scrot &>/dev/null; then
