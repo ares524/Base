@@ -371,7 +371,7 @@ if [[ -n "$stamp" ]]; then
         find_cmd="$find_cmd $stamp"
     fi
 elif [[ -z "$pipesort" && -z "$pipe" && -z "$zero" ]]; then
-    find_cmd="$find_cmd -print"
+    [[ ! "$find_cmd" =~ \-print ]] && find_cmd="$find_cmd -print"
 fi
 
 xargs_dash_i=
