@@ -126,6 +126,16 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/zeromq/libzmq
 )
 
+OPEN_SOURCE_DART_REPOS=(
+    https://github.com/dart-lang/build
+    https://github.com/dart-lang/cli_util
+    https://github.com/dart-lang/dart-pad
+    https://github.com/dart-lang/sdk
+    https://github.com/dart-lang/usage
+    https://github.com/flutter/flutter
+    https://github.com/flutter/samples
+)
+
 OPEN_SOURCE_DOCKERFILE_REPOS=(
     https://github.com/alpine-docker/git
     https://github.com/gliderlabs/docker-alpine
