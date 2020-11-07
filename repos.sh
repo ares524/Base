@@ -3,18 +3,30 @@
 REPOS_DIR="$HOME/repos"
 OPEN_SOURCE_REPOS_DIR="$REPOS_DIR/opensource"
 OPEN_SOURCE_ALGORITHMS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/algorithms"
+OPEN_SOURCE_BOOKS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/books"
 OPEN_SOURCE_C_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c"
 OPEN_SOURCE_CPP_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c++"
+OPEN_SOURCE_DART_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/dart"
 OPEN_SOURCE_DOCKERFILE_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/dockerfiles"
 OPEN_SOURCE_DOCS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/docs"
+OPEN_SOURCE_ELIXIR_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/elixir"
+OPEN_SOURCE_ERLANG_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/erlang"
 OPEN_SOURCE_GO_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/go"
+OPEN_SOURCE_HASKELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/haskell"
+OPEN_SOURCE_JAVA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/java"
 OPEN_SOURCE_JAVASCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/javascript"
+OPEN_SOURCE_JUPYTER_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/jupyter"
 OPEN_SOURCE_LUA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/lua"
 OPEN_SOURCE_PYTHON_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python"
 OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python_async"
+OPEN_SOURCE_RUBY_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/ruby"
+OPEN_SOURCE_RUST_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/rust"
 OPEN_SOURCE_SASS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/sass"
+OPEN_SOURCE_SCALA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/scala"
 OPEN_SOURCE_SHELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/shell"
+OPEN_SOURCE_SWIFT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/swift"
 OPEN_SOURCE_TYPESCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/typescript"
+OPEN_SOURCE_VIMSCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/vimscript"
 
 OPEN_SOURCE_ALGORITHMS_REPOS=(
     https://github.com/TheAlgorithms/Algorithms-Explanation
@@ -743,6 +755,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_ALGORITHMS_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_BOOKS_REPOS_DIR"
+    cd "$OPEN_SOURCE_BOOKS_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_BOOKS_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_C_REPOS_DIR"
     cd "$OPEN_SOURCE_C_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_C_REPOS[@]}"; do
@@ -751,6 +768,11 @@ clone-opensource() {
     mkdir -p "$OPEN_SOURCE_CPP_REPOS_DIR"
     cd "$OPEN_SOURCE_CPP_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_CPP_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_DART_REPOS_DIR"
+    cd "$OPEN_SOURCE_DART_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_DART_REPOS[@]}"; do
         git clone --recursive $repo
     done
     mkdir -p "$OPEN_SOURCE_DOCKERFILE_REPOS_DIR"
@@ -763,14 +785,39 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_DOCS_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_ELIXIR_REPOS_DIR"
+    cd "$OPEN_SOURCE_ELIXIR_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_ELIXIR_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_ERLANG_REPOS_DIR"
+    cd "$OPEN_SOURCE_ERLANG_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_ERLANG_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_GO_REPOS_DIR"
     cd "$OPEN_SOURCE_GO_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_GO_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_HASKELL_REPOS_DIR"
+    cd "$OPEN_SOURCE_HASKELL_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_HASKELL_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_JAVA_REPOS_DIR"
+    cd "$OPEN_SOURCE_JAVA_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_JAVA_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR"
     cd "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_JAVASCRIPT_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_JUPYTER_REPOS_DIR"
+    cd "$OPEN_SOURCE_JUPYTER_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_JUPYTER_REPOS[@]}"; do
         git clone --recursive $repo
     done
     mkdir -p "$OPEN_SOURCE_LUA_REPOS_DIR"
@@ -788,9 +835,24 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_PYTHON_ASYNC_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_RUBY_REPOS_DIR"
+    cd "$OPEN_SOURCE_RUBY_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_RUBY_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_RUST_REPOS_DIR"
+    cd "$OPEN_SOURCE_RUST_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_RUST_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_SASS_REPOS_DIR"
     cd "$OPEN_SOURCE_SASS_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_SASS_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_SCALA_REPOS_DIR"
+    cd "$OPEN_SOURCE_SCALA_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_SCALA_REPOS[@]}"; do
         git clone --recursive $repo
     done
     mkdir -p "$OPEN_SOURCE_SHELL_REPOS_DIR"
@@ -798,9 +860,19 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_SHELL_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_SWIFT_REPOS_DIR"
+    cd "$OPEN_SOURCE_SWIFT_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_SWIFT_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR"
     cd "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_TYPESCRIPT_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR"
+    cd "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_VIMSCRIPT_REPOS[@]}"; do
         git clone --recursive $repo
     done
     cd "$oldpwd"
@@ -808,15 +880,27 @@ clone-opensource() {
 
 [[ -d "$REPOS_DIR" ]] && repos() { cd "$REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_ALGORITHMS_REPOS_DIR" ]] && opensource-algorithms-repos() { cd "$OPEN_SOURCE_ALGORITHMS_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_BOOKS_REPOS_DIR" ]] && opensource-books-repos() { cd "$OPEN_SOURCE_BOOKS_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_C_REPOS_DIR" ]] && opensource-c-repos() { cd "$OPEN_SOURCE_C_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_CPP_REPOS_DIR" ]] && opensource-cpp-repos() { cd "$OPEN_SOURCE_CPP_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_DART_REPOS_DIR" ]] && opensource-dart-repos() { cd "$OPEN_SOURCE_DART_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_DOCKERFILE_REPOS_DIR" ]] && opensource-dockerfile-repos() { cd "$OPEN_SOURCE_DOCKERFILE_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_DOCS_REPOS_DIR" ]] && opensource-docs-repos() { cd "$OPEN_SOURCE_DOCS_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_ELIXIR_REPOS_DIR" ]] && opensource-elixir-repos() { cd "$OPEN_SOURCE_ELIXIR_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_ERLANG_REPOS_DIR" ]] && opensource-erlang-repos() { cd "$OPEN_SOURCE_ERLANG_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_GO_REPOS_DIR" ]] && opensource-go-repos() { cd "$OPEN_SOURCE_GO_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_HASKELL_REPOS_DIR" ]] && opensource-haskell-repos() { cd "$OPEN_SOURCE_HASKELL_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_JAVA_REPOS_DIR" ]] && opensource-java-repos() { cd "$OPEN_SOURCE_JAVA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR" ]] && opensource-javascript-repos() { cd "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_JUPYTER_REPOS_DIR" ]] && opensource-jupyter-repos() { cd "$OPEN_SOURCE_JUPYTER_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_LUA_REPOS_DIR" ]] && opensource-lua-repos() { cd "$OPEN_SOURCE_LUA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_PYTHON_REPOS_DIR" ]] && opensource-python-repos() { cd "$OPEN_SOURCE_PYTHON_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR" ]] && opensource-python-async-repos() { cd "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_RUBY_REPOS_DIR" ]] && opensource-ruby-repos() { cd "$OPEN_SOURCE_RUBY_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_RUST_REPOS_DIR" ]] && opensource-rust-repos() { cd "$OPEN_SOURCE_RUST_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_SASS_REPOS_DIR" ]] && opensource-sass-repos() { cd "$OPEN_SOURCE_SASS_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_SCALA_REPOS_DIR" ]] && opensource-scala-repos() { cd "$OPEN_SOURCE_SCALA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_SHELL_REPOS_DIR" ]] && opensource-shell-repos() { cd "$OPEN_SOURCE_SHELL_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_SWIFT_REPOS_DIR" ]] && opensource-swift-repos() { cd "$OPEN_SOURCE_SWIFT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR" ]] && opensource-typescript-repos() { cd "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR" ]] && opensource-vimscript-repos() { cd "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR"; }
