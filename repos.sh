@@ -57,6 +57,8 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/Netflix/dynomite
     https://github.com/Perl/perl5
     https://github.com/X0rg/CPU-X
+    https://github.com/antirez/load81
+    https://github.com/antirez/rax
     https://github.com/antirez/redis
     https://github.com/awesomeWM/awesome
     https://github.com/curl/curl
@@ -67,6 +69,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/jarun/nnn
     https://github.com/jedisct1/libsodium
     https://github.com/jonas/tig
+    https://github.com/libevent/libevent
     https://github.com/libuv/libuv
     https://github.com/lua/lua
     https://github.com/mirror/busybox
@@ -687,6 +690,7 @@ OPEN_SOURCE_SHELL_REPOS=(
 )
 
 OPEN_SOURCE_SWIFT_REPOS=(
+    https://github.com/apple/swift
     https://github.com/sindresorhus/Gifski
 )
 
