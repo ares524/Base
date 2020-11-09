@@ -335,7 +335,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/greenrobot/EventBus
     https://github.com/iluwatar/java-design-patterns
     https://github.com/jenkinsci/jenkins
-    https://github.com/mockito/mockit
+    # https://github.com/mockito/mockit
     https://github.com/seata/seata
     https://github.com/square/okhttp
     https://github.com/square/retrofit
@@ -604,7 +604,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/unitedstates/python-us
     https://github.com/warner/magic-wormhole
     https://github.com/ycm-core/YouCompleteMe
-    https://github.com/ytdl-org/youtube-dl
+    # https://github.com/ytdl-org/youtube-dl
     https://github.com/yunjey/pytorch-tutorial
     https://github.com/zulip/zulip
 )
