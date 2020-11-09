@@ -437,7 +437,6 @@ OPEN_SOURCE_LUA_REPOS=(
 )
 
 OPEN_SOURCE_PYTHON_REPOS=(
-    https://foss.heptapod.net/pypy/pypy
     https://github.com/JoshData/python-email-validator
     https://github.com/Julian/jsonschema
     https://github.com/Legrandin/pycryptodome
