@@ -702,7 +702,6 @@ OPEN_SOURCE_SHELL_REPOS=(
 )
 
 OPEN_SOURCE_SWIFT_REPOS=(
-    https://github.com/apple/swift
     https://github.com/sindresorhus/Gifski
 )
 
