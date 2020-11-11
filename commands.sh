@@ -636,11 +636,19 @@ helpme() {
 
 unalias f 2>/dev/null
 f() {
-    ls -gothr "$@" | grep '^-' | less -FX
+    if [[ -z "$@" ]]; then
+        ls -gothr "$@" | grep '^-' | less -FX
+    else
+        ls -gothrd "$@" | grep '^-' | less -FX
+    fi
 }
 unalias fa 2>/dev/null
 fa() {
-    ls -gothrA "$@" | grep '^-' | less -FX
+    if [[ -z "$@" ]]; then
+        ls -gothrA "$@" | grep '^-' | less -FX
+    else
+        ls -gothrdA "$@" | grep '^-' | less -FX
+    fi
 }
 f5() {
     f "$@" | tail -n 5
