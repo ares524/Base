@@ -180,6 +180,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/danistefanovic/build-your-own-x
     https://github.com/donnemartin/system-design-primer
     https://github.com/drobakowski/awesome-erlang
+    https://github.com/droptheplot/awesome-phoenix
     https://github.com/dylanaraps/pure-bash-bible
     https://github.com/ericdouglas/ES6-Learning
     https://github.com/getify/You-Dont-Know-JS
@@ -239,11 +240,17 @@ OPEN_SOURCE_DOCS_REPOS=(
 
 OPEN_SOURCE_ELIXIR_REPOS=(
     https://github.com/absinthe-graphql/absinthe
+    https://github.com/adoptoposs/adoptoposs
     https://github.com/christopheradams/elixir_style_guide
     https://github.com/elixir-lang/elixir
     https://github.com/elixirschool/elixirschool
+    https://github.com/gothinkster/elixir-phoenix-realworld-example-app
+    https://github.com/grych/drab
+    https://github.com/khusnetdinov/loki
+    https://github.com/operable/cog
     https://github.com/phoenixframework/phoenix
     https://github.com/rrrene/credo
+    https://github.com/thoughtbot/bamboo
 )
 
 OPEN_SOURCE_ERLANG_REPOS=(
