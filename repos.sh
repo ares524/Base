@@ -389,11 +389,11 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/graphql/express-graphql
     https://github.com/hakimel/reveal.js
     https://github.com/hasura/graphql-engine
+    https://github.com/hoppscotch/hoppscotch
     https://github.com/hubotio/hubot
     https://github.com/jfo8000/ScratchJr-Desktop
     https://github.com/knex/knex
     https://github.com/kriasoft/react-starter-kit
-    https://github.com/liyasthomas/postwoman
     https://github.com/lodash/lodash
     https://github.com/parse-community/parse-dashboard
     https://github.com/parse-community/parse-server
