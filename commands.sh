@@ -551,6 +551,10 @@ grepit-no-docs() {
     grepit --exclude=\*.{txt,md,rst,log} --exclude-dir=\*.dist-info "$@"
 }
 
+grepit-no-docs-no-tests() {
+    grepit --exclude=\*.{txt,md,rst,log} --exclude-dir=\*.dist-info --exclude-dir=test\* "$@"
+}
+
 grepit-exact() {
     pattern=$1
     [[ -z "$pattern" ]] && return 1
@@ -562,6 +566,13 @@ grep-object-info() {
     object="$1"
     [[ -z "$object" ]] && return 1
     grepit-no-docs "\b$object\b" | egrep -o "($object\(|$object(\.\w+)+\(?)" |
+    sort | uniq -c | sort -k1,1nr -k2 | egrep -v '.(js|py)$'
+}
+
+grep-object-info-no-tests() {
+    object="$1"
+    [[ -z "$object" ]] && return 1
+    grepit-no-docs-no-tests "\b$object\b" | egrep -o "($object\(|$object(\.\w+)+\(?)" |
     sort | uniq -c | sort -k1,1nr -k2 | egrep -v '.(js|py)$'
 }
 
