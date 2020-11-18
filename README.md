@@ -121,6 +121,11 @@ $ repos-update          # Stash changes and git pull --rebase (then git stash po
 $ repos-commits-not-on-master   # Show commits on an origin branch not on origin/master
 
 $ repos-commits-since-last-tag  # Show commits since the last tag for each repo
+
+$ repos-do              # Repeats given command inside each repo found
+                        # (i.e. repos-do 'grep -A 15 requires setup.py && cat requirements.txt)
+
+$ repos-do-output       # Same as repos-do, but only lists repos when command has output
 ```
 
 ### The `findit` command
@@ -196,7 +201,20 @@ Examples:
 - **`grepit-count`**: use `grepit` to show how many times pattern is matched in
   files (sorted by count and not showing zero matches)
 - **`grepit-no-docs`**: use `grepit`, but also ignore txt/md/rst files
+- **`grepit-no-docs-no-tests`**: also ignore test dirs
 - **`grepit-py`**: similar to `grepit`, but only include .py files and ignore
   common directories
 - **`grepit-py-no-tests`**: similar to `grepit-py`, but also exclude .py files
   in test directories
+
+### The `grep` commands
+
+- **`grep-object-info`**: recursively find usage of methods/attributes on the
+  specified object, ordered by the number of occurrences
+- **`grep-object-info-no-tests`**: same as grep-object-info, but does not search
+  in test directories
+- **`grep-history`**: search history files in `$HOME` for pattern
+    - example: grep-history "git log [^-]"
+- **`grep-history-exact`**: search history files in `$HOME` for pattern
+- **`grep-history-comments`**: use `grep-history` to find entries that start
+  with `#`
