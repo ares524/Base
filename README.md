@@ -123,7 +123,7 @@ $ repos-commits-not-on-master   # Show commits on an origin branch not on origin
 $ repos-commits-since-last-tag  # Show commits since the last tag for each repo
 
 $ repos-do              # Repeats given command inside each repo found
-                        # (i.e. repos-do 'grep -A 15 requires setup.py && cat requirements.txt)
+                        # (i.e. repos-do 'grep -A 15 requires setup.py && cat requirements.txt')
 
 $ repos-do-output       # Same as repos-do, but only lists repos when command has output
 ```
