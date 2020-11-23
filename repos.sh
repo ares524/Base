@@ -728,7 +728,6 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/FormidableLabs/urql
     https://github.com/angular/angular
     https://github.com/ant-design/ant-design
-    https://github.com/ant-design/ant-design-mobile
     https://github.com/ant-design/ant-design-pro
     https://github.com/ant-design/ant-motion
     https://github.com/apollographql/apollo
