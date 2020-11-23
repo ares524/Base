@@ -329,6 +329,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/Snailclimb/JavaGuide
     https://github.com/alibaba/fastjson
     https://github.com/apache/dubbo
+    https://github.com/apache/groovy
     https://github.com/apache/kafka
     https://github.com/apache/lucene-solr
     https://github.com/apache/tomcat
@@ -338,6 +339,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/elastic/elasticsearch
     https://github.com/google/guava
     https://github.com/google/rejoiner
+    https://github.com/gradle/gradle
     https://github.com/graphql-java/graphql-java
     https://github.com/greenrobot/EventBus
     https://github.com/iluwatar/java-design-patterns
@@ -670,7 +672,7 @@ OPEN_SOURCE_RUST_REPOS=(
     https://github.com/hyperium/hyper
     https://github.com/gyscos/cursive
     https://github.com/mitsuhiko/redis-rs
-    https://github.com/rust-lang/cargo/
+    https://github.com/rust-lang/cargo
     https://github.com/rust-lang/rust
     https://github.com/tokio-rs/tokio
 )
