@@ -16,6 +16,7 @@ OPEN_SOURCE_HASKELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/haskell"
 OPEN_SOURCE_JAVA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/java"
 OPEN_SOURCE_JAVASCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/javascript"
 OPEN_SOURCE_JUPYTER_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/jupyter"
+OPEN_SOURCE_KOTLIN_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/kotlin"
 OPEN_SOURCE_LUA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/lua"
 OPEN_SOURCE_PYTHON_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python"
 OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python_async"
@@ -439,6 +440,14 @@ OPEN_SOURCE_JUPYTER_REPOS=(
     https://github.com/binder-examples/requirements
 )
 
+OPEN_SOURCE_KOTLIN_REPOS=(
+    https://github.com/JetBrains/kotlin-native
+    https://github.com/Kotlin/coroutines-examples
+    https://github.com/Kotlin/kotlin-examples
+    https://github.com/Kotlin/kotlin-fullstack-sample
+    https://github.com/Kotlin/kotlinx.coroutines
+)
+
 OPEN_SOURCE_LUA_REPOS=(
     https://github.com/Kong/kong
     https://github.com/twitter/torch-dataset
@@ -831,6 +840,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_JUPYTER_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_KOTLIN_REPOS_DIR"
+    cd "$OPEN_SOURCE_KOTLIN_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_KOTLIN_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_LUA_REPOS_DIR"
     cd "$OPEN_SOURCE_LUA_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_LUA_REPOS[@]}"; do
@@ -904,6 +918,7 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_JAVA_REPOS_DIR" ]] && opensource-java-repos() { cd "$OPEN_SOURCE_JAVA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR" ]] && opensource-javascript-repos() { cd "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_JUPYTER_REPOS_DIR" ]] && opensource-jupyter-repos() { cd "$OPEN_SOURCE_JUPYTER_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_KOTLIN_REPOS_DIR" ]] && opensource-kotlin-repos() { cd "$OPEN_SOURCE_KOTLIN_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_LUA_REPOS_DIR" ]] && opensource-lua-repos() { cd "$OPEN_SOURCE_LUA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_PYTHON_REPOS_DIR" ]] && opensource-python-repos() { cd "$OPEN_SOURCE_PYTHON_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR" ]] && opensource-python-async-repos() { cd "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR"; }
