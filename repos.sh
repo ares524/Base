@@ -15,6 +15,7 @@ OPEN_SOURCE_GO_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/go"
 OPEN_SOURCE_HASKELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/haskell"
 OPEN_SOURCE_JAVA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/java"
 OPEN_SOURCE_JAVASCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/javascript"
+OPEN_SOURCE_JULIA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/julia"
 OPEN_SOURCE_JUPYTER_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/jupyter"
 OPEN_SOURCE_KOTLIN_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/kotlin"
 OPEN_SOURCE_LUA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/lua"
@@ -436,6 +437,12 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/yhat/rodeo
 )
 
+OPEN_SOURCE_JULIA_REPOS=(
+    https://github.com/FluxML/Flux.jl
+    https://github.com/JuliaLang/IJulia.jl
+    https://github.com/JuliaLang/julia
+)
+
 OPEN_SOURCE_JUPYTER_REPOS=(
     https://github.com/binder-examples/requirements
 )
@@ -834,6 +841,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_JAVASCRIPT_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_JULIA_REPOS_DIR"
+    cd "$OPEN_SOURCE_JULIA_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_JULIA_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_JUPYTER_REPOS_DIR"
     cd "$OPEN_SOURCE_JUPYTER_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_JUPYTER_REPOS[@]}"; do
@@ -916,6 +928,7 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_HASKELL_REPOS_DIR" ]] && opensource-haskell-repos() { cd "$OPEN_SOURCE_HASKELL_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_JAVA_REPOS_DIR" ]] && opensource-java-repos() { cd "$OPEN_SOURCE_JAVA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR" ]] && opensource-javascript-repos() { cd "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_JULIA_REPOS_DIR" ]] && opensource-julia-repos() { cd "$OPEN_SOURCE_JULIA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_JUPYTER_REPOS_DIR" ]] && opensource-jupyter-repos() { cd "$OPEN_SOURCE_JUPYTER_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_KOTLIN_REPOS_DIR" ]] && opensource-kotlin-repos() { cd "$OPEN_SOURCE_KOTLIN_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_LUA_REPOS_DIR" ]] && opensource-lua-repos() { cd "$OPEN_SOURCE_LUA_REPOS_DIR"; }
