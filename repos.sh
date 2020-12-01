@@ -154,10 +154,25 @@ OPEN_SOURCE_DART_REPOS=(
 )
 
 OPEN_SOURCE_DOCKERFILE_REPOS=(
+    https://github.com/alpine-docker/ansible-tower
+    https://github.com/alpine-docker/flake8
     https://github.com/alpine-docker/git
+    https://github.com/alpine-docker/git
+    https://github.com/alpine-docker/helm
+    https://github.com/alpine-docker/httpie
+    https://github.com/alpine-docker/k8s
+    https://github.com/alpine-docker/make
+    https://github.com/alpine-docker/socat
+    https://github.com/docker-library/official-images
+    https://github.com/dockerfile/java
+    https://github.com/dockerfile/nginx
+    https://github.com/dockerfile/ubuntu
+    https://github.com/fedora-cloud/docker-brew-fedora
+    https://github.com/fedora-cloud/fedora-container-release
     https://github.com/gliderlabs/docker-alpine
     https://github.com/jessfraz/dockerfiles
     https://github.com/pyca/infra
+    https://gitlab.archlinux.org/archlinux/archlinux-docker
 )
 
 OPEN_SOURCE_DOCS_REPOS=(
