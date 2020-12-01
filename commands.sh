@@ -973,12 +973,6 @@ fi
 #################### urxvt ####################
 
 if type urxvt &>/dev/null; then
-    fontsize() {
-        printf '\33]50;%s' "xft:Inconsolata:size=$1"
-    }
-
-    big() { fontsize 16; }
-
     windowsize() {
         size=$1
         title=$2
