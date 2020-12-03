@@ -316,6 +316,183 @@ elif [[ -n "$ZSH_VERSION" ]]; then
     compinit -i
 fi
 
+#################### Environment managers ####################
+
+nvm-install() {
+    if [[ "$clean" == "clean" && -d ~/.nvm ]]; then
+        echo -e "\nDeleting ~/.nvm and ~/.npm"
+        rm -rf ~/.nvm ~/.npm 2>/dev/null
+        unset NVM_DIR
+    fi
+
+    if [[ ! -d ~/.nvm ]]; then
+        echo -e "\nInstalling nvm and latest 'long term support' version of node..."
+        unset NVM_DIR
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+        export NVM_DIR="$HOME/.nvm"
+        source "$NVM_DIR/nvm.sh"
+        source "$NVM_DIR/bash_completion"
+        nvm install --lts
+    fi
+}
+
+# Enable nvm (node version manager)
+if [[ -d $HOME/.nvm && -z "$NVM_DIR" ]]; then
+    export NVM_DIR="$HOME/.nvm"
+    source "$NVM_DIR/nvm.sh"
+    source "$NVM_DIR/bash_completion"
+fi
+
+pyenv-install() {
+    if [[ "$clean" == "clean" && $(uname) != "Darwin" && -d ~/.pyenv ]]; then
+        echo -e "\nDeleting ~/.pyenv"
+        rm -rf ~/.pyenv
+    fi
+
+    if [[ ! -d ~/.pyenv ]]; then
+        echo -e "\nInstalling pyenv..."
+        git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+        export PYENV_ROOT="$HOME/.pyenv"
+        export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init -)"
+        echo -e "\nInstalling Python 3.8.5..."
+        pyenv install 3.8.5
+    fi
+}
+
+# Prep pyenv (on linux)
+if [[ $(uname) != "Darwin" && -d $HOME/.pyenv && -z "$PYENV_ROOT" ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+
+# Enable pyenv (on linux/mac)
+if type pyenv &>/dev/null; then
+    eval "$(pyenv init -)"
+fi
+
+#################### Tools ####################
+
+aws-install() {
+	[[ ! -d "$HOME/venv" ]] && python3 -m venv "$HOME/venv" && "$HOME/venv/bin/pip3" install --upgrade pip wheel
+	"$HOME/venv/bin/pip3" install awscli
+}
+
+if [[ -s "$HOME/venv/bin/aws" ]]; then
+	aws() {
+		PYTHONPATH=$HOME $HOME/venv/bin/aws "$@"
+	}
+fi
+
+grip-install() {
+	[[ ! -d "$HOME/venv" ]] && python3 -m venv "$HOME/venv" && "$HOME/venv/bin/pip3" install --upgrade pip wheel
+	"$HOME/venv/bin/pip3" install grip
+}
+
+if [[ -s "$HOME/venv/bin/grip" ]]; then
+	grip() {
+		PYTHONPATH=$HOME $HOME/venv/bin/grip "$@"
+	}
+fi
+
+if type grip &>/dev/null; then
+    # Ex:
+    #   grip-many
+    #   grip-many . --depth 2
+    #   grip-many . --hours 5
+    grip-many() {
+        [[ ! "$1" =~ ^-.* ]] && _dirname=$1 && shift
+        [[ -z "$_dirname" ]] && _dirname="."
+
+        if [[ ! -d "$_dirname" ]]; then
+            echo "$_dirname is not a directory" >&2
+            return 1
+        fi
+
+        echo "$_dirname" > GENERATED-README.md
+
+        # Generate a markdown file containing links to all the found markdown files
+        eval "findit $_dirname --complex \"\( -iname '*.md' -o -iname '*.idea' \) -print0 \" $@" |
+        xargs -0 -I {} echo '- [{}]({})' |
+        sort |
+        grep -v 'GENERATED-README' >> GENERATED-README.md
+
+        grip GENERATED-README.md "0.0.0.0:7777"
+        rm GENERATED-README.md
+    }
+fi
+
+kubectl-install() {
+    unset yn
+    if type kubectl &>/dev/null; then
+        kubectl_path=$(which kubectl)
+        echo -e "kubectl found at $kubectl_path\n"
+        kubectl version --client
+        echo
+        if [[ -n "$BASH_VERSION" ]]; then
+            read -p "Replace this version? [y/n] " yn
+        elif [[ -n "$ZSH_VERSION" ]]; then
+            vared -p "Replace this version? [y/n] " -c yn
+        fi
+        [[ ! "$yn" =~ [yY].* ]] && return
+    fi
+
+    version="$1"
+    [[ -n "$version" && ! "$version" =~ ^v ]] && version="v$version"
+    [[ -z "$version" ]] && version=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+
+    echo "version -> $version"
+    oldpwd=$(pwd)
+    cd /tmp
+    if [[ $(uname) == "Darwin" ]]; then
+        curl -LO https://storage.googleapis.com/kubernetes-release/release/$version/bin/darwin/amd64/kubectl
+    else
+        curl -LO https://storage.googleapis.com/kubernetes-release/release/$version/bin/linux/amd64/kubectl
+    fi
+    if [[ -n "$(file kubectl | grep executable)" ]]; then
+        chmod +x ./kubectl
+        if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+            echo -e "$ sudo mv ./kubectl /usr/local/bin/kubectl"
+            sudo mv -v ./kubectl /usr/local/bin/kubectl
+            if [[ $? -ne 0 ]]; then
+                mkdir -p "$HOME/bin"
+                mv -v ./kubectl "$HOME/bin/kubectl"
+            fi
+        else
+            mkdir -p "$HOME/bin"
+            mv -v ./kubectl "$HOME/bin/kubectl"
+        fi
+    else
+        # invalid version; details in the xml file downloaded
+        cat ./kubectl
+    fi
+    cd "$oldpwd"
+}
+
+kind-install() {
+    type kind &>/dev/null && return
+    oldpwd=$(pwd)
+    cd /tmp
+    if [[ $(uname) == "Darwin" ]]; then
+        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.9.0/kind-darwin-amd64
+    else
+        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.9.0/kind-linux-amd64
+    fi
+    chmod +x ./kind
+    if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+        echo -e "$ sudo mv ./kind /usr/local/bin/kind"
+        sudo mv -v ./kind /usr/local/bin/kind
+        if [[ $? -ne 0 ]]; then
+            mkdir -p "$HOME/bin"
+            mv -v ./kind "$HOME/bin/kind"
+        fi
+    else
+        mkdir -p "$HOME/bin"
+        mv -v ./kind "$HOME/bin/kind"
+    fi
+    cd "$oldpwd"
+}
+
 #################### aws ####################
 
 if type aws &>/dev/null; then
@@ -1079,172 +1256,6 @@ if type xrandr &>/dev/null; then
         done
     }
 fi
-
-#################### Environment managers ####################
-
-nvm-install() {
-    if [[ "$clean" == "clean" && -d ~/.nvm ]]; then
-        echo -e "\nDeleting ~/.nvm and ~/.npm"
-        rm -rf ~/.nvm ~/.npm 2>/dev/null
-        unset NVM_DIR
-    fi
-
-    if [[ ! -d ~/.nvm ]]; then
-        echo -e "\nInstalling nvm and latest 'long term support' version of node..."
-        unset NVM_DIR
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
-        export NVM_DIR="$HOME/.nvm"
-        source "$NVM_DIR/nvm.sh"
-        source "$NVM_DIR/bash_completion"
-        nvm install --lts
-    fi
-}
-
-# Enable nvm (node version manager)
-if [[ -d $HOME/.nvm && -z "$NVM_DIR" ]]; then
-    export NVM_DIR="$HOME/.nvm"
-    source "$NVM_DIR/nvm.sh"
-    source "$NVM_DIR/bash_completion"
-fi
-
-pyenv-install() {
-    if [[ "$clean" == "clean" && $(uname) != "Darwin" && -d ~/.pyenv ]]; then
-        echo -e "\nDeleting ~/.pyenv"
-        rm -rf ~/.pyenv
-    fi
-
-    if [[ ! -d ~/.pyenv ]]; then
-        echo -e "\nInstalling pyenv..."
-        git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-        export PYENV_ROOT="$HOME/.pyenv"
-        export PATH="$PYENV_ROOT/bin:$PATH"
-        eval "$(pyenv init -)"
-        echo -e "\nInstalling Python 3.8.5..."
-        pyenv install 3.8.5
-    fi
-}
-
-# Prep pyenv (on linux)
-if [[ $(uname) != "Darwin" && -d $HOME/.pyenv && -z "$PYENV_ROOT" ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-fi
-
-# Enable pyenv (on linux/mac)
-if type pyenv &>/dev/null; then
-    eval "$(pyenv init -)"
-fi
-
-#################### Tools ####################
-
-grip-install() {
-	[[ ! -d "$HOME/venv" ]] && python3 -m venv "$HOME/venv" && "$HOME/venv/bin/pip3" install --upgrade pip wheel
-	"$HOME/venv/bin/pip3" install grip
-}
-
-if [[ -s "$HOME/venv/bin/grip" ]]; then
-	grip() {
-		PYTHONPATH=$HOME $HOME/venv/bin/grip "$@"
-	}
-fi
-
-if type grip &>/dev/null; then
-    # Ex:
-    #   grip-many
-    #   grip-many . --depth 2
-    #   grip-many . --hours 5
-    grip-many() {
-        [[ ! "$1" =~ ^-.* ]] && _dirname=$1 && shift
-        [[ -z "$_dirname" ]] && _dirname="."
-
-        if [[ ! -d "$_dirname" ]]; then
-            echo "$_dirname is not a directory" >&2
-            return 1
-        fi
-
-        echo "$_dirname" > GENERATED-README.md
-
-        # Generate a markdown file containing links to all the found markdown files
-        eval "findit $_dirname --complex \"\( -iname '*.md' -o -iname '*.idea' \) -print0 \" $@" |
-        xargs -0 -I {} echo '- [{}]({})' |
-        sort |
-        grep -v 'GENERATED-README' >> GENERATED-README.md
-
-        grip GENERATED-README.md "0.0.0.0:7777"
-        rm GENERATED-README.md
-    }
-fi
-
-kubectl-install() {
-    unset yn
-    if type kubectl &>/dev/null; then
-        kubectl_path=$(which kubectl)
-        echo -e "kubectl found at $kubectl_path\n"
-        kubectl version --client
-        echo
-        if [[ -n "$BASH_VERSION" ]]; then
-            read -p "Replace this version? [y/n] " yn
-        elif [[ -n "$ZSH_VERSION" ]]; then
-            vared -p "Replace this version? [y/n] " -c yn
-        fi
-        [[ ! "$yn" =~ [yY].* ]] && return
-    fi
-
-    version="$1"
-    [[ -n "$version" && ! "$version" =~ ^v ]] && version="v$version"
-    [[ -z "$version" ]] && version=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
-
-    echo "version -> $version"
-    oldpwd=$(pwd)
-    cd /tmp
-    if [[ $(uname) == "Darwin" ]]; then
-        curl -LO https://storage.googleapis.com/kubernetes-release/release/$version/bin/darwin/amd64/kubectl
-    else
-        curl -LO https://storage.googleapis.com/kubernetes-release/release/$version/bin/linux/amd64/kubectl
-    fi
-    if [[ -n "$(file kubectl | grep executable)" ]]; then
-        chmod +x ./kubectl
-        if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
-            echo -e "$ sudo mv ./kubectl /usr/local/bin/kubectl"
-            sudo mv -v ./kubectl /usr/local/bin/kubectl
-            if [[ $? -ne 0 ]]; then
-                mkdir -p "$HOME/bin"
-                mv -v ./kubectl "$HOME/bin/kubectl"
-            fi
-        else
-            mkdir -p "$HOME/bin"
-            mv -v ./kubectl "$HOME/bin/kubectl"
-        fi
-    else
-        # invalid version; details in the xml file downloaded
-        cat ./kubectl
-    fi
-    cd "$oldpwd"
-}
-
-kind-install() {
-    type kind &>/dev/null && return
-    oldpwd=$(pwd)
-    cd /tmp
-    if [[ $(uname) == "Darwin" ]]; then
-        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.9.0/kind-darwin-amd64
-    else
-        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.9.0/kind-linux-amd64
-    fi
-    chmod +x ./kind
-    if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
-        echo -e "$ sudo mv ./kind /usr/local/bin/kind"
-        sudo mv -v ./kind /usr/local/bin/kind
-        if [[ $? -ne 0 ]]; then
-            mkdir -p "$HOME/bin"
-            mv -v ./kind "$HOME/bin/kind"
-        fi
-    else
-        mkdir -p "$HOME/bin"
-        mv -v ./kind "$HOME/bin/kind"
-    fi
-    cd "$oldpwd"
-}
 
 #################### PATH ####################
 
