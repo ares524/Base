@@ -408,6 +408,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/graphite-project/graphite-web
     https://github.com/graphql/express-graphql
     https://github.com/hakimel/reveal.js
+    https://github.com/hapijs/hapi
     https://github.com/hasura/graphql-engine
     https://github.com/hoppscotch/hoppscotch
     https://github.com/hubotio/hubot
