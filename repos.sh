@@ -315,6 +315,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/keybase/client
     https://github.com/kubeless/kubeless
     https://github.com/kubernetes-sigs/kind
+    https://github.com/kubernetes-up-and-running/kuard
     https://github.com/kubernetes/kubernetes
     https://github.com/kubernetes/minikube
     https://github.com/letsencrypt/boulder
