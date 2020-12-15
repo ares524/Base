@@ -519,6 +519,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/coleifer/walrus
     https://github.com/conda/conda
     https://github.com/cython/cython
+    https://github.com/dateutil/dateutil
     https://github.com/davidsandberg/facenet
     https://github.com/dbader/schedule
     https://github.com/dbcli/litecli
@@ -730,6 +731,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/graphql/graphql-spec
     https://github.com/iredmail/iRedMail
     https://github.com/kubernetes-sigs/kubespray
+    https://github.com/lowendbox/lowendscript
     https://github.com/nginx-proxy/docker-letsencrypt-nginx-proxy-companion
     https://github.com/nginx-proxy/nginx-proxy
     https://github.com/nvm-sh/nvm
