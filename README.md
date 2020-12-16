@@ -94,44 +94,44 @@ passed in:
 > These are all scripts in <https://github.com/kenjyco/base/tree/master/bin>
 
 ```
-$ repos-list            # List all git repos (or abs path of current repo)
+% repos-list            # List all git repos (or abs path of current repo)
 
-$ repos-dirs            # List directories that have git repos in them (with counts)
+% repos-dirs            # List directories that have git repos in them (with counts)
 
-$ repos-fetch           # Perform a git fetch on repos found and output updates only
+% repos-fetch           # Perform a git fetch on repos found and output updates only
 
-$ repos-status          # Show repos with any changes, untracked files, or stashes
+% repos-status          # Show repos with any changes, untracked files, or stashes
                         # Also show if branch is behind or ahead of remote
 
-$ repos-files           # List files in current directory (recursive) by commit date
+% repos-files           # List files in current directory (recursive) by commit date
                         # Arg passed in to filter list of files matched/returned
 
-$ repos-commits         # Show latest commits on all repos (args passed to git log)
+% repos-commits         # Show latest commits on all repos (args passed to git log)
                         # (i.e "--since 2.days", "--grep alias -5", etc)
 
-$ repos-branches        # Show latest 10 remote branches and all local branches
+% repos-branches        # Show latest 10 remote branches and all local branches
                         # Arg passed in to filter list of branch names matched
 
-$ repos-last-tag        # List last tag of git repos that have tags
+% repos-last-tag        # List last tag of git repos that have tags
 
-$ repos-diffs           # List all git repos and show diff
+% repos-diffs           # List all git repos and show diff
 
-$ repos-update          # Stash changes and git pull --rebase (then git stash pop)
+% repos-update          # Stash changes and git pull --rebase (then git stash pop)
 
-$ repos-commits-not-on-master   # Show commits on an origin branch not on origin/master
+% repos-commits-not-on-master   # Show commits on an origin branch not on origin/master
 
-$ repos-commits-since-last-tag  # Show commits since the last tag for each repo
+% repos-commits-since-last-tag  # Show commits since the last tag for each repo
 
-$ repos-do              # Repeats given command inside each repo found
+% repos-do              # Repeats given command inside each repo found
                         # (i.e. repos-do 'grep -A 15 requires setup.py && cat requirements.txt')
 
-$ repos-do-output       # Same as repos-do, but only lists repos when command has output
+% repos-do-output       # Same as repos-do, but only lists repos when command has output
 ```
 
 ### The `findit` command
 
 ```
-$ findit --help
+% findit --help
 Usage: findit [dir] [options]
 
   Wrapper to the find command
