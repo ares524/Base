@@ -157,7 +157,6 @@ OPEN_SOURCE_DOCKERFILE_REPOS=(
     https://github.com/alpine-docker/ansible-tower
     https://github.com/alpine-docker/flake8
     https://github.com/alpine-docker/git
-    https://github.com/alpine-docker/git
     https://github.com/alpine-docker/helm
     https://github.com/alpine-docker/httpie
     https://github.com/alpine-docker/k8s
