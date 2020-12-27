@@ -130,6 +130,7 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/bast/cmake-example
     https://github.com/bitcoin/bitcoin
     https://github.com/blakesmith/embedded
+    https://github.com/electron/electron
     https://github.com/fish-shell/fish-shell
     https://github.com/grpc/grpc
     https://github.com/jarulraj/sqlcheck
@@ -397,6 +398,10 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/chartjs/Chart.js
     https://github.com/cypress-io/cypress
     https://github.com/d3/d3
+    https://github.com/electron/apps
+    https://github.com/electron/electron-api-demos
+    https://github.com/electron/electron-packager
+    https://github.com/electron/electron-quick-start
     https://github.com/eslint/eslint
     https://github.com/expressjs/express
     https://github.com/facebook/create-react-app
@@ -785,6 +790,8 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/devhubapp/devhub
     https://github.com/dotansimha/graphql-code-generator
     https://github.com/elastic/kibana
+    https://github.com/electron/fiddle
+    https://github.com/electron/i18n
     https://github.com/graphql-editor/graphql-editor
     https://github.com/graphql/graphiql
     https://github.com/graphql/graphql-js
