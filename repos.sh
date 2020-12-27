@@ -6,6 +6,7 @@ OPEN_SOURCE_ALGORITHMS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/algorithms"
 OPEN_SOURCE_BOOKS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/books"
 OPEN_SOURCE_C_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c"
 OPEN_SOURCE_CPP_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c++"
+OPEN_SOURCE_C_SHARP_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c_sharp"
 OPEN_SOURCE_DART_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/dart"
 OPEN_SOURCE_DOCKERFILE_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/dockerfiles"
 OPEN_SOURCE_DOCS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/docs"
@@ -144,6 +145,10 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/ttroy50/cmake-examples
     https://github.com/v8/v8
     https://github.com/zeromq/libzmq
+)
+
+OPEN_SOURCE_C_SHARP_REPOS=(
+    https://github.com/monogame/monogame
 )
 
 OPEN_SOURCE_DART_REPOS=(
@@ -919,6 +924,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_CPP_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_C_SHARP_REPOS_DIR"
+    cd "$OPEN_SOURCE_C_SHARP_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_C_SHARP_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_DART_REPOS_DIR"
     cd "$OPEN_SOURCE_DART_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_DART_REPOS[@]}"; do
@@ -1052,6 +1062,7 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_BOOKS_REPOS_DIR" ]] && opensource-books-repos() { cd "$OPEN_SOURCE_BOOKS_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_C_REPOS_DIR" ]] && opensource-c-repos() { cd "$OPEN_SOURCE_C_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_CPP_REPOS_DIR" ]] && opensource-cpp-repos() { cd "$OPEN_SOURCE_CPP_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_C_SHARP_REPOS_DIR" ]] && opensource-csharp-repos() { cd "$OPEN_SOURCE_C_SHARP_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_DART_REPOS_DIR" ]] && opensource-dart-repos() { cd "$OPEN_SOURCE_DART_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_DOCKERFILE_REPOS_DIR" ]] && opensource-dockerfile-repos() { cd "$OPEN_SOURCE_DOCKERFILE_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_DOCS_REPOS_DIR" ]] && opensource-docs-repos() { cd "$OPEN_SOURCE_DOCS_REPOS_DIR"; }
