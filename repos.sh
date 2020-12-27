@@ -409,6 +409,8 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/facebook/react-native
     https://github.com/freeCodeCamp/freeCodeCamp
     https://github.com/gatsbyjs/gatsby
+    https://github.com/gatsbyjs/gatsby-starter-blog
+    https://github.com/gatsbyjs/gatsby-starter-hello-world
     https://github.com/graphile/postgraphile
     https://github.com/graphite-project/graphite-web
     https://github.com/graphql/express-graphql
