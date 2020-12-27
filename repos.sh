@@ -444,6 +444,26 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/uber/xviz
     https://github.com/unitedstates/citation
     https://github.com/unitedstates/uslaw.link
+    https://github.com/vercel/arg
+    https://github.com/vercel/async-retry
+    https://github.com/vercel/email-prompt
+    https://github.com/vercel/fetch-retry
+    https://github.com/vercel/hazel
+    https://github.com/vercel/hyper-site
+    https://github.com/vercel/hyperpower
+    https://github.com/vercel/micro
+    https://github.com/vercel/micro-dev
+    https://github.com/vercel/ms
+    https://github.com/vercel/ncc
+    https://github.com/vercel/next-learn-starter
+    https://github.com/vercel/next-plugins
+    https://github.com/vercel/next.js
+    https://github.com/vercel/schemas
+    https://github.com/vercel/serve
+    https://github.com/vercel/serve-handler
+    https://github.com/vercel/styled-jsx
+    https://github.com/vercel/title
+    https://github.com/vercel/vrs
     https://github.com/vuejs/vue
     https://github.com/vuejs/vue-apollo
     https://github.com/webpack/webpack
@@ -786,6 +806,16 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/teambit/bit
     https://github.com/typeorm/typeorm
     https://github.com/typicode/husky
+    https://github.com/vercel/async-sema
+    https://github.com/vercel/commerce
+    https://github.com/vercel/hyper
+    https://github.com/vercel/integrations
+    https://github.com/vercel/og-image
+    https://github.com/vercel/react-keyframes
+    https://github.com/vercel/static-fun
+    https://github.com/vercel/swr
+    https://github.com/vercel/vercel
+    https://github.com/vercel/virtual-event-starter-kit
 )
 
 OPEN_SOURCE_VIMSCRIPT_REPOS=(
