@@ -29,6 +29,7 @@ OPEN_SOURCE_SHELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/shell"
 OPEN_SOURCE_SWIFT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/swift"
 OPEN_SOURCE_TYPESCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/typescript"
 OPEN_SOURCE_VIMSCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/vimscript"
+OPEN_SOURCE_YAML_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/yaml"
 
 OPEN_SOURCE_ALGORITHMS_REPOS=(
     https://github.com/TheAlgorithms/Algorithms-Explanation
@@ -200,6 +201,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/droptheplot/awesome-phoenix
     https://github.com/dylanaraps/pure-bash-bible
     https://github.com/ericdouglas/ES6-Learning
+    https://github.com/fluxcd/gitops-working-group
     https://github.com/getify/You-Dont-Know-JS
     https://github.com/git-tips/tips
     https://github.com/golang-standards/project-layout
@@ -286,6 +288,10 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/docker/machine
     https://github.com/elastic/beats
     https://github.com/etcd-io/etcd
+    https://github.com/fluxcd/flux
+    https://github.com/fluxcd/flagger
+    https://github.com/fluxcd/flux2
+    https://github.com/fluxcd/flux-get-started
     https://github.com/flynn/flynn
     https://github.com/gliderlabs/logspout
     https://github.com/gliderlabs/ssh
@@ -314,10 +320,15 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/jwilder/docker-gen
     https://github.com/keybase/client
     https://github.com/kubeless/kubeless
+    https://github.com/kubernetes-sigs/controller-runtime
     https://github.com/kubernetes-sigs/kind
+    https://github.com/kubernetes-sigs/kustomize
     https://github.com/kubernetes-up-and-running/kuard
+    https://github.com/kubernetes/code-generator
     https://github.com/kubernetes/kubernetes
     https://github.com/kubernetes/minikube
+    https://github.com/kudobuilder/kudo
+    https://github.com/kudobuilder/kuttl
     https://github.com/letsencrypt/boulder
     https://github.com/linkerd/linkerd2
     https://github.com/moby/moby
@@ -756,6 +767,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/asdf-vm/asdf
     https://github.com/graphql/graphql-spec
     https://github.com/iredmail/iRedMail
+    https://github.com/kudobuilder/operators
     https://github.com/kubernetes-sigs/kubespray
     https://github.com/lowendbox/lowendscript
     https://github.com/nginx-proxy/docker-letsencrypt-nginx-proxy-companion
@@ -831,6 +843,11 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
 OPEN_SOURCE_VIMSCRIPT_REPOS=(
     https://github.com/VundleVim/Vundle.vim
     https://github.com/christoomey/vim-tmux-navigator
+)
+
+OPEN_SOURCE_YAML_REPOS=(
+    https://github.com/fluxcd/flux-kustomize-example
+    https://github.com/fluxcd/helm-operator-get-started
 )
 
 clone-opensource() {
@@ -970,6 +987,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_VIMSCRIPT_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_YAML_REPOS_DIR"
+    cd "$OPEN_SOURCE_YAML_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_YAML_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     cd "$oldpwd"
 }
 
@@ -1001,3 +1023,4 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_SWIFT_REPOS_DIR" ]] && opensource-swift-repos() { cd "$OPEN_SOURCE_SWIFT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR" ]] && opensource-typescript-repos() { cd "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR" ]] && opensource-vimscript-repos() { cd "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_YAML_REPOS_DIR" ]] && opensource-yaml-repos() { cd "$OPEN_SOURCE_YAML_REPOS_DIR"; }
