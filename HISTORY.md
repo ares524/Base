@@ -525,6 +525,30 @@ Jump to:
       routers, wireless access points, private branch exchanges, set-top boxes,
       FTA receivers, smart TVs, personal video recorders, and NAS appliances
 - <https://en.wikipedia.org/wiki/Linux_kernel_interfaces>
+- **<https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine>**
+    - a virtualization module in the Linux kernel that allows the kernel to
+      function as a hypervisor
+    - was merged into the Linux kernel mainline in kernel version 2.6.20, which
+      was released on February 5, 2007
+    - requires a processor with hardware virtualization extensions, such as
+      Intel VT or AMD-V
+- <https://en.wikipedia.org/wiki/Hypervisor>
+    - computer software, firmware or hardware that creates and runs virtual
+      machines
+    - a computer on which a hypervisor runs one or more virtual machines is
+      called a host machine, and each virtual machine is called a guest machine
+    - presents the guest operating systems with a virtual operating platform and
+      manages the execution of the guest operating systems
+- **<https://en.wikipedia.org/wiki/OS-level_virtualization>**
+    - an operating system paradigm in which the kernel allows the existence of
+      multiple isolated user space instances
+    - Such instances, called containers (LXC, Solaris containers, Docker), Zones
+      (Solaris containers), virtual private servers (OpenVZ), partitions,
+      virtual environments (VEs), virtual kernels (DragonFly BSD), or jails
+      (FreeBSD jail or chroot jail), may look like real computers from the point
+      of view of programs running in them
+    - programs running inside of a container can only see the container's
+      contents and devices assigned to the container
 - <https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs>
     - originally developed, starting in the late 1980s
     - team was initially led by Rob Pike, Ken Thompson, Dave Presotto and Phil
