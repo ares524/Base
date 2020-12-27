@@ -26,6 +26,7 @@ OPEN_SOURCE_RUST_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/rust"
 OPEN_SOURCE_SASS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/sass"
 OPEN_SOURCE_SCALA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/scala"
 OPEN_SOURCE_SHELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/shell"
+OPEN_SOURCE_STARLARK_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/starlark"
 OPEN_SOURCE_SWIFT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/swift"
 OPEN_SOURCE_TYPESCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/typescript"
 OPEN_SOURCE_VIMSCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/vimscript"
@@ -282,6 +283,11 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/99designs/gqlgen
     https://github.com/Netflix/chaosmonkey
     https://github.com/apex/up
+    https://github.com/bazelbuild/bazel-gazelle
+    https://github.com/bazelbuild/bazel-watcher
+    https://github.com/bazelbuild/bazelisk
+    https://github.com/bazelbuild/buildtools
+    https://github.com/bazelbuild/rules_webtesting
     https://github.com/caddyserver/caddy
     https://github.com/dgraph-io/dgraph
     https://github.com/docker/docker-ce
@@ -793,6 +799,37 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/wmnnd/nginx-certbot
 )
 
+OPEN_SOURCE_STARLARK_REPOS=(
+    https://github.com/bazelbuild/bazel-skylib
+    https://github.com/bazelbuild/bazel-toolchains
+    https://github.com/bazelbuild/examples
+    https://github.com/bazelbuild/platforms
+    https://github.com/bazelbuild/remote-apis
+    https://github.com/bazelbuild/rules_android
+    https://github.com/bazelbuild/rules_appengine
+    https://github.com/bazelbuild/rules_apple
+    https://github.com/bazelbuild/rules_cc
+    https://github.com/bazelbuild/rules_closure
+    https://github.com/bazelbuild/rules_docker
+    https://github.com/bazelbuild/rules_foreign_cc
+    https://github.com/bazelbuild/rules_go
+    https://github.com/bazelbuild/rules_groovy
+    https://github.com/bazelbuild/rules_java
+    https://github.com/bazelbuild/rules_jvm_external
+    https://github.com/bazelbuild/rules_k8s
+    https://github.com/bazelbuild/rules_kotlin
+    https://github.com/bazelbuild/rules_nodejs
+    https://github.com/bazelbuild/rules_perl
+    https://github.com/bazelbuild/rules_pkg
+    https://github.com/bazelbuild/rules_proto
+    https://github.com/bazelbuild/rules_python
+    https://github.com/bazelbuild/rules_rust
+    https://github.com/bazelbuild/rules_sass
+    https://github.com/bazelbuild/rules_scala
+    https://github.com/bazelbuild/rules_swift
+    https://github.com/bazelbuild/starlark
+)
+
 OPEN_SOURCE_SWIFT_REPOS=(
     https://github.com/sindresorhus/Gifski
 )
@@ -982,6 +1019,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_SHELL_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_STARLARK_REPOS_DIR"
+    cd "$OPEN_SOURCE_STARLARK_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_STARLARK_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_SWIFT_REPOS_DIR"
     cd "$OPEN_SOURCE_SWIFT_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_SWIFT_REPOS[@]}"; do
@@ -1030,6 +1072,7 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_SASS_REPOS_DIR" ]] && opensource-sass-repos() { cd "$OPEN_SOURCE_SASS_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_SCALA_REPOS_DIR" ]] && opensource-scala-repos() { cd "$OPEN_SOURCE_SCALA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_SHELL_REPOS_DIR" ]] && opensource-shell-repos() { cd "$OPEN_SOURCE_SHELL_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_STARLARK_REPOS_DIR" ]] && opensource-starlark-repos() { cd "$OPEN_SOURCE_STARLARK_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_SWIFT_REPOS_DIR" ]] && opensource-swift-repos() { cd "$OPEN_SOURCE_SWIFT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR" ]] && opensource-typescript-repos() { cd "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR" ]] && opensource-vimscript-repos() { cd "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR"; }
