@@ -288,6 +288,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/99designs/gqlgen
     https://github.com/Netflix/chaosmonkey
     https://github.com/apex/up
+    https://github.com/aws/aws-sdk-go
     https://github.com/bazelbuild/bazel-gazelle
     https://github.com/bazelbuild/bazel-watcher
     https://github.com/bazelbuild/bazelisk
@@ -333,6 +334,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/kubeless/kubeless
     https://github.com/kubernetes-sigs/controller-runtime
     https://github.com/kubernetes-sigs/kind
+    https://github.com/kubernetes-sigs/kubefed
     https://github.com/kubernetes-sigs/kustomize
     https://github.com/kubernetes-up-and-running/kuard
     https://github.com/kubernetes/code-generator
@@ -452,6 +454,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/knex/knex
     https://github.com/kriasoft/react-starter-kit
     https://github.com/lodash/lodash
+    https://github.com/mesosphere/reactjs-components
     https://github.com/parse-community/parse-dashboard
     https://github.com/parse-community/parse-server
     https://github.com/pinterest/bonsai
@@ -761,8 +764,9 @@ OPEN_SOURCE_RUST_REPOS=(
     https://github.com/RedBeardLab/rediSQL
     https://github.com/actix/actix-web
     https://github.com/erickt/rust-zmq
-    https://github.com/hyperium/hyper
+    https://github.com/firecracker-microvm/firecracker
     https://github.com/gyscos/cursive
+    https://github.com/hyperium/hyper
     https://github.com/mitsuhiko/redis-rs
     https://github.com/rust-lang/cargo
     https://github.com/rust-lang/rust
@@ -898,6 +902,7 @@ OPEN_SOURCE_VIMSCRIPT_REPOS=(
 )
 
 OPEN_SOURCE_YAML_REPOS=(
+    https://github.com/cmays20/sonar-gitops
     https://github.com/fluxcd/flux-kustomize-example
     https://github.com/fluxcd/helm-operator-get-started
 )
