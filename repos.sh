@@ -342,6 +342,13 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/uber/kraken
     https://github.com/uber/peloton
     https://github.com/uber/prototool
+    https://github.com/weaveworks/eksctl
+    https://github.com/weaveworks/footloose
+    https://github.com/weaveworks/ignite
+    https://github.com/weaveworks/kured
+    https://github.com/weaveworks/scope
+    https://github.com/weaveworks/weave
+    https://github.com/weaveworks/wksctl
     https://github.com/xo/usql
 )
 
@@ -683,6 +690,8 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/unitedstates/congress
     https://github.com/unitedstates/python-us
     https://github.com/warner/magic-wormhole
+    https://github.com/weaveworks/grafanalib
+    https://github.com/weaveworks/kubediff
     https://github.com/ycm-core/YouCompleteMe
     # https://github.com/ytdl-org/youtube-dl
     https://github.com/yunjey/pytorch-tutorial
@@ -780,6 +789,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/rupa/z
     https://github.com/sindresorhus/pure
     https://github.com/spinnaker/spinnaker
+    https://github.com/weaveworks/wks-quickstart-firekube
     https://github.com/wmnnd/nginx-certbot
 )
 
