@@ -778,6 +778,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/APIs-guru/graphql-voyager
     https://github.com/FormidableLabs/urql
     https://github.com/angular/angular
+    https://github.com/angular/protractor
     https://github.com/ant-design/ant-design
     https://github.com/ant-design/ant-design-pro
     https://github.com/ant-design/ant-motion
