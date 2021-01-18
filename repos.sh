@@ -459,11 +459,13 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/hakimel/reveal.js
     https://github.com/hapijs/hapi
     https://github.com/hasura/graphql-engine
+    https://github.com/hnasr/javascript_playground
     https://github.com/hoppscotch/hoppscotch
     https://github.com/hubotio/hubot
     https://github.com/jfo8000/ScratchJr-Desktop
     https://github.com/knex/knex
     https://github.com/kriasoft/react-starter-kit
+    https://github.com/laurent22/joplin
     https://github.com/lodash/lodash
     https://github.com/mesosphere/reactjs-components
     https://github.com/parse-community/parse-dashboard
