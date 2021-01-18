@@ -805,6 +805,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/asdf-vm/asdf
     https://github.com/graphql/graphql-spec
     https://github.com/iredmail/iRedMail
+    https://github.com/jakeday/linux-surface
     https://github.com/kudobuilder/operators
     https://github.com/kubernetes-sigs/kubespray
     https://github.com/lowendbox/lowendscript
