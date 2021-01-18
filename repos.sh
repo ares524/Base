@@ -303,6 +303,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/bazelbuild/buildtools
     https://github.com/bazelbuild/rules_webtesting
     https://github.com/caddyserver/caddy
+    https://github.com/containernetworking/cni
     https://github.com/dgraph-io/dgraph
     https://github.com/docker/docker-ce
     https://github.com/docker/machine
@@ -355,10 +356,12 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/moby/moby
     https://github.com/mongodb/mongo-go-driver
     https://github.com/nanomsg/mangos
+    https://github.com/nginxinc/kubernetes-ingress
     https://github.com/pebbe/zmq4
     https://github.com/pingcap/tidb
     https://github.com/rancher/k3s
     https://github.com/rancher/rancher
+    https://github.com/syncthing/syncthing
     https://github.com/uber/aresdb
     https://github.com/uber/kraken
     https://github.com/uber/peloton
