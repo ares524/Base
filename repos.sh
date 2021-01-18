@@ -140,6 +140,7 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/fish-shell/fish-shell
     https://github.com/grpc/grpc
     https://github.com/jarulraj/sqlcheck
+    https://github.com/mixxxdj/mixxx
     https://github.com/mongodb/mongo
     https://github.com/nodejs/node
     https://github.com/protocolbuffers/protobuf
@@ -676,8 +677,9 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/quantopian/qgrid
     https://github.com/quantopian/research_public
     https://github.com/quantopian/zipline
-    https://github.com/ray-project/ray
+    https://github.com/rabitt/pysox
     https://github.com/ranger/ranger
+    https://github.com/ray-project/ray
     https://github.com/readthedocs/readthedocs.org
     https://github.com/rq/rq
     https://github.com/sanand0/xmljson
@@ -888,6 +890,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/sindresorhus/is
     https://github.com/sindresorhus/p-queue
     https://github.com/sindresorhus/refined-github
+    https://github.com/stream-labs/streamlabs-obs
     https://github.com/teambit/bit
     https://github.com/typeorm/typeorm
     https://github.com/typicode/husky
