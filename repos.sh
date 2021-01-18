@@ -37,6 +37,7 @@ OPEN_SOURCE_ALGORITHMS_REPOS=(
     https://github.com/TheAlgorithms/Algorithms-Explanation
     https://github.com/TheAlgorithms/C
     https://github.com/TheAlgorithms/C-Plus-Plus
+    https://github.com/TheAlgorithms/C-Sharp
     https://github.com/TheAlgorithms/Go
     https://github.com/TheAlgorithms/Java
     https://github.com/TheAlgorithms/Javascript
@@ -148,7 +149,10 @@ OPEN_SOURCE_CPP_REPOS=(
 )
 
 OPEN_SOURCE_C_SHARP_REPOS=(
+    https://github.com/craftworkgames/MonoGame.Extended
+    https://github.com/dotnet/csharplang
     https://github.com/monogame/monogame
+    https://github.com/monogame/monogame.samples
 )
 
 OPEN_SOURCE_DART_REPOS=(
@@ -191,6 +195,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/adomokos/Vim-Katas
     https://github.com/airbnb/javascript
     https://github.com/alebcay/awesome-shell
+    https://github.com/aloisdeniel/awesome-monogame
     https://github.com/avelino/awesome-go
     https://github.com/awesomedata/awesome-public-datasets
     https://github.com/bayandin/awesome-awesomeness
