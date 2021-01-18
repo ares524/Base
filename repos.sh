@@ -94,6 +94,8 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/mirror/dd-wrt
     https://github.com/mirror/ncurses
     https://github.com/mirror/xmlrpc-c
+    https://github.com/mit-pdos/xv6-public
+    https://github.com/mit-pdos/xv6-riscv
     https://github.com/nanomsg/nanomsg
     https://github.com/nanomsg/nng
     https://github.com/nginx/nginx
