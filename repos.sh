@@ -607,6 +607,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/edgedb/edgedb
     https://github.com/elastic/elasticsearch-py
     https://github.com/encode/django-rest-framework
+    https://github.com/epsagon/clear-lambda-storage
     https://github.com/eriklindernoren/ML-From-Scratch
     https://github.com/fabric/fabric
     https://github.com/facebook/prophet
