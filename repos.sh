@@ -295,6 +295,7 @@ OPEN_SOURCE_ERLANG_REPOS=(
 OPEN_SOURCE_GO_REPOS=(
     https://github.com/99designs/gqlgen
     https://github.com/Netflix/chaosmonkey
+    https://github.com/alecthomas/chroma
     https://github.com/apex/up
     https://github.com/aws/aws-sdk-go
     https://github.com/bazelbuild/bazel-gazelle
@@ -355,12 +356,17 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/linkerd/linkerd2
     https://github.com/moby/moby
     https://github.com/mongodb/mongo-go-driver
+    https://github.com/muesli/smartcrop
     https://github.com/nanomsg/mangos
     https://github.com/nginxinc/kubernetes-ingress
     https://github.com/pebbe/zmq4
     https://github.com/pingcap/tidb
     https://github.com/rancher/k3s
     https://github.com/rancher/rancher
+    https://github.com/spf13/afero
+    https://github.com/spf13/cast
+    https://github.com/spf13/cobra
+    https://github.com/spf13/viper
     https://github.com/syncthing/syncthing
     https://github.com/uber/aresdb
     https://github.com/uber/kraken
@@ -374,6 +380,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/weaveworks/weave
     https://github.com/weaveworks/wksctl
     https://github.com/xo/usql
+    https://github.com/yuin/goldmark
 )
 
 OPEN_SOURCE_HASKELL_REPOS=(
@@ -917,6 +924,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
 OPEN_SOURCE_VIMSCRIPT_REPOS=(
     https://github.com/VundleVim/Vundle.vim
     https://github.com/christoomey/vim-tmux-navigator
+    https://github.com/spf13/spf13-vim
 )
 
 OPEN_SOURCE_YAML_REPOS=(
