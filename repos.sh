@@ -136,6 +136,7 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/bast/cmake-example
     https://github.com/bitcoin/bitcoin
     https://github.com/blakesmith/embedded
+    https://github.com/brndnmtthws/conky
     https://github.com/electron/electron
     https://github.com/fish-shell/fish-shell
     https://github.com/grpc/grpc
@@ -422,6 +423,7 @@ OPEN_SOURCE_JAVA_REPOS=(
 
 OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/APIs-guru/openapi-directory
+    https://github.com/GitSquared/edex-ui
     https://github.com/Kong/insomnia
     https://github.com/LLK/scratch-blocks
     https://github.com/LLK/scratch-gui
