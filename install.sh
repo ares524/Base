@@ -104,7 +104,7 @@ do_install() {
         brew update || return 1
 
         echo -e "\nInstalling/upgrading packages needed for pyenv..."
-        _brew_install_or_upgrade readline xz pyenv
+        _brew_install_or_upgrade readline xz zlib pyenv
 
         if [[ -n "$extras" ]]; then
             echo -e "\nInstalling/upgrading packages needed for tmux..."
