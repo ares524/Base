@@ -18,7 +18,7 @@ if [[ ! -s "$fname" ]]; then
     echo -e "${note}\n----------\n\n$newdate\n\n" > "$fname" || exit 1
 
     # Open the file with vim (in insert mode, at the end of the file)
-    vim + -c 'startinsert' $fname
+    vim + -c 'startinsert' -c 'set spell' $fname
 
     # Display contents of file to terminal
     cat $fname
@@ -27,7 +27,7 @@ else
     echo -e "\n$newdate\n\n" >> "$fname" || exit 1
 
     # Open the file with vim wherever the cursor was before
-    vim $fname
+    vim -c 'set spell'  $fname
 
     # Show last 30 lines of the file
     tail -n 30 $fname
