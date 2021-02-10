@@ -74,6 +74,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/JoshData/historical-state-population-csv
     https://github.com/Netflix/dynomite
     https://github.com/Perl/perl5
+    https://github.com/PortAudio/portaudio
     https://github.com/X0rg/CPU-X
     https://github.com/antirez/load81
     https://github.com/antirez/rax
@@ -414,6 +415,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/jenkinsci/jenkins
     # https://github.com/mockito/mockit
     https://github.com/seata/seata
+    https://github.com/signalapp/Signal-Android
     https://github.com/square/okhttp
     https://github.com/square/retrofit
     https://github.com/termux/termux-app
