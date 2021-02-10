@@ -449,6 +449,8 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/chartjs/Chart.js
     https://github.com/cypress-io/cypress
     https://github.com/d3/d3
+    https://github.com/dtao/autodoc
+    https://github.com/dtao/lazy.js
     https://github.com/electron/apps
     https://github.com/electron/electron-api-demos
     https://github.com/electron/electron-packager
@@ -765,6 +767,7 @@ OPEN_SOURCE_RUBY_REPOS=(
     https://github.com/capistrano/capistrano
     https://github.com/capistrano/sshkit
     https://github.com/discourse/discourse
+    https://github.com/dtao/safe_yaml
     https://github.com/elastic/logstash
     https://github.com/faker-ruby/faker
     https://github.com/fastlane/fastlane
