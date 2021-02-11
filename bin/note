@@ -6,6 +6,8 @@ if [[ -z "$note" ]]; then
     note="$(date +'%Y_%m%d--%a_hour_%H')"
     title="$(echo $note | tr '_' '-')"
     newdate="## $(date +'%r')"
+else
+    title="$note"
 fi
 
 if [[ "$note" =~ \.md$ ]]; then
