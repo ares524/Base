@@ -4,6 +4,7 @@ note=$1
 newdate="#### \`$(date +'%Y_%m%d %a %r')\`"
 if [[ -z "$note" ]]; then
     note="$(date +'%Y_%m%d--%a_hour_%H')"
+    title="$(echo $note | tr '_' '-')"
     newdate="## $(date +'%r')"
 fi
 
@@ -15,7 +16,7 @@ fi
 
 if [[ ! -s "$fname" ]]; then
     # Genarate the file since it does not exist
-    echo -e "${note}\n----------\n\n$newdate\n\n" > "$fname" || exit 1
+    echo -e "${title}\n----------\n\n$newdate\n\n" > "$fname" || exit 1
 
     # Open the file with vim (in insert mode, at the end of the file)
     vim + -c 'startinsert' -c 'set spell' $fname
