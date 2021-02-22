@@ -445,6 +445,8 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/angular/angular-phonecat
     https://github.com/api-platform/api-platform
     https://github.com/avajs/ava
+    https://github.com/axios/axios
+    https://github.com/axios/moxios
     https://github.com/babel/babel
     https://github.com/bookshelf/bookshelf
     https://github.com/chalk/chalk
