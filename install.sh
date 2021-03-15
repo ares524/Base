@@ -20,6 +20,9 @@ unset clean extras gui all
 # Determine if using Windows Subsystem for Linux
 [[ -n "$(echo $PATH | grep -E '(WINDOWS|Program Files)')" ]] && wsl=yes
 
+# Determine if its a cloud instance
+[[ -d /var/lib/cloud/instance ]] && unset gui
+
 do_install() {
     if [[ -f /usr/bin/apt-get && -n "$(groups | grep -E '(sudo|root)')" ]]; then
         codename=$(lsb_release -cs)
@@ -77,6 +80,8 @@ do_install() {
             fi
             echo -e "\nInstalling GUI packages..."
             sudo apt-get install -y xinit xclip xbindkeys awesome rxvt-unicode-256color feh scrot fonts-inconsolata vlc
+            sudo apt-get install -y recordmydesktop guvcview audacity inkscape gimp gifsicle ripperx lame
+            sudo apt-get install -y gparted emelfm2 evince okular retext libreoffice
         fi
     elif [[ $(uname) == "Darwin" ]]; then
         if [[ ! -f /usr/local/bin/brew ]]; then
