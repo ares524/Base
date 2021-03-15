@@ -1249,7 +1249,7 @@ if type xrandr &>/dev/null; then
                 cmds+=($cmd)
             fi
         done; unset IFS
-        echo -e "\nCurrent:\n$(connected-displays)\n\nExecuting:"
+        echo -e "\nCurrent:\n$(xrandr-connected-displays)\n\nExecuting:"
         for cmd in "${cmds[@]}"; do
             echo " -> $cmd"
             eval "$cmd"
