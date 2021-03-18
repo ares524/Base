@@ -30,7 +30,7 @@ else
     echo -e "\n$newdate\n\n" >> "$fname" || exit 1
 
     # Open the file with vim wherever the cursor was before
-    vim -c 'set spell'  $fname
+    vim -c 'set spell' $fname
 
     # Show last 30 lines of the file
     tail -n 30 $fname
