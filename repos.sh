@@ -308,6 +308,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/caddyserver/caddy
     https://github.com/containernetworking/cni
     https://github.com/dgraph-io/dgraph
+    https://github.com/dmacvicar/terraform-provider-libvirt
     https://github.com/docker/docker-ce
     https://github.com/docker/machine
     https://github.com/elastic/beats
@@ -426,6 +427,7 @@ OPEN_SOURCE_JAVA_REPOS=(
 OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/APIs-guru/openapi-directory
     https://github.com/GitSquared/edex-ui
+    https://github.com/GoogleChrome/lighthouse
     https://github.com/Kong/insomnia
     https://github.com/LLK/scratch-blocks
     https://github.com/LLK/scratch-gui
@@ -468,6 +470,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/gatsbyjs/gatsby
     https://github.com/gatsbyjs/gatsby-starter-blog
     https://github.com/gatsbyjs/gatsby-starter-hello-world
+    https://github.com/gorhill/uBlock
     https://github.com/graphile/postgraphile
     https://github.com/graphite-project/graphite-web
     https://github.com/graphql/express-graphql
@@ -485,6 +488,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/mesosphere/reactjs-components
     https://github.com/parse-community/parse-dashboard
     https://github.com/parse-community/parse-server
+    https://github.com/philc/vimium
     https://github.com/pinterest/bonsai
     https://github.com/pinterest/teletraan
     https://github.com/postmanlabs/newman
@@ -539,6 +543,8 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/xojs/xo
     https://github.com/yarnpkg/yarn
     https://github.com/yhat/rodeo
+    https://github.com/zettlr/zettlr
+    https://github.com/zotero/zotero
 )
 
 OPEN_SOURCE_JULIA_REPOS=(
@@ -557,6 +563,7 @@ OPEN_SOURCE_KOTLIN_REPOS=(
     https://github.com/Kotlin/kotlin-examples
     https://github.com/Kotlin/kotlin-fullstack-sample
     https://github.com/Kotlin/kotlinx.coroutines
+    https://github.com/google/flexbox-layout
 )
 
 OPEN_SOURCE_LUA_REPOS=(
@@ -566,6 +573,7 @@ OPEN_SOURCE_LUA_REPOS=(
 )
 
 OPEN_SOURCE_PYTHON_REPOS=(
+    https://github.com/AlexIoannides/pyspark-example-project
     https://github.com/JoshData/python-email-validator
     https://github.com/Julian/jsonschema
     https://github.com/Legrandin/pycryptodome
@@ -669,6 +677,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/mwaskom/seaborn
     https://github.com/nicolargo/glances
     https://github.com/nltk/nltk
+    https://github.com/nteract/papermill
     https://github.com/numpy/numpy
     https://github.com/odoo/odoo
     https://github.com/openai/gym
@@ -703,6 +712,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/ray-project/ray
     https://github.com/readthedocs/readthedocs.org
     https://github.com/rq/rq
+    https://github.com/samuelcolvin/pydantic
     https://github.com/sanand0/xmljson
     https://github.com/scikit-learn/scikit-learn
     https://github.com/scrapy/scrapy
@@ -745,17 +755,25 @@ OPEN_SOURCE_PYTHON_REPOS=(
 
 OPEN_SOURCE_PYTHON_ASYNC_REPOS=(
     https://github.com/MagicStack/asyncpg
+    https://github.com/MagicStack/httptools
     https://github.com/MagicStack/uvloop
     https://github.com/aio-libs/aiobotocore
     https://github.com/aio-libs/aiohttp
     https://github.com/aio-libs/aioredis
     https://github.com/ashleysommer/sanic-cors
+    https://github.com/dagster-io/dagster
+    https://github.com/encode/databases
+    https://github.com/encode/httpx
+    https://github.com/encode/orm
     https://github.com/encode/starlette
+    https://github.com/encode/uvicorn
     https://github.com/huge-success/sanic
+    https://github.com/mongodb/motor
+    https://github.com/taoufik07/responder
+    https://github.com/tiangolo/fastapi
+    https://github.com/vibora-io/vibora
     https://gitlab.com/pgjones/hypercorn
     https://gitlab.com/pgjones/quart
-    https://github.com/taoufik07/responder
-    https://github.com/vibora-io/vibora
 )
 
 OPEN_SOURCE_RUBY_REPOS=(
@@ -891,6 +909,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/apollographql/graphql-tools
     https://github.com/apollographql/react-apollo
     https://github.com/botpress/botpress
+    https://github.com/conwnet/github1s
     https://github.com/devhubapp/devhub
     https://github.com/dotansimha/graphql-code-generator
     https://github.com/elastic/kibana
