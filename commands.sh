@@ -784,6 +784,16 @@ grepit-py-imports-no-tests() {
     grepit-py-no-tests -E "(from.*import|import)"
 }
 
+grepit-md() {
+    [[ -z "$@" ]] && return 1
+    grep -HnI --color -R --include=\*.md --exclude-dir=venv --exclude-dir=env --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=.cache --exclude-dir=.eggs --exclude-dir=\*.egg-info --exclude-dir=__pycache__ --exclude-dir=.pytest_cache "$@" \.
+}
+
+grepit-md-include-venv-and-node_modules() {
+    [[ -z "$@" ]] && return 1
+    grep -HnI --color -R --include=\*.md --exclude-dir=dist --exclude-dir=build --exclude-dir=.cache --exclude-dir=.eggs --exclude-dir=\*.egg-info --exclude-dir=__pycache__ --exclude-dir=.pytest_cache "$@" \.
+}
+
 grepit-no-docs() {
     grepit --exclude=\*.{txt,md,rst,log} --exclude-dir=\*.dist-info "$@"
 }
