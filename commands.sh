@@ -7,8 +7,68 @@ alias ....="cd ../../.."
 
 cdd() { mkdir -p "$1" && cd "$1" && pwd; }
 
-[[ -f "$HOME/.base_path" ]] && base() { cd $(cat "$HOME/.base_path"); }
-[[ -f "$HOME/.dotfiles_path" ]] && dotfiles() { cd $(cat "$HOME/.dotfiles_path"); }
+if [[ -f "$HOME/.base_path" ]]; then
+    base() {
+        cd $(cat "$HOME/.base_path")
+    }
+
+    base-update() {
+        oldpwd=$(pwd)
+        base
+        _swps=$(swps)
+        if [[ -n "$_swps" ]]; then
+            echo "There are swp files found in 'base' dir, not updating"
+            echo -e "\n$_swps"
+            cd "$oldpwd"
+            return 1
+        fi
+        repos-update
+        echo -e "\n\nC U R R E N T   S T A T U S"
+        repos-status
+        install_changed=$(git log --oneline --name-status HEAD@{1}.. | grep 'install.sh')
+        if [[ -n "$install_changed" ]]; then
+            echo -e "\n\nB A S E   S E T U P   (install.sh was updated)"
+            conflicts=$(git status -s | grep '^UU')
+            if [[ -n "$conflicts" ]]; then
+                echo -e "Merge conflicts! Not running install\n$conflicts"
+            else
+                source ./install.sh
+            fi
+        fi
+        cd "$oldpwd"
+    }
+fi
+if [[ -f "$HOME/.dotfiles_path" ]]; then
+    dotfiles() {
+        cd $(cat "$HOME/.dotfiles_path")
+    }
+
+    dotfiles-update() {
+        oldpwd=$(pwd)
+        dotfiles
+        _swps=$(swps)
+        if [[ -n "$_swps" ]]; then
+            echo "There are swp files found in 'dotfiles' dir, not updating"
+            echo -e "\n$_swps"
+            cd "$oldpwd"
+            return 1
+        fi
+        repos-update
+        echo -e "\n\nC U R R E N T   S T A T U S"
+        repos-status
+        setup_changed=$(git log --oneline --name-status HEAD@{1}.. | grep 'setup.bash')
+        if [[ -n "$setup_changed" ]]; then
+            echo -e "\n\nD O T F I L E S   S E T U P   (setup.bash was updated)"
+            conflicts=$(git status -s | grep '^UU')
+            if [[ -n "$conflicts" ]]; then
+                echo -e "Merge conflicts! Not running install\n$conflicts"
+            else
+                bash ./setup.bash
+            fi
+        fi
+        cd "$oldpwd"
+    }
+fi
 
 # Use GNU find, grep, sort, and xargs if on a Mac
 if [[ $(uname) == "Darwin" ]]; then
