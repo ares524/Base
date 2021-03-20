@@ -636,7 +636,7 @@ fi
 #################### findit ####################
 
 swps() {
-    findit "$@" --pattern ".*sw[po]" --exclude_dirs "node_modules, venv, .git" --stamp 2>/dev/null | sort
+    findit "$@" --pattern ".*sw[po]" --exclude_dirs "node_modules, venv, .git, opensource" --stamp 2>/dev/null | sort
 }
 
 #################### git ####################
