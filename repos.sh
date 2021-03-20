@@ -463,6 +463,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/electron/electron-quick-start
     https://github.com/eslint/eslint
     https://github.com/expressjs/express
+    https://github.com/expressjs/generator
     https://github.com/facebook/create-react-app
     https://github.com/facebook/react
     https://github.com/facebook/react-native
