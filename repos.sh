@@ -14,6 +14,7 @@ OPEN_SOURCE_ELIXIR_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/elixir"
 OPEN_SOURCE_ERLANG_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/erlang"
 OPEN_SOURCE_GO_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/go"
 OPEN_SOURCE_HASKELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/haskell"
+OPEN_SOURCE_HTML_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/html"
 OPEN_SOURCE_JAVA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/java"
 OPEN_SOURCE_JAVASCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/javascript"
 OPEN_SOURCE_JULIA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/julia"
@@ -388,6 +389,10 @@ OPEN_SOURCE_GO_REPOS=(
 
 OPEN_SOURCE_HASKELL_REPOS=(
     https://github.com/jgm/pandoc
+)
+
+OPEN_SOURCE_HTML_REPOS=(
+    https://github.com/leonardofaria/bento
 )
 
 OPEN_SOURCE_JAVA_REPOS=(
@@ -1024,6 +1029,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_HASKELL_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_HTML_REPOS_DIR"
+    cd "$OPEN_SOURCE_HTML_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_HTML_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_JAVA_REPOS_DIR"
     cd "$OPEN_SOURCE_JAVA_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_JAVA_REPOS[@]}"; do
@@ -1130,6 +1140,7 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_ERLANG_REPOS_DIR" ]] && opensource-erlang-repos() { cd "$OPEN_SOURCE_ERLANG_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_GO_REPOS_DIR" ]] && opensource-go-repos() { cd "$OPEN_SOURCE_GO_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_HASKELL_REPOS_DIR" ]] && opensource-haskell-repos() { cd "$OPEN_SOURCE_HASKELL_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_HTML_REPOS_DIR" ]] && opensource-html-repos() { cd "$OPEN_SOURCE_HTML_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_JAVA_REPOS_DIR" ]] && opensource-java-repos() { cd "$OPEN_SOURCE_JAVA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR" ]] && opensource-javascript-repos() { cd "$OPEN_SOURCE_JAVASCRIPT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_JULIA_REPOS_DIR" ]] && opensource-julia-repos() { cd "$OPEN_SOURCE_JULIA_REPOS_DIR"; }
