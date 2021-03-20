@@ -718,7 +718,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/scikit-learn/scikit-learn
     https://github.com/scrapy/scrapy
     https://github.com/seatgeek/fuzzywuzzy
-    https://github.com/seperman/deepdiff
+    # https://github.com/seperman/deepdiff
     https://github.com/sloria/TextBlob
     https://github.com/soimort/you-get
     https://github.com/sovereign/sovereign
