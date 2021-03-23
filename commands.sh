@@ -15,9 +15,10 @@ if [[ -f "$HOME/.base_path" ]]; then
     base-update() {
         oldpwd=$(pwd)
         base
+        echo -e "\n\nU P D A T I N G   B A S E   R E P O"
         _swps=$(swps)
         if [[ -n "$_swps" ]]; then
-            echo "There are swp files found in 'base' dir, not updating"
+            echo -e "\nThere are swp files found in 'base' dir, not updating"
             echo -e "\n$_swps"
             cd "$oldpwd"
             return 1
@@ -46,9 +47,10 @@ if [[ -f "$HOME/.dotfiles_path" ]]; then
     dotfiles-update() {
         oldpwd=$(pwd)
         dotfiles
+        echo -e "\n\nU P D A T I N G   D O T F I L E S   R E P O"
         _swps=$(swps)
         if [[ -n "$_swps" ]]; then
-            echo "There are swp files found in 'dotfiles' dir, not updating"
+            echo -e "\nThere are swp files found in 'dotfiles' dir, not updating"
             echo -e "\n$_swps"
             cd "$oldpwd"
             return 1
