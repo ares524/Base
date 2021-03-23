@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 path="${1:-.}"
-path="$(realpath ${path%/})"        # remove trailing slash if there
+if type realpath &>/dev/null; then
+    path="$(realpath ${path%/})"        # remove trailing slash if there
+else
+    echo -e "\n(realpath command not available, falling back to pwd)\n"
+    path="$(pwd)"
+fi
 test_path="$path"
 while [[ ! -s "$test_path/.git" && "$test_path" != "/" ]]; do
     test_path=$(dirname $test_path)
