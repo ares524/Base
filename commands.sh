@@ -633,6 +633,52 @@ etc-passwd() {
 if type feh &>/dev/null; then
     alias feh="feh -x --scale-down"
     alias fehf="feh -F --zoom max"
+
+    if [[ -f "$HOME/wallpapers/select.sh" ]]; then
+        wallpaper-select-mode() {
+            echo "Select wallpaper mode"
+            choices=(one random none)
+            select choice in "${choices[@]}"; do
+                echo "$choice" > $HOME/.selected_wallpaper_mode
+                break
+            done
+        }
+
+        wallpaper-select() {
+            echo "one" > $HOME/.selected_wallpaper_mode
+            "$HOME/wallpapers/select.sh"
+        }
+    fi
+
+    if [[ -n "$DISPLAY" ]]; then
+        if [[ -f $HOME/.selected_wallpaper_mode ]]; then
+            wallpaper_mode=$(cat $HOME/.selected_wallpaper_mode)
+        else
+            echo "none" > $HOME/.selected_wallpaper_mode
+            wallpaper_mode=none
+        fi
+
+        if [[ "$wallpaper_mode" = "random" ]]; then
+            if [[ -d $HOME/wallpapers/landscape ]]; then
+                feh --randomize --recursive --bg-fill $HOME/wallpapers/landscape 2>/dev/null
+            fi
+        elif [[ "$wallpaper_mode" = "one" ]]; then
+            if [[ -f $HOME/.selected_wallpaper_file ]]; then
+                selected_wallpaper=$(cat $HOME/.selected_wallpaper_file)
+                if [[ ! -f "$selected_wallpaper" ]]; then
+                    cd "$HOME/wallpapers"
+                    ./download.sh
+                    cd -
+                fi
+                feh --bg-fill $selected_wallpaper 2>/dev/null
+            else
+                "$HOME/wallpapers/select.sh"
+            fi
+        elif [[ "$wallpaper_mode" != "none" ]]; then
+            echo -e "\nDo not understand this wallpaper_mode: $wallpaper_mode"
+            rm $HOME/.selected_wallpaper_mode
+        fi
+    fi
 fi
 
 #################### findit ####################
