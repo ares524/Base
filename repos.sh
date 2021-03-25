@@ -489,6 +489,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/jfo8000/ScratchJr-Desktop
     https://github.com/knex/knex
     https://github.com/kriasoft/react-starter-kit
+    https://github.com/krisk/Fuse/
     https://github.com/laurent22/joplin
     https://github.com/lodash/lodash
     https://github.com/mesosphere/reactjs-components
