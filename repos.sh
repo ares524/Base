@@ -202,6 +202,7 @@ OPEN_SOURCE_DART_REPOS=(
 )
 
 OPEN_SOURCE_DOCKERFILE_REPOS=(
+    https://github.com/HariSekhon/Dockerfiles
     https://github.com/alpine-docker/ansible-tower
     https://github.com/alpine-docker/flake8
     https://github.com/alpine-docker/git
@@ -328,6 +329,7 @@ OPEN_SOURCE_ERLANG_REPOS=(
 
 OPEN_SOURCE_GO_REPOS=(
     https://github.com/99designs/gqlgen
+    https://github.com/HariSekhon/DevOps-Golang-tools
     https://github.com/Netflix/chaosmonkey
     https://github.com/alecthomas/chroma
     https://github.com/apex/up
@@ -643,6 +645,7 @@ OPEN_SOURCE_PERL_REPOS=(
 
 OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/AlexIoannides/pyspark-example-project
+    https://github.com/HariSekhon/DevOps-Python-tools
     https://github.com/JoshData/python-email-validator
     https://github.com/Julian/jsonschema
     https://github.com/Legrandin/pycryptodome
@@ -905,6 +908,7 @@ OPEN_SOURCE_SCALA_REPOS=(
 OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/Bash-it/bash-it
     https://github.com/JonasAlfredsson/docker-nginx-certbot/
+    https://github.com/HariSekhon/DevOps-Bash-tools
     https://github.com/Netflix/dispatch-docker
     https://github.com/acmesh-official/acme.sh
     https://github.com/alpinelinux/alpine-chroot-install
@@ -1034,6 +1038,7 @@ OPEN_SOURCE_VIMSCRIPT_REPOS=(
 )
 
 OPEN_SOURCE_YAML_REPOS=(
+    https://github.com/HariSekhon/Kubernetes-templates
     https://github.com/cmays20/sonar-gitops
     https://github.com/fluxcd/flux-kustomize-example
     https://github.com/fluxcd/helm-operator-get-started
