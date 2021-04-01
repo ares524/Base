@@ -203,6 +203,7 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/brndnmtthws/conky
     https://github.com/electron/electron
     https://github.com/fish-shell/fish-shell
+    https://github.com/google/flatbuffers
     https://github.com/grpc/grpc
     https://github.com/jarulraj/sqlcheck
     https://github.com/mixxxdj/mixxx
@@ -324,6 +325,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/razum2um/awesome-clojure
     https://github.com/satwikkansal/wtfpython
     https://github.com/sdmg15/Best-websites-a-programmer-should-visit
+    https://github.com/serhii-londar/open-source-mac-os-apps
     https://github.com/sindresorhus/awesome
     https://github.com/sindresorhus/awesome-nodejs
     https://github.com/sorrycc/awesome-javascript
