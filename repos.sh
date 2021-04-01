@@ -870,6 +870,7 @@ OPEN_SOURCE_SCALA_REPOS=(
 
 OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/Bash-it/bash-it
+    https://github.com/JonasAlfredsson/docker-nginx-certbot/
     https://github.com/Netflix/dispatch-docker
     https://github.com/acmesh-official/acme.sh
     https://github.com/alpinelinux/alpine-chroot-install
@@ -877,8 +878,8 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/graphql/graphql-spec
     https://github.com/iredmail/iRedMail
     https://github.com/jakeday/linux-surface
-    https://github.com/kudobuilder/operators
     https://github.com/kubernetes-sigs/kubespray
+    https://github.com/kudobuilder/operators
     https://github.com/lowendbox/lowendscript
     https://github.com/nginx-proxy/docker-letsencrypt-nginx-proxy-companion
     https://github.com/nginx-proxy/nginx-proxy
