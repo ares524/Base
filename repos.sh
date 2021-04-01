@@ -5,6 +5,7 @@ OPEN_SOURCE_REPOS_DIR="$REPOS_DIR/opensource"
 OPEN_SOURCE_ALGORITHMS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/algorithms"
 OPEN_SOURCE_BOOKS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/books"
 OPEN_SOURCE_C_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c"
+OPEN_SOURCE_CLOJURE_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/clojure"
 OPEN_SOURCE_CPP_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c++"
 OPEN_SOURCE_C_SHARP_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c_sharp"
 OPEN_SOURCE_DART_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/dart"
@@ -131,6 +132,31 @@ OPEN_SOURCE_C_REPOS=(
     https://sourceware.org/git/lvm2.git
 )
 
+OPEN_SOURCE_CLOJURE_REPOS=(
+    https://github.com/LightTable/LightTable
+    https://github.com/bbatsov/clojure-style-guide
+    https://github.com/clojure/clojurescript
+    https://github.com/http-kit/http-kit
+    https://github.com/logseq/logseq
+    https://github.com/matthiasn/meins
+    https://github.com/metabase/metabase
+    https://github.com/pedestal/pedestal
+    https://github.com/penpot/penpot
+    https://github.com/reagent-project/reagent
+    https://github.com/riemann/riemann
+    https://github.com/ring-clojure/ring
+    https://github.com/status-im/status-react
+    https://github.com/tonsky/datascript
+    https://github.com/viebel/klipse
+    https://github.com/weavejester/cljfmt
+    https://github.com/weavejester/codox
+    https://github.com/weavejester/compojure
+    https://github.com/weavejester/hiccup
+    https://github.com/weavejester/integrant
+    https://github.com/weavejester/medley
+    https://github.com/weavejester/ragtime
+)
+
 OPEN_SOURCE_CPP_REPOS=(
     https://github.com/alembic/alembic
     https://github.com/apache/arrow
@@ -254,6 +280,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/papers-we-love/papers-we-love
     https://github.com/public-apis/public-apis
     https://github.com/pytorch/examples
+    https://github.com/razum2um/awesome-clojure
     https://github.com/satwikkansal/wtfpython
     https://github.com/sdmg15/Best-websites-a-programmer-should-visit
     https://github.com/sindresorhus/awesome
@@ -410,6 +437,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/apache/tomcat
     https://github.com/apache/zeppelin
     https://github.com/bazelbuild/bazel
+    https://github.com/clojure/clojure
     https://github.com/dbeaver/dbeaver
     https://github.com/elastic/elasticsearch
     https://github.com/google/guava
@@ -985,6 +1013,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_C_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_CLOJURE_REPOS_DIR"
+    cd "$OPEN_SOURCE_CLOJURE_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_CLOJURE_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_CPP_REPOS_DIR"
     cd "$OPEN_SOURCE_CPP_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_CPP_REPOS[@]}"; do
@@ -1132,6 +1165,7 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_ALGORITHMS_REPOS_DIR" ]] && opensource-algorithms-repos() { cd "$OPEN_SOURCE_ALGORITHMS_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_BOOKS_REPOS_DIR" ]] && opensource-books-repos() { cd "$OPEN_SOURCE_BOOKS_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_C_REPOS_DIR" ]] && opensource-c-repos() { cd "$OPEN_SOURCE_C_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_CLOJURE_REPOS_DIR" ]] && opensource-clojure-repos() { cd "$OPEN_SOURCE_CLOJURE_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_CPP_REPOS_DIR" ]] && opensource-cpp-repos() { cd "$OPEN_SOURCE_CPP_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_C_SHARP_REPOS_DIR" ]] && opensource-csharp-repos() { cd "$OPEN_SOURCE_C_SHARP_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_DART_REPOS_DIR" ]] && opensource-dart-repos() { cd "$OPEN_SOURCE_DART_REPOS_DIR"; }
