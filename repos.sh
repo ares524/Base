@@ -109,6 +109,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/jarun/nnn
     https://github.com/jedisct1/libsodium
     https://github.com/jonas/tig
+    https://github.com/jonashaag/bjoern
     https://github.com/libevent/libevent
     https://github.com/libuv/libuv
     https://github.com/lua/lua
@@ -122,6 +123,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/nanomsg/nng
     https://github.com/neurobin/shc
     https://github.com/nginx/nginx
+    https://github.com/nodejs/http-parser
     https://github.com/openai/retro
     https://github.com/openssh/openssh-portable
     https://github.com/pipelinedb/pipelinedb
@@ -201,6 +203,7 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/bitcoin/bitcoin
     https://github.com/blakesmith/embedded
     https://github.com/brndnmtthws/conky
+    https://github.com/defold/defold
     https://github.com/electron/electron
     https://github.com/fish-shell/fish-shell
     https://github.com/google/flatbuffers
@@ -488,6 +491,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/bazelbuild/bazel
     https://github.com/clojure/clojure
     https://github.com/dbeaver/dbeaver
+    https://github.com/eclipse/deeplearning4j
     https://github.com/elastic/elasticsearch
     https://github.com/google/guava
     https://github.com/google/rejoiner
@@ -651,6 +655,7 @@ OPEN_SOURCE_JUPYTER_REPOS=(
     https://github.com/jakevdp/PythonDataScienceHandbook
     https://github.com/norvig/pytudes
     https://github.com/trekhleb/homemade-machine-learning
+    https://github.com/twosigma/beakerx
 )
 
 OPEN_SOURCE_KOTLIN_REPOS=(
@@ -1076,6 +1081,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/learnapollo/learnapollo
     https://github.com/microsoft/TypeScript
     https://github.com/mrdoob/three.js
+    https://github.com/nodejs/llhttp
     https://github.com/onelang/OneLang
     https://github.com/percona/grafana-dashboards
     https://github.com/prisma-labs/graphql-playground
