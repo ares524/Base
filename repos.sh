@@ -88,6 +88,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/awesomeWM/awesome
     https://github.com/curl/curl
     https://github.com/git/git
+    https://github.com/hugsy/proxenet
     https://github.com/irssi/irssi
     https://github.com/jarun/dslib
     https://github.com/jarun/keysniffer
@@ -105,6 +106,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/mit-pdos/xv6-riscv
     https://github.com/nanomsg/nanomsg
     https://github.com/nanomsg/nng
+    https://github.com/neurobin/shc
     https://github.com/nginx/nginx
     https://github.com/openai/retro
     https://github.com/openssh/openssh-portable
@@ -228,6 +230,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/0xAX/linux-insides
     https://github.com/30-seconds/30-seconds-of-code
     https://github.com/APIs-guru/graphql-apis
+    https://github.com/DevDungeon/Cookbook
     https://github.com/Hack-with-Github/Awesome-Hacking
     https://github.com/JamzyWang/awesome-redis
     https://github.com/adomokos/Vim-Katas
@@ -245,6 +248,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/chubin/awesome-console-services
     https://github.com/cjbarber/ToolsOfTheTrade
     https://github.com/danistefanovic/build-your-own-x
+    https://github.com/docker-library/docs
     https://github.com/donnemartin/system-design-primer
     https://github.com/drobakowski/awesome-erlang
     https://github.com/droptheplot/awesome-phoenix
@@ -369,6 +373,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/graphql-go/graphql
     https://github.com/grpc/grpc-go
     https://github.com/hashicorp/consul
+    https://github.com/hashicorp/hcl
     https://github.com/hashicorp/packer
     https://github.com/hashicorp/terraform
     https://github.com/hashicorp/vault
@@ -402,6 +407,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/pingcap/tidb
     https://github.com/rancher/k3s
     https://github.com/rancher/rancher
+    https://github.com/skx/sysbox
     https://github.com/spf13/afero
     https://github.com/spf13/cast
     https://github.com/spf13/cobra
@@ -438,6 +444,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/SeleniumHQ/selenium
     https://github.com/Snailclimb/JavaGuide
     https://github.com/alibaba/fastjson
+    https://github.com/apache/avro
     https://github.com/apache/dubbo
     https://github.com/apache/groovy
     https://github.com/apache/kafka
@@ -737,10 +744,12 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/jupyterhub/binderhub
     https://github.com/jupyterhub/jupyterhub
     https://github.com/jupyterhub/the-littlest-jupyterhub
+    https://github.com/kaxap/arl
     https://github.com/keon/algorithms
     https://github.com/keras-team/keras
     https://github.com/kivy/kivy
     https://github.com/kivy/python-for-android
+    https://github.com/linode/linode-cli
     https://github.com/localstack/localstack
     https://github.com/locustio/locust
     https://github.com/lxml/lxml
@@ -752,6 +761,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/mongodb/mongo-python-driver
     https://github.com/mvantellingen/python-zeep
     https://github.com/mwaskom/seaborn
+    https://github.com/mzfr/rsh
     https://github.com/neo4j/neo4j-python-driver
     https://github.com/nicolargo/glances
     https://github.com/nltk/nltk
@@ -913,17 +923,21 @@ OPEN_SOURCE_SCALA_REPOS=(
 
 OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/Bash-it/bash-it
-    https://github.com/JonasAlfredsson/docker-nginx-certbot/
     https://github.com/HariSekhon/DevOps-Bash-tools
+    https://github.com/JonasAlfredsson/docker-nginx-certbot
     https://github.com/Netflix/dispatch-docker
+    https://github.com/Spearfoot/FreeNAS-scripts
     https://github.com/acmesh-official/acme.sh
     https://github.com/alpinelinux/alpine-chroot-install
     https://github.com/asdf-vm/asdf
     https://github.com/graphql/graphql-spec
     https://github.com/iredmail/iRedMail
     https://github.com/jakeday/linux-surface
+    https://github.com/kaitai-io/kaitai_struct
     https://github.com/kubernetes-sigs/kubespray
     https://github.com/kudobuilder/operators
+    https://github.com/learnbyexample/Command-line-text-processing
+    https://github.com/learnbyexample/scripting_course
     https://github.com/lowendbox/lowendscript
     https://github.com/nginx-proxy/docker-letsencrypt-nginx-proxy-companion
     https://github.com/nginx-proxy/nginx-proxy
@@ -933,6 +947,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/paoloantinori/hhighlighter
     https://github.com/pyenv/pyenv
     https://github.com/rupa/z
+    https://github.com/security-cheatsheet/reverse-shell-cheatsheet
     https://github.com/sindresorhus/pure
     https://github.com/spinnaker/spinnaker
     https://github.com/weaveworks/wks-quickstart-firekube
@@ -1013,6 +1028,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/learnapollo/learnapollo
     https://github.com/microsoft/TypeScript
     https://github.com/mrdoob/three.js
+    https://github.com/onelang/OneLang
     https://github.com/percona/grafana-dashboards
     https://github.com/prisma-labs/graphql-playground
     https://github.com/pubkey/rxdb
