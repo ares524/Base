@@ -219,6 +219,7 @@ OPEN_SOURCE_DOCKERFILE_REPOS=(
     https://github.com/fedora-cloud/fedora-container-release
     https://github.com/gliderlabs/docker-alpine
     https://github.com/jessfraz/dockerfiles
+    https://github.com/neo4j/docker-neo4j
     https://github.com/pyca/infra
     https://gitlab.archlinux.org/archlinux/archlinux-docker
 )
@@ -395,6 +396,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/mongodb/mongo-go-driver
     https://github.com/muesli/smartcrop
     https://github.com/nanomsg/mangos
+    https://github.com/neo4j/neo4j-go-driver
     https://github.com/nginxinc/kubernetes-ingress
     https://github.com/pebbe/zmq4
     https://github.com/pingcap/tidb
@@ -454,6 +456,8 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/iluwatar/java-design-patterns
     https://github.com/jenkinsci/jenkins
     # https://github.com/mockito/mockit
+    https://github.com/neo4j/graph-data-science
+    https://github.com/neo4j/neo4j
     https://github.com/seata/seata
     https://github.com/signalapp/Signal-Android
     https://github.com/square/okhttp
@@ -527,6 +531,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/laurent22/joplin
     https://github.com/lodash/lodash
     https://github.com/mesosphere/reactjs-components
+    https://github.com/neo4j/neo4j-javascript-driver
     https://github.com/parse-community/parse-dashboard
     https://github.com/parse-community/parse-server
     https://github.com/philc/vimium
@@ -747,6 +752,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/mongodb/mongo-python-driver
     https://github.com/mvantellingen/python-zeep
     https://github.com/mwaskom/seaborn
+    https://github.com/neo4j/neo4j-python-driver
     https://github.com/nicolargo/glances
     https://github.com/nltk/nltk
     https://github.com/nteract/papermill
