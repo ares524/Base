@@ -140,20 +140,36 @@ OPEN_SOURCE_C_REPOS=(
 
 OPEN_SOURCE_CLOJURE_REPOS=(
     https://github.com/LightTable/LightTable
+    https://github.com/LuxLang/lux
+    https://github.com/anmonteiro/lumo
+    https://github.com/babashka/babashka
     https://github.com/bbatsov/clojure-style-guide
+    https://github.com/clojure-liberator/liberator
     https://github.com/clojure/clojurescript
+    https://github.com/duct-framework/duct
+    https://github.com/dundalek/closh
     https://github.com/http-kit/http-kit
+    https://github.com/juxt/bidi
+    https://github.com/juxt/crux
     https://github.com/logseq/logseq
     https://github.com/matthiasn/meins
     https://github.com/metabase/metabase
+    https://github.com/noprompt/garden
+    https://github.com/onyx-platform/onyx
     https://github.com/pedestal/pedestal
     https://github.com/penpot/penpot
+    https://github.com/ptaoussanis/carmine
+    https://github.com/ptaoussanis/sente
+    https://github.com/ptaoussanis/timbre
+    https://github.com/puniverse/pulsar
     https://github.com/reagent-project/reagent
+    https://github.com/replikativ/datahike
     https://github.com/riemann/riemann
     https://github.com/ring-clojure/ring
     https://github.com/status-im/status-react
     https://github.com/tonsky/datascript
     https://github.com/viebel/klipse
+    https://github.com/walmartlabs/lacinia
     https://github.com/weavejester/cljfmt
     https://github.com/weavejester/codox
     https://github.com/weavejester/compojure
@@ -345,6 +361,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/bazelbuild/buildtools
     https://github.com/bazelbuild/rules_webtesting
     https://github.com/caddyserver/caddy
+    https://github.com/candid82/joker
     https://github.com/containernetworking/cni
     https://github.com/dgraph-io/dgraph
     https://github.com/dmacvicar/terraform-provider-libvirt
@@ -465,6 +482,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     # https://github.com/mockito/mockit
     https://github.com/neo4j/graph-data-science
     https://github.com/neo4j/neo4j
+    https://github.com/nginx-clojure/nginx-clojure
     https://github.com/seata/seata
     https://github.com/signalapp/Signal-Android
     https://github.com/square/okhttp
