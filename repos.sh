@@ -22,6 +22,8 @@ OPEN_SOURCE_JULIA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/julia"
 OPEN_SOURCE_JUPYTER_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/jupyter"
 OPEN_SOURCE_KOTLIN_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/kotlin"
 OPEN_SOURCE_LUA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/lua"
+OPEN_SOURCE_MAKEFILE_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/makefiles"
+OPEN_SOURCE_PERL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/perl"
 OPEN_SOURCE_PYTHON_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python"
 OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python_async"
 OPEN_SOURCE_RUBY_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/ruby"
@@ -29,8 +31,10 @@ OPEN_SOURCE_RUST_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/rust"
 OPEN_SOURCE_SASS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/sass"
 OPEN_SOURCE_SCALA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/scala"
 OPEN_SOURCE_SHELL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/shell"
+OPEN_SOURCE_SQL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/sql"
 OPEN_SOURCE_STARLARK_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/starlark"
 OPEN_SOURCE_SWIFT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/swift"
+OPEN_SOURCE_TERRAFORM_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/terraform"
 OPEN_SOURCE_TYPESCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/typescript"
 OPEN_SOURCE_VIMSCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/vimscript"
 OPEN_SOURCE_YAML_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/yaml"
@@ -607,6 +611,36 @@ OPEN_SOURCE_LUA_REPOS=(
     https://github.com/twitter/torch-distlearn
 )
 
+OPEN_SOURCE_MAKEFILE_REPOS=(
+    https://github.com/theos/theos
+)
+
+OPEN_SOURCE_PERL_REPOS=(
+    https://github.com/HariSekhon/DevOps-Perl-tools
+    https://github.com/HariSekhon/lib
+    https://github.com/PerlDancer/Dancer
+    https://github.com/PerlDancer/Dancer2
+    https://github.com/RexOps/Rex
+    https://github.com/beyondgrep/ack2
+    https://github.com/beyondgrep/ack3
+    https://github.com/briandfoy/PerlPowerTools
+    https://github.com/convos-chat/convos
+    https://github.com/docker-library/repo-info
+    https://github.com/duckduckgo/zeroclickinfo-spice
+    https://github.com/exiftool/exiftool
+    https://github.com/linode/longview
+    https://github.com/mikaku/Monitorix
+    https://github.com/mojolicious/minion
+    https://github.com/mojolicious/mojo
+    https://github.com/mongodb-labs/mongo-perl-driver
+    https://github.com/netdisco/netdisco
+    https://github.com/pplu/aws-sdk-perl
+    https://github.com/rsnapshot/rsnapshot
+    https://github.com/skx/sysadmin-util
+    https://github.com/smxi/inxi
+    https://github.com/trizen/youtube-viewer
+)
+
 OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/AlexIoannides/pyspark-example-project
     https://github.com/JoshData/python-email-validator
@@ -895,6 +929,10 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/wmnnd/nginx-certbot
 )
 
+OPEN_SOURCE_SQL_REPOS=(
+    https://github.com/HariSekhon/SQL-scripts
+)
+
 OPEN_SOURCE_STARLARK_REPOS=(
     https://github.com/bazelbuild/bazel-skylib
     https://github.com/bazelbuild/bazel-toolchains
@@ -928,6 +966,10 @@ OPEN_SOURCE_STARLARK_REPOS=(
 
 OPEN_SOURCE_SWIFT_REPOS=(
     https://github.com/sindresorhus/Gifski
+)
+
+OPEN_SOURCE_TERRAFORM_REPOS=(
+    https://github.com/HariSekhon/Terraform-templates
 )
 
 OPEN_SOURCE_TYPESCRIPT_REPOS=(
@@ -1099,6 +1141,16 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_LUA_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_MAKEFILE_REPOS_DIR"
+    cd "$OPEN_SOURCE_MAKEFILE_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_MAKEFILE_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_PERL_REPOS_DIR"
+    cd "$OPEN_SOURCE_PERL_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_PERL_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_PYTHON_REPOS_DIR"
     cd "$OPEN_SOURCE_PYTHON_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_PYTHON_REPOS[@]}"; do
@@ -1134,6 +1186,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_SHELL_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_SQL_REPOS_DIR"
+    cd "$OPEN_SOURCE_SQL_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_SQL_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_STARLARK_REPOS_DIR"
     cd "$OPEN_SOURCE_STARLARK_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_STARLARK_REPOS[@]}"; do
@@ -1142,6 +1199,11 @@ clone-opensource() {
     mkdir -p "$OPEN_SOURCE_SWIFT_REPOS_DIR"
     cd "$OPEN_SOURCE_SWIFT_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_SWIFT_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_TERRAFORM_REPOS_DIR"
+    cd "$OPEN_SOURCE_TERRAFORM_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_TERRAFORM_REPOS[@]}"; do
         git clone --recursive $repo
     done
     mkdir -p "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR"
@@ -1183,6 +1245,8 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_JUPYTER_REPOS_DIR" ]] && opensource-jupyter-repos() { cd "$OPEN_SOURCE_JUPYTER_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_KOTLIN_REPOS_DIR" ]] && opensource-kotlin-repos() { cd "$OPEN_SOURCE_KOTLIN_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_LUA_REPOS_DIR" ]] && opensource-lua-repos() { cd "$OPEN_SOURCE_LUA_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_MAKEFILE_REPOS_DIR" ]] && opensource-makefile-repos() { cd "$OPEN_SOURCE_MAKEFILE_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_PERL_REPOS_DIR" ]] && opensource-perl-repos() { cd "$OPEN_SOURCE_PERL_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_PYTHON_REPOS_DIR" ]] && opensource-python-repos() { cd "$OPEN_SOURCE_PYTHON_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR" ]] && opensource-python-async-repos() { cd "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_RUBY_REPOS_DIR" ]] && opensource-ruby-repos() { cd "$OPEN_SOURCE_RUBY_REPOS_DIR"; }
@@ -1190,8 +1254,10 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_SASS_REPOS_DIR" ]] && opensource-sass-repos() { cd "$OPEN_SOURCE_SASS_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_SCALA_REPOS_DIR" ]] && opensource-scala-repos() { cd "$OPEN_SOURCE_SCALA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_SHELL_REPOS_DIR" ]] && opensource-shell-repos() { cd "$OPEN_SOURCE_SHELL_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_SQL_REPOS_DIR" ]] && opensource-sql-repos() { cd "$OPEN_SOURCE_SQL_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_STARLARK_REPOS_DIR" ]] && opensource-starlark-repos() { cd "$OPEN_SOURCE_STARLARK_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_SWIFT_REPOS_DIR" ]] && opensource-swift-repos() { cd "$OPEN_SOURCE_SWIFT_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_TERRAFORM_REPOS_DIR" ]] && opensource-terraform-repos() { cd "$OPEN_SOURCE_TERRAFORM_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR" ]] && opensource-typescript-repos() { cd "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR" ]] && opensource-vimscript-repos() { cd "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_YAML_REPOS_DIR" ]] && opensource-yaml-repos() { cd "$OPEN_SOURCE_YAML_REPOS_DIR"; }
