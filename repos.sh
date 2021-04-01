@@ -40,15 +40,29 @@ OPEN_SOURCE_VIMSCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/vimscript"
 OPEN_SOURCE_YAML_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/yaml"
 
 OPEN_SOURCE_ALGORITHMS_REPOS=(
+    https://github.com/TheAlgorithms/AArch64_Assembly
     https://github.com/TheAlgorithms/Algorithms-Explanation
     https://github.com/TheAlgorithms/C
     https://github.com/TheAlgorithms/C-Plus-Plus
     https://github.com/TheAlgorithms/C-Sharp
+    https://github.com/TheAlgorithms/Clojure
+    https://github.com/TheAlgorithms/Dart
+    https://github.com/TheAlgorithms/Elixir
+    https://github.com/TheAlgorithms/Elm
     https://github.com/TheAlgorithms/Go
+    https://github.com/TheAlgorithms/Haskell
     https://github.com/TheAlgorithms/Java
     https://github.com/TheAlgorithms/Javascript
+    https://github.com/TheAlgorithms/Jupyter
+    https://github.com/TheAlgorithms/Kotlin
+    https://github.com/TheAlgorithms/OCaml
+    https://github.com/TheAlgorithms/PHP
     https://github.com/TheAlgorithms/Python
+    https://github.com/TheAlgorithms/R
     https://github.com/TheAlgorithms/Ruby
+    https://github.com/TheAlgorithms/Rust
+    https://github.com/TheAlgorithms/Scala
+    https://github.com/TheAlgorithms/Swift
 )
 
 OPEN_SOURCE_BOOKS_REPOS=(
