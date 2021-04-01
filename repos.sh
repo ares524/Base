@@ -260,6 +260,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/0xAX/linux-insides
     https://github.com/30-seconds/30-seconds-of-code
     https://github.com/APIs-guru/graphql-apis
+    https://github.com/Avik-Jain/100-Days-Of-ML-Code
     https://github.com/DevDungeon/Cookbook
     https://github.com/Hack-with-Github/Awesome-Hacking
     https://github.com/JamzyWang/awesome-redis
@@ -639,7 +640,15 @@ OPEN_SOURCE_JULIA_REPOS=(
 )
 
 OPEN_SOURCE_JUPYTER_REPOS=(
+    https://github.com/ageron/handson-ml
+    https://github.com/aymericdamien/TensorFlow-Examples
     https://github.com/binder-examples/requirements
+    https://github.com/donnemartin/data-science-ipython-notebooks
+    https://github.com/donnemartin/interactive-coding-challenges
+    https://github.com/fastai/fastai
+    https://github.com/jakevdp/PythonDataScienceHandbook
+    https://github.com/norvig/pytudes
+    https://github.com/trekhleb/homemade-machine-learning
 )
 
 OPEN_SOURCE_KOTLIN_REPOS=(
@@ -688,6 +697,7 @@ OPEN_SOURCE_PERL_REPOS=(
 )
 
 OPEN_SOURCE_PYTHON_REPOS=(
+    https://github.com/3b1b/manim
     https://github.com/AlexIoannides/pyspark-example-project
     https://github.com/HariSekhon/DevOps-Python-tools
     https://github.com/JoshData/python-email-validator
@@ -711,6 +721,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/andymccurdy/redis-py
     https://github.com/ansible/ansible
     https://github.com/apache/airflow
+    https://github.com/apache/superset
     https://github.com/asciinema/asciinema
     https://github.com/aws/aws-cli
     https://github.com/aws/chalice
@@ -720,6 +731,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/bokeh/bokeh
     https://github.com/boto/boto3
     https://github.com/bottlepy/bottle
+    https://github.com/celery/celery
     https://github.com/certbot/certbot
     https://github.com/chubin/cheat.sh
     https://github.com/chubin/late.nz
@@ -742,16 +754,17 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/django/django
     https://github.com/docker/compose
     https://github.com/docopt/docopt
-    https://github.com/donnemartin/data-science-ipython-notebooks
     https://github.com/edgedb/edgedb
     https://github.com/elastic/elasticsearch-py
     https://github.com/encode/django-rest-framework
     https://github.com/epsagon/clear-lambda-storage
     https://github.com/eriklindernoren/ML-From-Scratch
+    https://github.com/explosion/spaCy
     https://github.com/fabric/fabric
     https://github.com/facebook/prophet
     https://github.com/faif/python-patterns
     https://github.com/geopy/geopy
+    https://github.com/getredash/redash
     https://github.com/getsentry/sentry
     https://github.com/gleitz/howdoi
     https://github.com/google-research/bert
@@ -891,6 +904,7 @@ OPEN_SOURCE_PYTHON_ASYNC_REPOS=(
     https://github.com/mongodb/motor
     https://github.com/taoufik07/responder
     https://github.com/tiangolo/fastapi
+    https://github.com/tornadoweb/tornado
     https://github.com/vibora-io/vibora
     https://gitlab.com/pgjones/hypercorn
     https://gitlab.com/pgjones/quart
