@@ -228,7 +228,8 @@ Some things that are interesting to pass to `grepit` while in the root of this
 
 - `repos-list` to see examples of cycling through git repositories under the
   current directory and performing some actions
-- `oldpwd` to see examples of shell funcs
+- `oldpwd` to see examples of shell funcs that do things in another directory
+  and return you to where you started before invocation
 - `"date +"` to see examples of some "format strings" passed to the `date`
   command
     - <https://man7.org/linux/man-pages/man1/date.1.html> (jump to "FORMATS"
