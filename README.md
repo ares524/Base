@@ -3,6 +3,8 @@ base
 
 - Jump to [Usage section](https://github.com/kenjyco/base/blob/master/README.md#usage)
   below for examples
+- Jump to [Greps section](https://github.com/kenjyco/base/blob/master/README.md#greps)
+  below for examples
 
 Use `base` as an **easy way** to install the minimum essential libs/programs
 for opensource exploration and development. Works for Linux (Debian-based
@@ -218,3 +220,17 @@ Examples:
 - **`grep-history-exact`**: search history files in `$HOME` for pattern
 - **`grep-history-comments`**: use `grep-history` to find entries that start
   with `#`
+
+# Greps
+
+Some things that are interesting to pass to `grepit` while in the root of this
+`base` repo
+
+- `repos-list` to see examples of cycling through git repositories under the
+  current directory and performing some actions
+- `oldpwd` to see examples of shell funcs
+- `"date +"` to see examples of some "format strings" passed to the `date`
+  command
+    - <https://man7.org/linux/man-pages/man1/date.1.html> (jump to "FORMATS"
+      section
+    - <https://strftime.org>
