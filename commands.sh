@@ -678,6 +678,8 @@ if type feh &>/dev/null; then
             echo -e "\nDo not understand this wallpaper_mode: $wallpaper_mode"
             rm $HOME/.selected_wallpaper_mode
         fi
+
+        unset wallpaper_mode
     fi
 fi
 
