@@ -184,6 +184,11 @@ if [[ -n "$BASH_VERSION" ]]; then
     prompt-terse() {
         PS1="[\h] \[\e[1;33m\]\[\e[1;33m\]\W\[\e[1;32m\]\$(parse_git_branch) \$\[\e[0m\] "
     }
+
+    # Add function to switch to a minimal prompt
+    prompt-minimal() {
+        PS1="\n\$ "
+    }
 elif [[ -n "$ZSH_VERSION" ]]; then
     # Set tab completion and matching options
     zstyle ':completion:*' completer _expand _complete _ignored _approximate
@@ -250,7 +255,30 @@ elif [[ -n "$ZSH_VERSION" ]]; then
     prompt-terse() {
          PROMPT="[%m] %{$fg_bold[yellow]%}%c%{$fg[green]%}\$(parse_git_branch) %# %{$reset_color%}"
     }
+
+    # Add function to switch to a minimal prompt
+    prompt-minimal() {
+         PROMPT="
+%# "
+    }
 fi
+
+prompt-select-mode() {
+    echo "Select prompt mode"
+    choices=(verbose terse minimal)
+    select choice in "${choices[@]}"; do
+        echo "$choice" > $HOME/.selected_prompt_mode
+        break
+    done
+
+    if [[ "$choice" = "verbose" ]]; then
+        prompt-verbose
+    elif [[ "$choice" = "terse" ]]; then
+        prompt-terse
+    elif [[ "$choice" = "minimal" ]]; then
+        prompt-minimal
+    fi
+}
 
 #################### completions ####################
 
@@ -1404,4 +1432,21 @@ if [[ -z $(echo $PATH | grep $HOME/bin:) && -z $(echo $PATH | grep $HOME/bin$) ]
 fi
 
 [[ -s "$HOME/private.sh" ]] && source "$HOME/private.sh"
-[[ $(whoami) == "root" ]] && prompt-verbose
+if [[ $(whoami) == "root" ]]; then
+    prompt-verbose
+else
+    [[ ! -f "$HOME/.selected_prompt_mode" ]] && prompt-select-mode
+    [[ ! -f "$HOME/.selected_prompt_mode" ]] && echo "terse" > "$HOME/.selected_prompt_mode"
+    prompt_mode=$(cat $HOME/.selected_prompt_mode)
+    if [[ "$prompt_mode" = "verbose" ]]; then
+        prompt-verbose
+    elif [[ "$prompt_mode" = "terse" ]]; then
+        prompt-terse
+    elif [[ "$prompt_mode" = "minimal" ]]; then
+        prompt-minimal
+    else
+        echo -e "\nDo not understand this prompt_mode: $prompt_mode"
+        rm $HOME/.selected_prompt_mode
+    fi
+    unset prompt_mode
+fi
