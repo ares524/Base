@@ -235,3 +235,8 @@ Some things that are interesting to pass to `grepit` while in the root of this
     - <https://man7.org/linux/man-pages/man1/date.1.html> (jump to "FORMATS"
       section
     - <https://strftime.org>
+
+Some things to pass to grepit in general
+
+- `-i todo` to look for "todos"
+- `-iE '(todo|to-do)'` to look for even more todo/to-do items
