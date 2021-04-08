@@ -23,17 +23,21 @@ if [[ -f "$HOME/.base_path" ]]; then
             cd "$oldpwd"
             return 1
         fi
+        commit_id_before=$(git reflog -1 | awk '{print $1}')
         repos-update
+        commit_id_after=$(git reflog -1 | awk '{print $1}')
         echo -e "\n\nC U R R E N T   S T A T U S"
         repos-status
-        install_changed=$(git log --oneline --name-status HEAD@{1}.. | grep 'install.sh')
-        if [[ -n "$install_changed" ]]; then
-            echo -e "\n\nB A S E   S E T U P   (install.sh was updated)"
-            conflicts=$(git status -s | grep '^UU')
-            if [[ -n "$conflicts" ]]; then
-                echo -e "Merge conflicts! Not running install\n$conflicts"
-            else
-                source ./install.sh
+        if [[ "$commit_id_before" != "$commit_id_after" ]]; then
+            install_changed=$(git log --oneline --name-status HEAD@{1}.. | grep 'install.sh')
+            if [[ -n "$install_changed" ]]; then
+                echo -e "\n\nB A S E   S E T U P   (install.sh was updated)"
+                conflicts=$(git status -s | grep '^UU')
+                if [[ -n "$conflicts" ]]; then
+                    echo -e "Merge conflicts! Not running install\n$conflicts"
+                else
+                    source ./install.sh
+                fi
             fi
         fi
         cd "$oldpwd"
@@ -55,17 +59,21 @@ if [[ -f "$HOME/.dotfiles_path" ]]; then
             cd "$oldpwd"
             return 1
         fi
+        commit_id_before=$(git reflog -1 | awk '{print $1}')
         repos-update
+        commit_id_after=$(git reflog -1 | awk '{print $1}')
         echo -e "\n\nC U R R E N T   S T A T U S"
         repos-status
-        setup_changed=$(git log --oneline --name-status HEAD@{1}.. | grep 'setup.bash')
-        if [[ -n "$setup_changed" ]]; then
-            echo -e "\n\nD O T F I L E S   S E T U P   (setup.bash was updated)"
-            conflicts=$(git status -s | grep '^UU')
-            if [[ -n "$conflicts" ]]; then
-                echo -e "Merge conflicts! Not running install\n$conflicts"
-            else
-                bash ./setup.bash
+        if [[ "$commit_id_before" != "$commit_id_after" ]]; then
+            setup_changed=$(git log --oneline --name-status HEAD@{1}.. | grep 'setup.bash')
+            if [[ -n "$setup_changed" ]]; then
+                echo -e "\n\nD O T F I L E S   S E T U P   (setup.bash was updated)"
+                conflicts=$(git status -s | grep '^UU')
+                if [[ -n "$conflicts" ]]; then
+                    echo -e "Merge conflicts! Not running install\n$conflicts"
+                else
+                    bash ./setup.bash
+                fi
             fi
         fi
         cd "$oldpwd"
