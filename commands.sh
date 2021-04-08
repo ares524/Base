@@ -409,7 +409,7 @@ fi
 #################### Environment managers ####################
 
 nvm-install() {
-    if [[ "$clean" == "clean" && -d ~/.nvm ]]; then
+    if [[ "$1" == "clean" && -d ~/.nvm ]]; then
         echo -e "\nDeleting ~/.nvm and ~/.npm"
         rm -rf ~/.nvm ~/.npm 2>/dev/null
         unset NVM_DIR
@@ -418,7 +418,7 @@ nvm-install() {
     if [[ ! -d ~/.nvm ]]; then
         echo -e "\nInstalling nvm and latest 'long term support' version of node..."
         unset NVM_DIR
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
         export NVM_DIR="$HOME/.nvm"
         source "$NVM_DIR/nvm.sh"
         source "$NVM_DIR/bash_completion"
