@@ -434,20 +434,28 @@ if [[ -d $HOME/.nvm && -z "$NVM_DIR" ]]; then
 fi
 
 pyenv-install() {
-    if [[ "$clean" == "clean" && $(uname) != "Darwin" && -d ~/.pyenv ]]; then
-        echo -e "\nDeleting ~/.pyenv"
-        rm -rf ~/.pyenv
+    if [[ "$1" == "clean" ]]; then
+        if [[ -d ~/.pyenv ]]; then
+            echo -e "\nDeleting ~/.pyenv"
+            rm -rf ~/.pyenv
+        fi
+        if [[ $(uname) == "Darwin" ]]; then
+            brew uninstall pyenv
+        fi
     fi
 
-    if [[ ! -d ~/.pyenv ]]; then
+    if [[ $(uname) == "Darwin" ]]; then
+        brew install pyenv
+        eval "$(pyenv init -)"
+    elif [[ ! -d ~/.pyenv ]]; then
         echo -e "\nInstalling pyenv..."
         git clone https://github.com/pyenv/pyenv.git ~/.pyenv
         export PYENV_ROOT="$HOME/.pyenv"
         export PATH="$PYENV_ROOT/bin:$PATH"
         eval "$(pyenv init -)"
-        echo -e "\nInstalling Python 3.8.5..."
-        pyenv install 3.8.5
     fi
+    echo -e "\nInstalling Python 3.9.4..."
+    pyenv install 3.9.4
 }
 
 # Prep pyenv (on linux)
@@ -459,6 +467,27 @@ fi
 # Enable pyenv (on linux/mac)
 if type pyenv &>/dev/null; then
     eval "$(pyenv init -)"
+
+    pyenv-list-installable() {
+        pyenv install --list | grep '^  [2-4]' | less -FX
+    }
+
+    pyenv-list-grep() {
+        arg=${1-'^  [2-4]'}
+        pyenv install --list | grep $arg | less -FX
+    }
+
+    pyenv-list-installable-all() {
+        pyenv install --list | less -FX
+    }
+
+    pyenv-list-envs() {
+        ls -d ~/.pyenv/versions/*/envs/*
+    }
+
+    pyenv-list-python-version-files() {
+        findit --type f --pattern ".python-version"
+    }
 fi
 
 #################### Tools ####################
