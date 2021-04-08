@@ -408,6 +408,14 @@ fi
 
 #################### Environment managers ####################
 
+rust-install() {
+    if type rustup &>/dev/null; then
+        rustup update
+    else
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    fi
+}
+
 nvm-install() {
     if [[ "$1" == "clean" && -d ~/.nvm ]]; then
         echo -e "\nDeleting ~/.nvm and ~/.npm"
