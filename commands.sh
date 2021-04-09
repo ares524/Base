@@ -1170,10 +1170,30 @@ fi
 if [[ -d ~/.ssh ]]; then
     if type ssh-agent &>/dev/null; then
         sshlazy() {
-            if [[ ! $(ssh-add -l 2>/dev/null) =~ [0-9]+ ]]; then
-                eval $(ssh-agent -s)
-                find "$HOME/.ssh" -type f -name "*rsa" -print0 | xargs -0 -n1 ssh-add
+            found=$(find "$HOME/.ssh" -type f \( -name '*.pub' -o -name '*.pem' -o -name 'config*' -o -name 'known_hosts*' -o -name 'authorized_keys*' \) -prune -o -type f -print | sort)
+            if [[ -n "$1" ]]; then
+                filtered=$(echo $found | grep "/$1$")
+                [[ -z "$filtered" ]] && filtered=$(echo $found | grep $1)
+            else
+                filtered="$found"
             fi
+            loaded=$(ssh-add -l 2>/dev/null | grep -v "agent has no identities" | awk '{print $3}' | sort)
+            [[ -z $SSH_AUTH_SOCK && -z "$SSH_AGENT_PID" ]] && eval $(ssh-agent -s)
+            echo
+            echo -e "$loaded" >/tmp/loaded-$$.txt
+            echo -e "$filtered" >/tmp/filtered-$$.txt
+            filtered_not_loaded=$(comm -13 /tmp/loaded-$$.txt /tmp/filtered-$$.txt)
+            rm /tmp/loaded-$$.txt /tmp/filtered-$$.txt
+
+            [[ -n "$filtered_not_loaded" ]] && echo "$filtered_not_loaded" | tr '\n' '\0' | xargs -0 -n1 ssh-add
+        }
+
+        sshlazy-select() {
+            found=($(find "$HOME/.ssh" -type f \( -name '*.pub' -o -name '*.pem' -o -name 'config*' -o -name 'known_hosts*' -o -name 'authorized_keys*' \) -prune -o -type f -print | sort))
+            select choice in "${found[@]}"; do
+                break
+            done
+            [[ -n "$choice" ]] && sshlazy $(basename "$choice")
         }
     fi
 
