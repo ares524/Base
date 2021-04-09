@@ -535,6 +535,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/alpinejs/alpine
     https://github.com/angular/angular-phonecat
     https://github.com/api-platform/api-platform
+    https://github.com/artf/grapesjs
     https://github.com/avajs/ava
     https://github.com/axios/axios
     https://github.com/axios/moxios
@@ -1084,6 +1085,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/nodejs/llhttp
     https://github.com/onelang/OneLang
     https://github.com/percona/grafana-dashboards
+    https://github.com/prevwong/craft.js
     https://github.com/prisma-labs/graphql-playground
     https://github.com/pubkey/rxdb
     https://github.com/quicktype/quicktype
