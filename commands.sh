@@ -1179,13 +1179,15 @@ if [[ -d ~/.ssh ]]; then
             fi
             loaded=$(ssh-add -l 2>/dev/null | grep -v "agent has no identities" | awk '{print $3}' | sort)
             [[ -z $SSH_AUTH_SOCK && -z "$SSH_AGENT_PID" ]] && eval $(ssh-agent -s)
-            echo
             echo -e "$loaded" >/tmp/loaded-$$.txt
             echo -e "$filtered" >/tmp/filtered-$$.txt
             filtered_not_loaded=$(comm -13 /tmp/loaded-$$.txt /tmp/filtered-$$.txt)
             rm /tmp/loaded-$$.txt /tmp/filtered-$$.txt
 
+            _display=$DISPLAY
+            unset DISPLAY
             [[ -n "$filtered_not_loaded" ]] && echo "$filtered_not_loaded" | tr '\n' '\0' | xargs -0 -n1 ssh-add
+            DISPLAY=$_display
         }
 
         sshlazy-select() {
