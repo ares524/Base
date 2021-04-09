@@ -889,6 +889,10 @@ grepit-count() {
     grepit -c "$@" | grep -v '0$' | sort -k2,2nr -k1,1 -t ':' | less -FX
 }
 
+grepit-todo() {
+    grepit $@ -iE '(todo|to-do)'
+}
+
 grepit-py() {
     [[ -z "$@" ]] && return 1
     grep -HnI --color -R --include=\*.py --exclude-dir=venv --exclude-dir=env --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=.cache --exclude-dir=.eggs --exclude-dir=\*.egg-info --exclude-dir=__pycache__ --exclude-dir=.pytest_cache "$@" \.
