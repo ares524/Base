@@ -55,15 +55,15 @@ When you source `~/commands.sh` or `~/commands.fish` (directly or indirectly):
 ### If `git` is available
 
 ```
-% git clone https://github.com/kenjyco/base
+% git clone https://github.com/kenjyco/base ~/repos/base
 
-% cd base
+% cd ~/repos/base
 
-% source ./install.sh
+% source ./install.sh extras
 ```
 
-> Note: If you are in an interactive fish shell, do not source `install.sh`, but
-> invoke either `bash ./install.sh` OR `zsh ./install.sh`
+> Note: If you are in an interactive **fish shell**, do not source `install.sh`,
+> but invoke either `bash ./install.sh` OR `zsh ./install.sh`
 
 The `install.sh` script behaves differently if any of the following strings are
 passed in:
@@ -83,6 +83,8 @@ passed in:
 
 % source ./install.sh
 ```
+
+> Feel free to pass any of the above arguments to `./install.sh` when calling it
 
 # Usage
 
