@@ -509,24 +509,26 @@ fi
 #################### Tools ####################
 
 aws-install() {
-	[[ ! -d "$HOME/venv" ]] && python3 -m venv "$HOME/venv" && "$HOME/venv/bin/pip3" install --upgrade pip wheel
-	"$HOME/venv/bin/pip3" install awscli
+	[[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+	"$HOME/tools-py/venv/bin/pip3" install awscli
+    source $HOME/commands.sh
 }
 
-if [[ -s "$HOME/venv/bin/aws" ]]; then
+if [[ -s "$HOME/tools-py/venv/bin/aws" ]]; then
 	aws() {
-		PYTHONPATH=$HOME $HOME/venv/bin/aws "$@"
+		PYTHONPATH=$HOME $HOME/tools-py/venv/bin/aws "$@"
 	}
 fi
 
 grip-install() {
-	[[ ! -d "$HOME/venv" ]] && python3 -m venv "$HOME/venv" && "$HOME/venv/bin/pip3" install --upgrade pip wheel
-	"$HOME/venv/bin/pip3" install grip
+	[[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+	"$HOME/tools-py/venv/bin/pip3" install grip
+    source $HOME/commands.sh
 }
 
-if [[ -s "$HOME/venv/bin/grip" ]]; then
+if [[ -s "$HOME/tools-py/venv/bin/grip" ]]; then
 	grip() {
-		PYTHONPATH=$HOME $HOME/venv/bin/grip "$@"
+		PYTHONPATH=$HOME $HOME/tools-py/venv/bin/grip "$@"
 	}
 fi
 
