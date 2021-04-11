@@ -130,18 +130,18 @@ do_install() {
         if [[ -n "$gui" ]]; then
             if [[ ! -d /Applications/iTerm.app/ ]]; then
                 echo -e "\nInstalling iterm2"
-                brew cask install iterm2
+                brew install iterm2
             fi
 
             if [[ ! -d /Applications/VLC.app/ ]]; then
                 echo -e "\nInstalling vlc"
-                brew cask install vlc
+                brew install vlc
             fi
         fi
 
         if [[ ! -d /Applications/Docker.app/ ]]; then
             echo -e "\nInstalling docker..."
-            brew cask install docker
+            brew install docker
         fi
 
         if [[ -z $(grep "/usr/local/bin/bash" /etc/shells) ]]; then
