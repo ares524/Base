@@ -611,9 +611,9 @@ kind-install() {
     oldpwd=$(pwd)
     cd /tmp
     if [[ $(uname) == "Darwin" ]]; then
-        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.9.0/kind-darwin-amd64
+        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.10.0/kind-darwin-amd64
     else
-        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.9.0/kind-linux-amd64
+        curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
     fi
     chmod +x ./kind
     if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
