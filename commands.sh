@@ -1479,7 +1479,7 @@ fi
 #################### venv ####################
 
 venv-site-packages() {
-    env_name=$1
+    [[ -d "$1" && (-d "$1/bin" || -d "$1/Scripts") ]] && env_name=$1
     [[ -z "$env_name" ]] && env_name="venv"
     [[ ! -d $env_name ]] && echo "Can't find '$env_name'" && return 1
     if [[ -d "$env_name/lib/python3.5/site-packages" ]]; then
@@ -1490,6 +1490,8 @@ venv-site-packages() {
         cd "$env_name/lib/python3.7/site-packages"
     elif [[ -d "$env_name/lib/python3.8/site-packages" ]]; then
         cd "$env_name/lib/python3.8/site-packages"
+    elif [[ -d "$env_name/lib/python3.9/site-packages" ]]; then
+        cd "$env_name/lib/python3.9/site-packages"
     elif [[ -d "$env_name/Lib/site-packages" ]]; then
         cd "$env_name/Lib/site-packages"
     fi
