@@ -763,6 +763,16 @@ if type feh &>/dev/null; then
     fi
 fi
 
+#################### ffmpeg ####################
+
+if type ffmpeg &>/dev/null; then
+    to_mp3() {
+        fname="$1"
+        [[ -z "$fname" ]] && echo "No filename specified" && return 1
+        time ffmpeg -i "$fname" -b:a 320k -map a "${fname%.*}.mp3"
+    }
+fi
+
 #################### findit ####################
 
 swps() {
