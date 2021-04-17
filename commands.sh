@@ -678,6 +678,20 @@ if type dig &>/dev/null; then
     }
 fi
 
+#################### du ####################
+
+duh() {
+    args=($@)
+    if [[ -z "$args" ]]; then
+        if [[ -n "$ZSH_VERSION" ]]; then
+            args=({.*,*})
+        elif [[ -n "$BASH_VERSION" ]]; then
+            args=(.[!.]* *)
+        fi
+    fi
+    du -sch ${args[@]} | sort -h | less -FX
+}
+
 #################### echo ####################
 
 paths() {
