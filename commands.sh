@@ -104,25 +104,6 @@ if echo | grep -P '' &>/dev/null; then
     grep_perl=yes
 fi
 
-if [[ $(uname) == "Darwin" ]]; then
-    alias dfh="df -lPh"
-    alias p="ps -eo user,pid,ppid,tty,%cpu,%mem,command | grep -vE '(^_|^root)' | less -FX"
-    alias pa="ps -eo user,pid,ppid,tty,%cpu,%mem,command | less -FX"
-    alias psome="p | grep -vE '(/Applications/.*\.app/|/Library/.*\.app/|/System/Library|/usr/libexec|/usr/sbin|com\.docker\.|ssh-agent|bash$|zsh$|fish$)' | less -FX"
-    if [[ -n "$grep_perl" ]]; then
-        alias papps="p | grep -oP '/(Applications|Library)/.*?\.app/' | sort | uniq -c | sort -k1,1nr -k2 | less -FX"
-    fi
-    if type pstree &>/dev/null; then
-        alias pst="pstree -u $USER | less -FX"
-    fi
-else
-    alias dfh="df -Th --total | grep -vE '(^none|^udev|^tmpfs|^cgmfs)'"
-    alias p="ps -eo user,pid,ppid,tty,cmd:200 | grep -v ' \[' | less -FX"
-    alias pa="ps -eo user,pid,ppid,tty,cmd:200 | less -FX"
-    alias psome="p | grep -vE '(chromium|firefox| \/usr\/| \/lib\/| \/sbin\/|dbus-launch|nm-applet|cinnamon|blueberry|avahi-daemon|ssh-agent|sshd:|bash$|zsh$|fish$) | less -FX"
-    alias pst="pstree -np | less -FX"
-fi
-
 #################### bash/zsh setup ####################
 
 # Function to get name of current git branch
@@ -679,6 +660,16 @@ if type curl &>/dev/null; then
     }
 fi
 
+#################### df ####################
+
+dfh() {
+    if [[ $(uname) == "Darwin" ]]; then
+        df -lPh
+    else
+        df -Th --total | grep -vE '(^none|^udev|^tmpfs|^cgmfs)'
+    fi
+}
+
 #################### dig ####################
 
 if type dig &>/dev/null; then
@@ -851,10 +842,10 @@ system-info() {
             echo -e "$prompt_char sudo lshw -short"
             sudo lshw -short
             echo
-            echo -e "$prompt_char alias dfh\n$(alias dfh)\n"
+            echo -e "$prompt_char helpme dfh\n$(helpme dfh)\n"
             echo -e "$prompt_char dfh\n$(dfh)\n"
         else
-            echo -e "$prompt_char alias dfh\n$(alias dfh)\n"
+            echo -e "$prompt_char helpme dfh\n$(helpme dfh)\n"
             echo -e "$prompt_char dfh\n$(dfh)\n"
         fi
         if type getent &>/dev/null; then
@@ -868,7 +859,7 @@ system-info() {
             echo
         fi
     else
-        echo -e "$prompt_char alias dfh\n$(alias dfh)\n"
+        echo -e "$prompt_char helpme dfh\n$(helpme dfh)\n"
         echo -e "$prompt_char dfh\n$(dfh)\n"
     fi
     if type tmux &>/dev/null; then echo -e "$prompt_char tmux ls 2>&1\n$(tmux ls 2>&1)\n"; fi
@@ -1128,6 +1119,48 @@ if type pandoc &>/dev/null; then
         [[ -z "$fname" ]] && echo "No filename specified" && exit 1
         [[ ! "$fname" =~ .*[mM][dD] ]] && echo "Not a markdown file" && exit 1
         pandoc --from=markdown --to=rst --output="${fname%.*}.rst" "$fname"
+    }
+fi
+
+#################### ps ####################
+
+p() {
+    if [[ $(uname) == "Darwin" ]]; then
+        ps -eo user,pid,ppid,tty,%cpu,%mem,command | grep -vE '(^_|^root)' | less -FX
+    else
+        ps -eo user,pid,ppid,tty,cmd:200 | grep -v ' \[' | less -FX
+    fi
+}
+
+pa() {
+    if [[ $(uname) == "Darwin" ]]; then
+        ps -eo user,pid,ppid,tty,%cpu,%mem,command | less -FX
+    else
+        ps -eo user,pid,ppid,tty,cmd:200 | less -FX
+    fi
+}
+
+psome() {
+    if [[ $(uname) == "Darwin" ]]; then
+        p | grep -vE '(/Applications/.*\.app/|/Library/.*\.app/|/System/Library|/usr/libexec|/usr/sbin|com\.docker\.|ssh-agent|bash$|zsh$|fish$)' | less -FX
+    else
+        p | grep -vE '(chromium|firefox| \/usr\/| \/lib\/| \/sbin\/|dbus-launch|nm-applet|cinnamon|blueberry|avahi-daemon|ssh-agent|sshd:|bash$|zsh$|fish$|urxvt$)' | less -FX
+    fi
+}
+
+if [[ $(uname) == "Darwin" && -n "$grep_perl" ]]; then
+    papps() {
+        p | grep -oP '/(Applications|Library)/.*?\.app/' | sort | uniq -c | sort -k1,1nr -k2 | less -FX
+    }
+fi
+
+if type pstree &>/dev/null; then
+    pst() {
+        if [[ $(uname) == "Darwin" ]]; then
+            pstree -u $USER | less -FX
+        else
+            pstree -np | less -FX
+        fi
     }
 fi
 
