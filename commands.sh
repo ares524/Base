@@ -1257,7 +1257,9 @@ fi
 #################### sudo ####################
 
 if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
-    alias lsof-ports-ipv4="sudo lsof -Pn -i4"
+    lsof-ports-ipv4() {
+        sudo lsof -Pn -i4
+    }
 
     if [[ -s /etc/shadow ]]; then
         etc-shadow() {
@@ -1266,16 +1268,25 @@ if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
     fi
 
     if type nmap &>/dev/null; then
-        alias nmap-local-machines10="sudo nmap -sS -p22,7777 10.0.0.0/24"
-        alias nmap-local-machines192="sudo nmap -sS -p22,7777 192.168.1.0/24"
+        nmap-local-machines10() {
+            sudo nmap -sS -p22,7777 10.0.0.0/24
+        }
+
+        nmap-local-machines192() {
+            sudo nmap -sS -p22,7777 192.168.1.0/24
+        }
     fi
 
     if type lshw &>/dev/null; then
-        alias hardware="sudo lshw -short"
+        hardware() {
+            sudo lshw -short
+        }
     fi
 
     if type getent &>/dev/null; then
-        alias sudo-users="getent group sudo"
+        sudo-users() {
+            getent group sudo
+        }
     fi
 
     if [[ $(uname) != "Darwin" ]]; then
@@ -1372,7 +1383,10 @@ if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
     fi
 
     if [[ -f /usr/bin/apt-get ]]; then
-        alias uninstall-hard="sudo apt-get purge --auto-remove -y"
+        uninstall-hard() {
+            sudo apt-get purge --auto-remove -y
+        }
+
         APT_SECURITY_ONLY="/etc/apt/sources.security.only.list"
 
         make-security-only-list() {
