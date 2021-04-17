@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if type curl &>/dev/null; then
+    curl ifconfig.me && echo
+elif type wget &>/dev/null; then
+    wget https://httpbin.org/ip -qO - | grep origin | perl -pe 's/^.*\"(.*)\".*$/$1/'
+fi

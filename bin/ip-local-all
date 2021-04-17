@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if type networksetup &>/dev/null; then
+    networksetup -listallhardwareports | grep Device | awk '{print $2}' | tr '\n' '\0' | xargs -0 -n1 ipconfig getifaddr
+elif type ifconfig &>/dev/null; then
+    ifconfig | grep "inet addr" | awk '{print $2}' | cut -c 6-
+    ifconfig | grep "inet [12]" | awk '{print $2}'
+fi
