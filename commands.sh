@@ -885,6 +885,14 @@ system-info() {
     echo
 }
 
+manually-installed() {
+    if [[ -d /var/log/apt ]]; then
+        cat /var/log/apt/history.log <(zcat /var/log/apt/history.log.*) | grep -E '(apt-get|apt) install' | sort -u
+    elif type brew &>/dev/null; then
+        brew list
+    fi
+}
+
 #################### grepit ####################
 
 grepit() {
