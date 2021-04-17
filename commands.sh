@@ -1133,6 +1133,16 @@ man-list() {
     ls /usr/share/man/man[1-8]/* | less -FX
 }
 
+man-grep() {
+    [[ -z "$1" ]] && echo "Call with the name of a man-able command" && return 1
+    phrase="$2"
+    num_lines=${3:-5}
+
+    MANWIDTH=$(( $(tput cols) -6 )) man $1 |
+        grep -n -B $num_lines -A $num_lines --color=always -i "$phrase" |
+        less -rFX
+}
+
 #################### pandoc ####################
 
 if type pandoc &>/dev/null; then
