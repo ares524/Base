@@ -1525,6 +1525,18 @@ la10() {
     la "$@" | tail -n 10
 }
 
+#################### lsblk ####################
+
+if type lsblk &>/dev/null; then
+    partitions() {
+        lsblk -o name,size,type,mountpoint | egrep '(part|lvm)'
+    }
+
+    partitions-by-size() {
+        lsblk -o name,size,type,mountpoint | grep 'part' | sort -k2 -h
+    }
+fi
+
 #################### man ####################
 
 man-f() {
@@ -1694,6 +1706,12 @@ if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
     if [[ -s /etc/shadow ]]; then
         etc-shadow() {
             sudo cat /etc/shadow | grep -vE '(^[^:]+:\*|^$)'
+        }
+    fi
+
+    if type blkid &>/dev/null; then
+        partition-labels-and-uuids() {
+            sudo blkid
         }
     fi
 
