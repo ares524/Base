@@ -165,7 +165,7 @@ while [[ -n "$1" ]]; do
     fi
 done
 
-if [[ "$_type" != [fdlspbc] ]]; then
+if [[ -n "$_type" && "$_type" != [fdlspbc] ]]; then
     _type=f
 fi
 
@@ -271,7 +271,9 @@ if [[ -n "$iexclude" ]]; then
     find_cmd="$find_cmd $exclude_part"
 fi
 
-find_cmd="$find_cmd -type $_type"
+if [[ -n "$_type" ]]; then
+    find_cmd="$find_cmd -type $_type"
+fi
 
 if [[ -n "$exts" ]]; then
     IFS=',' read -ra items <<< "$exts"
