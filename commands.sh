@@ -489,6 +489,49 @@ fi
 
 #################### Tools ####################
 
+asciinema-install() {
+	[[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+	"$HOME/tools-py/venv/bin/pip3" install asciinema
+    source $HOME/commands.sh
+}
+
+if [[ -s "$HOME/tools-py/venv/bin/asciinema" ]]; then
+	asciinema() {
+		PYTHONPATH=$HOME $HOME/tools-py/venv/bin/asciinema "$@"
+	}
+fi
+
+if type asciinema &>/dev/null; then
+    asciicast() {
+        title=$1
+        now_string="$(date +'%Y_%m%d-%a-%H%M%S')"
+        if [[ -z "$title" ]]; then
+            title="misc--${now_string}"
+        else
+            title="${title}--${now_string}"
+        fi
+        fname="$title.json"
+
+        tmux -2 new-session -s cast -d
+        asciinema rec -c "tmux attach-session -t cast" -i 2 -t "$title" "$fname"
+        echo -e "Saved recording to $fname"
+    }
+
+    asciicast-no-tmux() {
+        title=$1
+        now_string="$(date +'%Y_%m%d-%a-%H%M%S')"
+        if [[ -z "$title" ]]; then
+            title="misc--${now_string}"
+        else
+            title="${title}--${now_string}"
+        fi
+        fname="$title.json"
+
+        asciinema rec -i 2 -t "$title" "$fname"
+        echo -e "Saved recording to $fname"
+    }
+fi
+
 aws-install() {
 	[[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
 	"$HOME/tools-py/venv/bin/pip3" install awscli
@@ -1508,6 +1551,11 @@ if type urxvt &>/dev/null; then
         fi
         echo "$cmd"
         eval "$cmd" &
+        [[ $? -eq 0 ]] && disown && exit
+    }
+
+    new-asciicast-win() {
+        urxvt -title 'asciinema-optimized' -geometry 160x40 -e zsh &
         [[ $? -eq 0 ]] && disown && exit
     }
 fi
