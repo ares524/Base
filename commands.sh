@@ -1214,6 +1214,13 @@ if type git &>/dev/null; then
     }
 fi
 
+#################### fontsize ####################
+
+fontsize() {
+    printf '\33]50;%s' "xft:Inconsolata:size=$1"
+    export FONT_SIZE=$1
+}
+
 #################### grep ####################
 
 system-info() {
