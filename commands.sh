@@ -1135,6 +1135,10 @@ findit-logs() {
     findit-default-excludes "$@" --type f --exts "log" --complex "! -size 0"
 }
 
+grep-logs() {
+    findit-logs . --pipesort "grep -Hn --color $@" 2>/dev/null
+}
+
 logs-empty() {
     findit-default-excludes "$@" --type f --exts "log" --complex "-empty"
 }
@@ -1320,6 +1324,11 @@ grepit() {
 
 grepit-count() {
     grepit -c "$@" | grep -v '0$' | sort -k2,2nr -k1,1 -t ':' | less -FX
+}
+
+grepit-cut() {
+    [[ -z "$@" ]] && return 1
+    grepit "$@" | cut -c 1-350 | grep --color "$@"
 }
 
 grepit-todo() {
