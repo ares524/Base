@@ -1082,6 +1082,10 @@ findit-node-modules() {
     findit "$@" --exclude_dirs "$_exclude" --type d --pattern "node_modules"
 }
 
+delete-node-modules() {
+    findit-node-modules "$@" --pipesort "rm -rf"
+}
+
 findit-js-backend() {
     findit "$@" --exclude_dirs "$_default_exclude_dirs, lib, static, ui, deploy, test, unitTests, apidoc" --type f --exts "js"
 }
