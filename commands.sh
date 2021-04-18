@@ -1567,7 +1567,7 @@ if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
         }
     fi
 
-    if type ntp &>/dev/null; then
+    if type ntpd &>/dev/null; then
         ntp-sync-now() {
             sudo service ntp stop && sudo ntpd -gq && sudo service ntp start
         }
