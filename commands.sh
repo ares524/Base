@@ -1221,6 +1221,12 @@ fontsize() {
     export FONT_SIZE=$1
 }
 
+#################### git ####################
+
+update-submodules() {
+    git submodule foreach --recursive git pull origin master
+}
+
 #################### grep ####################
 
 system-info() {
