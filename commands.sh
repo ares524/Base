@@ -487,6 +487,30 @@ if type pyenv &>/dev/null; then
     }
 fi
 
+#################### Package management (non-sudo) ####################
+
+if type apt-cache &>/dev/null; then
+    acs() {
+        apt-cache search $1 | grep -i "^$1" | less -FX
+    }
+
+    acs2() {
+        apt-cache search $1 | grep -i "\b$1\b" | less -FX
+    }
+
+    upgradable() {
+        apt list --upgradable
+    }
+fi
+
+manually-installed() {
+    if [[ -d /var/log/apt ]]; then
+        cat /var/log/apt/history.log <(zcat /var/log/apt/history.log.*) | grep -E '(apt-get|apt) install' | sort -u
+    elif type brew &>/dev/null; then
+        brew list
+    fi
+}
+
 #################### Tools ####################
 
 asciinema-install() {
@@ -944,14 +968,6 @@ system-info() {
     echo -e "\n$prompt_char grep -vE '(^#|^_|nologin$|false$)' /etc/passwd | sort"
     grep -vE '(^#|^_|nologin$|false$)' /etc/passwd | sort
     echo
-}
-
-manually-installed() {
-    if [[ -d /var/log/apt ]]; then
-        cat /var/log/apt/history.log <(zcat /var/log/apt/history.log.*) | grep -E '(apt-get|apt) install' | sort -u
-    elif type brew &>/dev/null; then
-        brew list
-    fi
 }
 
 #################### grepit ####################
