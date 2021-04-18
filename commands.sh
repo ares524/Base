@@ -1296,6 +1296,21 @@ system-info() {
     echo
 }
 
+grep-history() {
+    grep -Hn --color "$@" ~/.*history*
+}
+
+grep-history-exact() {
+    pattern=$1
+    [[ -z "$pattern" ]] && return 1
+    shift
+    grep-history "\b$pattern\b" "$@"
+}
+
+grep-history-comments() {
+    grep-history "^#"
+}
+
 #################### grepit ####################
 
 grepit() {
@@ -1366,21 +1381,6 @@ grep-object-info-no-tests() {
     [[ -z "$object" ]] && return 1
     grepit-no-docs-no-tests "\b$object\b" | egrep -o "($object\(|$object(\.\w+)+\(?)" |
     sort | uniq -c | sort -k1,1nr -k2 | egrep -v '.(js|py)$'
-}
-
-grep-history() {
-    grep -Hn --color "$@" ~/.*history*
-}
-
-grep-history-exact() {
-    pattern=$1
-    [[ -z "$pattern" ]] && return 1
-    shift
-    grep-history "\b$pattern\b" "$@"
-}
-
-grep-history-comments() {
-    grep-history "^#"
 }
 
 #################### helpme ####################
