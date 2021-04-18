@@ -611,6 +611,14 @@ kind-install() {
     cd "$oldpwd"
 }
 
+#################### acpi ####################
+
+if type acpi &>/dev/null; then
+    battery() {
+        acpi -V | grep Battery
+    }
+fi
+
 #################### aws ####################
 
 if type aws &>/dev/null; then
