@@ -804,6 +804,24 @@ if type curl &>/dev/null; then
     }
 fi
 
+#################### date ####################
+
+now() {
+    date +'%a %I:%M:%S'
+}
+
+if type banner &>/dev/null; then
+    if [[ $(uname) != "Darwin" ]]; then
+        now-banner() {
+            banner $(date +'%a %I:%M')
+        }
+    fi
+fi
+
+utcnow() {
+    python -c 'from datetime import datetime; print(datetime.utcnow())'
+}
+
 #################### df ####################
 
 dfh() {
