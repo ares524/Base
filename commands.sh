@@ -1055,10 +1055,118 @@ fi
 
 #################### findit ####################
 
-swps() {
-    findit "$@" --pattern ".*sw[po]" --exclude_dirs "node_modules, venv, .git, opensource" --stamp 2>/dev/null | sort
+_default_exclude_dirs="venv, env, .pyenv, .nvm, node_modules, dist, build, .cache, .config, .eggs, *.egg, *.egg-info, EGG-INFO, __pycache__, .pytest_cache, .git, .thumbnails, .cinnamon, .Trash, Library, opensource, backup-*"
+
+findit-default-excludes() {
+    findit "$@" --exclude_dirs "$_default_exclude_dirs"
 }
 
+swps() {
+    findit-default-excludes "$@" --type f --exts "sw[po]" --stamp 2>/dev/null | sort
+}
+
+findit-py() {
+    findit-default-excludes "$@" --type f --exts "py"
+}
+
+findit-py-no-tests() {
+    findit "$@" --exclude_dirs "$_default_exclude_dirs, test*" --type f --exts "py"
+}
+
+findit-test-dirs() {
+    findit-default-excludes "$@" --type d --ipattern "*test*" | sort
+}
+
+findit-node-modules() {
+    _exclude=$(echo $_default_exclude_dirs | tr ' ' '\n' | grep -v node_modules | tr '\n' ' ')
+    findit "$@" --exclude_dirs "$_exclude" --type d --pattern "node_modules"
+}
+
+findit-js-backend() {
+    findit "$@" --exclude_dirs "$_default_exclude_dirs, lib, static, ui, deploy, test, unitTests, apidoc" --type f --exts "js"
+}
+
+findit-tf() {
+    findit-default-excludes "$@" --type f --exts "tf, tfstate, tfvars"
+}
+
+findit-docs() {
+    findit-default-excludes "$@" --type f --exts "pdf, doc, odt, md, txt"
+}
+
+findit-annotated-pdfs() {
+    findit-default-excludes "$@" --type f --pattern 'annotated*pdf' --stamp | sort
+}
+
+findit-pics() {
+    findit-default-excludes "$@" --type f --exts "png, jpg, jpeg, gif"
+}
+
+findit-audio() {
+    findit-default-excludes "$@" --type f --exts "mp3, flac, ogg, m4a, wav"
+}
+
+findit-vids() {
+    findit-default-excludes "$@" --type f --exts "mp4, flv, mkv, ogv, mov, webm, avi"
+}
+
+if type feh &>/dev/null; then
+    pics-view() {
+        findit-pics "$@" --pipesort "feh -Fd" &
+    }
+fi
+
+if type mocp &>/dev/null; then
+    audio-play() {
+        mocp -S &>/dev/null
+        mocp -c && findit-audio "$@" --pipesort "mocp -a" && mocp -p
+    }
+fi
+
+if type vlc &>/dev/null; then
+    vids-play() {
+        _vlc="vlc"
+        [[ $(uname) == "Darwin" ]] && _vlc="/Applications/VLC.app/Contents/MacOS/VLC"
+        findit-vids "$@" --pipesort "$_vlc --fullscreen" &
+    }
+fi
+
+findit-logs() {
+    findit-default-excludes "$@" --type f --exts "log" --complex "! -size 0"
+}
+
+logs-empty() {
+    findit-default-excludes "$@" --type f --exts "log" --complex "-empty"
+}
+
+logs-empty-delete() {
+    findit-default-excludes "$@" --type f --exts "log" --complex "-empty -delete"
+}
+
+logs-wcl() {
+    findit-logs "$@" --pipesort 'wc -l'
+}
+
+logs-info() {
+    findit-logs "$@" --pipesort 'grep -Hn --color INFO'
+}
+
+logs-error() {
+    findit-logs "$@" --pipesort 'grep -Hn --color ERROR'
+}
+
+logs-debug() {
+    findit-logs "$@" --pipesort 'grep -Hn --color DEBUG'
+}
+
+show-mac-garbage() {
+    _exclude=$(echo $_default_exclude_dirs | tr ' ' '\n' | grep -v .Trash | tr '\n' ' ')
+    findit "$@" --exclude_dirs "$_exclude" --pattern '._*, .Trashes, .Trash, .Spotlight-V100, __MACOSX, .TemporaryItems, .fseventsd, .DS_Store'
+}
+
+delete-mac-garbage() {
+    show-mac-garbage -print0 | xargs -0 rm -rfv
+}
 #################### git ####################
 
 if type git &>/dev/null; then
