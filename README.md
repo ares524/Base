@@ -12,6 +12,10 @@ for now with more distros coming), Mac (includes installing homebrew), and
 Windows (requires a Bash shell like MINGW via Git Bash/Docker Toolkit or
 Windows Subsystem for Linux to be setup already).
 
+- [Setup Linux Mint and Tips](https://github.com/kenjyco/kenjyco/blob/master/setup-linux-mint-and-tips.md)
+- [Setup Mac and Tips](https://github.com/kenjyco/kenjyco/blob/master/setup-mac-and-tips.md)
+- [Setup Windows and Tips](https://github.com/kenjyco/kenjyco/blob/master/setup-windows-10-and-tips.md)
+
 # About
 
 When you source the `install.sh` script, your package manager will install
