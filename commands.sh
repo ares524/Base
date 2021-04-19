@@ -1998,6 +1998,18 @@ if type vlc &>/dev/null; then
     }
 fi
 
+#################### watch ####################
+
+watchit() {
+    watch -n 10 -t "$@"
+}
+
+if type acpi &>/dev/null; then
+    watch-battery() {
+        watchit -d acpi
+    }
+fi
+
 #################### xrandr ####################
 
 if type xrandr &>/dev/null; then
