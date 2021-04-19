@@ -678,6 +678,32 @@ kind-install() {
     cd "$oldpwd"
 }
 
+terraform-install() {
+    versions=(0.15.0 0.14.10 0.13.6 0.12.30 0.11.14)
+    oldpwd=$(pwd)
+    mkdir -p "$HOME/bin"
+    cd /tmp
+    for ver in "${versions[@]}"; do
+        [[ -f "$HOME/bin/terraform_$ver" ]] && continue
+        if [[ $(uname) == "Darwin" ]]; then
+            wget https://releases.hashicorp.com/terraform/${ver}/terraform_${ver}_darwin_amd64.zip
+            unzip terraform_${ver}_darwin_amd64.zip
+        else
+            wget https://releases.hashicorp.com/terraform/${ver}/terraform_${ver}_linux_amd64.zip
+            unzip terraform_${ver}_linux_amd64.zip
+        fi
+        mv -v terraform "$HOME/bin/terraform_$ver"
+    done
+    cd "$HOME/bin"
+    echo -e "\n\nWhich file should be linked to $HOME/bin/terraform"
+    choices=($(ls -1 terraform_*))
+    select choice in "${choices[@]}"; do
+        break
+    done
+    [[ -n "$choice" ]] && rm terraform 2>/dev/null && ln -s $choice terraform
+    cd "$oldpwd"
+}
+
 circleci-install() {
     if [[ ! -f "/usr/local/bin/circleci" && ! -f "$HOME/bin/circleci" ]]; then
         curl https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh --fail --silent | bash
