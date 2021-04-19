@@ -2052,6 +2052,44 @@ if type xrandr &>/dev/null; then
     }
 fi
 
+#################### xscreensaver ####################
+
+if type xscreensaver-command &>/dev/null; then
+    stop-screensaver() {
+        xscreensaver-command -exit
+    }
+
+    start-screensaver() {
+        [[ -z $(pgrep xscreensaver) ]] && /usr/bin/xscreensaver -no-splash &
+        xscreensaver-command -activate &
+        disown
+    }
+
+    select-screensaver() {
+        IFS=$'\n'; select saver in $(find $(cat ~/.dotfiles_path)/x/xscreensaver -type f); do
+            cp -av "$saver" ~/.xscreensaver
+            break
+        done; unset IFS
+    }
+
+    lockscreen() {
+        if [[ -z "$DISPLAY" ]]; then
+            if [[ -n "$TMUX" ]]; then
+                echo "Call 'lockscreen' again after tmux detaches..."
+                sleep 2
+                tmux detach-client
+                return
+            else
+                vlock
+            fi
+        else
+            [[ -z $(pgrep xscreensaver) ]] && /usr/bin/xscreensaver -no-splash &
+            xscreensaver-command -lock &
+            disown
+        fi
+    }
+fi
+
 #################### PATH ####################
 
 if [[ -d "$HOME/bin-base" && -z "$(echo $PATH | grep bin-base)" ]]; then
