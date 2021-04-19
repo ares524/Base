@@ -65,14 +65,6 @@ do_install() {
             sudo chmod +x /usr/local/bin/docker-compose
         fi
 
-        # echo -e "\nInstalling/upgrading yarn..."
-        # if [[ -z "$(grep yarn -R /etc/apt/sources.list.d)" ]]; then
-        #     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-        #     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-        #     sudo apt-get update
-        # fi
-        # sudo apt-get install -y yarn
-
         if [[ -n "$gui" ]]; then
             if [[ -z "$wsl" ]]; then
                 echo -e "\nInstalling Xorg..."
@@ -118,9 +110,6 @@ do_install() {
 
         echo -e "\nInstalling/upgrading packages needed for modern bash..."
         _brew_install_or_upgrade bash bash-completion
-
-        # echo -e "\nInstalling/upgrading packages needed for yarn..."
-        # _brew_install_or_upgrade yarn
 
         if [[ -n "$extras" ]]; then
             echo -e "\nInstalling/upgrading other useful CLI packages ..."
