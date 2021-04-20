@@ -1923,6 +1923,18 @@ if type tmux &>/dev/null; then
     }
 fi
 
+#################### tree ####################
+
+if type tree &>/dev/null; then
+    t() {
+        tree -F $@ | less -FX
+    }
+
+    td() {
+        tree -Fd $@ | less -FX
+    }
+fi
+
 #################### urxvt ####################
 
 if type urxvt &>/dev/null; then
