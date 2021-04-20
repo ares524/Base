@@ -413,13 +413,14 @@ nvm-install() {
     fi
 
     if [[ ! -d ~/.nvm ]]; then
-        echo -e "\nInstalling nvm and latest 'long term support' version of node..."
+        echo -e "\nInstalling nvm, latest 'long term support' version of node, and yarn..."
         unset NVM_DIR
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
         export NVM_DIR="$HOME/.nvm"
         source "$NVM_DIR/nvm.sh"
         source "$NVM_DIR/bash_completion"
         nvm install --lts
+        npm install -g yarn
     fi
 }
 
