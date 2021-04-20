@@ -569,6 +569,47 @@ if [[ -s "$HOME/tools-py/venv/bin/aws" ]]; then
     }
 fi
 
+flake8-install() {
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install flake8
+    source $HOME/commands.sh
+}
+
+if [[ -s "$HOME/tools-py/venv/bin/flake8" ]]; then
+    flake8() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/flake8 "$@"
+    }
+
+    flakeit() {
+        flake8 --exclude='venv/*' . |
+        egrep -v '(line too long|import not at top of file|imported but unused|do not assign a lambda)'
+    }
+fi
+
+twine-install() {
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install twine
+    source $HOME/commands.sh
+}
+
+if [[ -s "$HOME/tools-py/venv/bin/twine" ]]; then
+    twine() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/twine "$@"
+    }
+fi
+
+http-install() {
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install httpie
+    source $HOME/commands.sh
+}
+
+if [[ -s "$HOME/tools-py/venv/bin/http" ]]; then
+    http() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/http "$@"
+    }
+fi
+
 yt-download-install() {
     [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
     "$HOME/tools-py/venv/bin/pip3" install yt-helper
@@ -582,6 +623,18 @@ if [[ -s "$HOME/tools-py/venv/bin/yt-download" ]]; then
 
     yt-download-upgrade() {
         "$HOME/tools-py/venv/bin/pip3" install yt-helper --upgrade --upgrade-strategy eager
+    }
+fi
+
+jupyter-install() {
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install jupyter
+    source $HOME/commands.sh
+}
+
+if [[ -s "$HOME/tools-py/venv/bin/jupyter" ]]; then
+    jupyter() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/jupyter "$@"
     }
 fi
 
