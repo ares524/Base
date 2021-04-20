@@ -2112,7 +2112,9 @@ if [[ -z $(echo $PATH | grep $HOME/bin:) && -z $(echo $PATH | grep $HOME/bin$) ]
     PATH="$HOME/bin:$PATH"
 fi
 
-[[ -s "$HOME/private.sh" ]] && source "$HOME/private.sh"
+for private in $HOME/private*\.sh; do
+    source "$private"
+done
 if [[ $(whoami) == "root" ]]; then
     prompt-verbose
 else
