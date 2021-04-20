@@ -624,6 +624,54 @@ if type grip &>/dev/null; then
     }
 fi
 
+rdb-install() {
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install rdbtools python-lzf
+    source $HOME/commands.sh
+}
+
+if [[ -s "$HOME/tools-py/venv/bin/rdb" ]]; then
+    rdb() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/rdb "$@"
+    }
+
+    redis-usage() {
+        dump_path=$1
+        system_redis=
+        if [[ -z "$dump_path" ]]; then
+            if [[ -d /var/lib/redis ]]; then
+                dump_path="/var/lib/redis/dump.rdb"
+                system_redis=yes
+            elif [[ -d /usr/local/var/db/redis ]]; then
+                dump_path="/usr/local/var/db/redis/dump.rdb"
+                system_redis=yes
+            fi
+        fi
+
+        if type redis-cli &>/dev/null && test -n "$system_redis"; then
+            seconds_since_save=$(($(date +"%s") - $(redis-cli lastsave)))
+            if [[ $seconds_since_save -gt 1000 ]]; then
+                redis-cli bgsave >/dev/null
+                echo "Running bgsave command since it was $seconds_since_save seconds since last save" >&2
+                while [[ $seconds_since_save -gt 1000 ]]; do
+                    sleep 1
+                    seconds_since_save=$(($(date +"%s") - $(redis-cli lastsave)))
+                done
+                echo "Finished bgsave command" >&2
+            fi
+        fi
+
+
+        if [[ $(uname) != "Darwin" && -n "$system_redis" ]]; then
+            _pypath=$HOME
+            _rdb_path=$HOME/tools-py/venv/bin/rdb
+            PYTHONPATH=$_pypath sudo $_rdb_path -c memory "$dump_path" | sort -t, -k4 -h
+        else
+            rdb -c memory "$dump_path" | sort -t, -k4 -h
+        fi
+    }
+fi
+
 kubectl-install() {
     unset yn
     if type kubectl &>/dev/null; then
