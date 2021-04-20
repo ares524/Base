@@ -569,6 +569,22 @@ if [[ -s "$HOME/tools-py/venv/bin/aws" ]]; then
 	}
 fi
 
+yt-download-install() {
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install yt-helper
+    source $HOME/commands.sh
+}
+
+if [[ -s "$HOME/tools-py/venv/bin/yt-download" ]]; then
+    yt-download() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/yt-download "$@"
+    }
+
+    yt-download-upgrade() {
+        "$HOME/tools-py/venv/bin/pip3" install yt-helper --upgrade --upgrade-strategy eager
+    }
+fi
+
 grip-install() {
 	[[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
 	"$HOME/tools-py/venv/bin/pip3" install grip
