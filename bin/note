@@ -2,10 +2,12 @@
 
 note=$1
 newdate="#### \`$(date +'%Y_%m%d %a %r')\`"
+generated=
 if [[ -z "$note" ]]; then
     note="$(date +'%Y_%m%d--%a_hour_%H')"
     title="$(echo $note | tr '_' '-')"
     newdate="## $(date +'%r')"
+    generated=yes
 else
     title="$note"
 fi
@@ -16,22 +18,34 @@ else
     fname="${note}.md"
 fi
 
+template=
 if [[ ! -s "$fname" ]]; then
     # Genarate the file since it does not exist
-    echo -e "${title}\n----------\n\n$newdate\n\n" > "$fname" || exit 1
+    template="${title}\n----------\n\n$newdate\n\n"
+    echo -e "$template" > "$fname" || exit 1
 
     # Open the file with vim (in insert mode, at the end of the file)
     vim + -c 'startinsert' $fname
-
-    # Display contents of file to terminal
-    cat $fname
 else
     # Dump a timestamp into the existing file
     echo -e "\n$newdate\n\n" >> "$fname" || exit 1
 
     # Open the file with vim wherever the cursor was before
     vim $fname
+fi
 
-    # Show last 30 lines of the file
-    tail -n 30 $fname
+content=$(cat "$fname")
+if [[ -z "$content" ]]; then
+    rm "$fname"
+elif [[ "$content" == $(echo -e "$template") ]]; then
+    rm "$fname"
+else
+    echo -e "$content"
+    if [[ -n "$generated" ]]; then
+        echo -en "\n--------------------\nsave as\n> "
+        read newfile
+        if [[ -n "$newfile" ]]; then
+            mv -nv "$fname" "$newfile--$fname"
+        fi
+    fi
 fi
