@@ -515,15 +515,15 @@ manually-installed() {
 #################### Tools ####################
 
 asciinema-install() {
-	[[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
-	"$HOME/tools-py/venv/bin/pip3" install asciinema
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install asciinema
     source $HOME/commands.sh
 }
 
 if [[ -s "$HOME/tools-py/venv/bin/asciinema" ]]; then
-	asciinema() {
-		PYTHONPATH=$HOME $HOME/tools-py/venv/bin/asciinema "$@"
-	}
+    asciinema() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/asciinema "$@"
+    }
 fi
 
 if type asciinema &>/dev/null; then
@@ -558,15 +558,15 @@ if type asciinema &>/dev/null; then
 fi
 
 aws-install() {
-	[[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
-	"$HOME/tools-py/venv/bin/pip3" install awscli
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install awscli
     source $HOME/commands.sh
 }
 
 if [[ -s "$HOME/tools-py/venv/bin/aws" ]]; then
-	aws() {
-		PYTHONPATH=$HOME $HOME/tools-py/venv/bin/aws "$@"
-	}
+    aws() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/aws "$@"
+    }
 fi
 
 yt-download-install() {
@@ -586,15 +586,15 @@ if [[ -s "$HOME/tools-py/venv/bin/yt-download" ]]; then
 fi
 
 grip-install() {
-	[[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
-	"$HOME/tools-py/venv/bin/pip3" install grip
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install grip
     source $HOME/commands.sh
 }
 
 if [[ -s "$HOME/tools-py/venv/bin/grip" ]]; then
-	grip() {
-		PYTHONPATH=$HOME $HOME/tools-py/venv/bin/grip "$@"
-	}
+    grip() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/grip "$@"
+    }
 fi
 
 if type grip &>/dev/null; then
