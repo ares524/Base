@@ -25,5 +25,6 @@ for repo in $(repos-list "$path" | tr '\n' '\0' | xargs -0); do
             git pull --rebase
             git stash pop --quiet
         fi
+        git remote prune origin
     fi
 done
