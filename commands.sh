@@ -2189,24 +2189,24 @@ fi
 #################### xscreensaver ####################
 
 if type xscreensaver-command &>/dev/null; then
-    stop-screensaver() {
+    screensaver-stop() {
         xscreensaver-command -exit
     }
 
-    start-screensaver() {
+    screensaver-start() {
         [[ -z $(pgrep xscreensaver) ]] && /usr/bin/xscreensaver -no-splash &
         xscreensaver-command -activate &
         disown
     }
 
     if [[ -f "$HOME/.dotfiles_path" && -d "$(cat $HOME/.dotfiles_path)/x/xscreensaver" ]]; then
-        select-screensaver() {
+        screensaver-select() {
             IFS=$'\n'; select saver in $(find $(cat ~/.dotfiles_path)/x/xscreensaver -type f); do
                 cp -av "$saver" ~/.xscreensaver
                 break
             done; unset IFS
 
-            stop-screensaver &>/dev/null
+            screensaver-stop &>/dev/null
             /usr/bin/xscreensaver -no-splash &>/dev/null &
             disown
 
