@@ -40,7 +40,7 @@ if [[ -z "$content" ]]; then
 elif [[ "$content" == $(echo -e "$template") ]]; then
     rm "$fname"
 else
-    echo -e "$content"
+    echo -e "$content" | tail -n 30
     if [[ -n "$generated" ]]; then
         echo -en "\n--------------------\nsave as\n> "
         read newfile
