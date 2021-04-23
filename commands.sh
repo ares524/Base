@@ -2199,12 +2199,25 @@ if type xscreensaver-command &>/dev/null; then
         disown
     }
 
-    select-screensaver() {
-        IFS=$'\n'; select saver in $(find $(cat ~/.dotfiles_path)/x/xscreensaver -type f); do
-            cp -av "$saver" ~/.xscreensaver
-            break
-        done; unset IFS
-    }
+    if [[ -f "$HOME/.dotfiles_path" && -d "$(cat $HOME/.dotfiles_path)/x/xscreensaver" ]]; then
+        select-screensaver() {
+            IFS=$'\n'; select saver in $(find $(cat ~/.dotfiles_path)/x/xscreensaver -type f); do
+                cp -av "$saver" ~/.xscreensaver
+                break
+            done; unset IFS
+
+            stop-screensaver &>/dev/null
+            /usr/bin/xscreensaver -no-splash &>/dev/null &
+            disown
+
+            if [[ -n "$(echo $saver | grep -E '(carousel|images|slideshow)')" ]]; then
+                echo -e "\n\nMake sure to set your image directory in xscreensaver-demo"
+                echo " - Click the 'Advanced' tab"
+                echo " - Check the 'Choose Random Image' box"
+                echo " - Click the 'Browse' button and navigate to desired image directory"
+            fi
+        }
+    fi
 
     lockscreen() {
         if [[ -z "$DISPLAY" ]]; then
