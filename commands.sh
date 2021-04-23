@@ -1470,6 +1470,10 @@ grepit() {
     grep -HnI --color -R --exclude=\*.{pyc,swp,min.js,svg,png,jpg,jpeg,ttf,pdf,doc,xlsx,otf,mp3} --exclude-dir=.git --exclude-dir=venv --exclude-dir=env --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=.cache --exclude-dir=.eggs --exclude-dir=\*.egg-info --exclude-dir=__pycache__ --exclude-dir=.pytest_cache "$@" \.
 }
 
+grepit-tabs() {
+    grepit $'\t'
+}
+
 grepit-count() {
     grepit -c "$@" | grep -v '0$' | sort -k2,2nr -k1,1 -t ':' | less -FX
 }
