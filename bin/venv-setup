@@ -20,13 +20,23 @@ if [[ $(uname) =~ "MINGW" ]]; then
     PYTHON="python"
     PIP="$env_name/Scripts/pip"
 fi
+
+if type pyenv &>/dev/null && test -f .python-version; then
+    eval "$(pyenv init -)" || exit 1
+    PYTHON="python"
+    py_version=$(cat .python-version)
+    if [[ ! -d "$HOME/.pyenv/versions/$py_version" ]]; then
+        pyenv install "$py_version" || exit 1
+    fi
+fi
+
 [[ ! -d $env_name ]] && $PYTHON -m venv $env_name
 PYTHON=$(dirname $PIP)/python
 $PYTHON -m pip install --upgrade pip wheel
 [[ -f requirements.txt ]] && $PIP install -r requirements.txt ${pip_args[@]}
 if [[ ! $(uname) =~ "MINGW" ]]; then
-    $PIP install ipython pdbpp ${pip_args[@]}
+    $PIP install ipython pytest pdbpp ${pip_args[@]}
 else
-    $PIP install ipython ${pip_args[@]}
+    $PIP install ipython pytest ${pip_args[@]}
 fi
 [[ -f setup.py ]] && $PYTHON setup.py develop
