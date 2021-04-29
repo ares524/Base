@@ -1813,12 +1813,21 @@ fi
 if [[ -d ~/.ssh ]]; then
     if type ssh-agent &>/dev/null; then
         sshlazy() {
-            found=$(find "$HOME/.ssh" -type f \( -name '*.pub' -o -name '*.pem' -o -name 'config*' -o -name 'known_hosts*' -o -name 'authorized_keys*' \) -prune -o -type f -print | sort)
+            found=($(find "$HOME/.ssh" -type f \( -name '*.pub' -o -name '*.pem' -o -name 'config*' -o -name 'known_hosts*' -o -name 'authorized_keys*' \) -prune -o -type f -print | sort))
+            unset filtered
             if [[ -n "$1" ]]; then
-                filtered=$(echo $found | grep "/$1$")
-                [[ -z "$filtered" ]] && filtered=$(echo $found | grep $1)
+                for fnd in "${found[@]}"; do
+                    filtered=$(echo $fnd | grep "/$1$")
+                    [[ -n "$filtered" ]] && break
+                done
+                if [[ -z "$filtered" ]]; then
+                    for fnd in "${found[@]}"; do
+                        filtered=$(echo $fnd | grep "$1")
+                        [[ -n "$filtered" ]] && break
+                    done
+                fi
             else
-                filtered="$found"
+                filtered="${found[0]}"
             fi
             loaded=$(ssh-add -l 2>/dev/null | grep -v "agent has no identities" | awk '{print $3}' | sort)
             [[ -z $SSH_AUTH_SOCK && -z "$SSH_AGENT_PID" ]] && eval $(ssh-agent -s)
