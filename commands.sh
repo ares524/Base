@@ -1826,13 +1826,17 @@ if [[ -d ~/.ssh ]]; then
                         [[ -n "$filtered" ]] && break
                     done
                 fi
-            else
-                filtered="${found[0]}"
             fi
             loaded=$(ssh-add -l 2>/dev/null | grep -v "agent has no identities" | awk '{print $3}' | sort)
             [[ -z $SSH_AUTH_SOCK && -z "$SSH_AGENT_PID" ]] && eval $(ssh-agent -s)
             echo -e "$loaded" >/tmp/loaded-$$.txt
-            echo -e "$filtered" >/tmp/filtered-$$.txt
+            if [[ -n "$filtered" ]]; then
+                echo -e "$filtered" >/tmp/filtered-$$.txt
+            else
+                for fnd in "${found[@]}"; do
+                    echo "$fnd" >>/tmp/filtered-$$.txt
+                done
+            fi
             filtered_not_loaded=$(comm -13 /tmp/loaded-$$.txt /tmp/filtered-$$.txt)
             rm /tmp/loaded-$$.txt /tmp/filtered-$$.txt
 
