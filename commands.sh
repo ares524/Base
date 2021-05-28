@@ -2260,9 +2260,12 @@ if [[ -z $(echo $PATH | grep $HOME/bin:) && -z $(echo $PATH | grep $HOME/bin$) ]
     PATH="$HOME/bin:$PATH"
 fi
 
-for private in $HOME/private*\.sh; do
-    source "$private"
-done
+_private_files=($(ls $HOME/private*\.sh 2>/dev/null))
+if [[ -n "$_private_files" ]]; then
+    for private in $HOME/private*\.sh; do
+        source "$private"
+    done
+fi
 if [[ $(whoami) == "root" ]]; then
     prompt-verbose
 else
