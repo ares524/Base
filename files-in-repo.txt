@@ -1,9 +1,12 @@
 bin/backup.py
+bin/check-cert-and-key
 bin/clean-py
 bin/findit
+bin/get_install_requires.py
 bin/ip-local
 bin/ip-local-all
 bin/ip-public
+bin/iso_to_usb.sh
 bin/makerepo
 bin/note
 bin/repos-branches
@@ -39,6 +42,7 @@ bin/repos-tags
 bin/repos-tags-messages
 bin/repos-untracked-files
 bin/repos-update
+bin/repos-update--skip-swps
 bin/venv-deptree
 bin/venv-freeze
 bin/venv-ipython
