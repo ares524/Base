@@ -16,15 +16,8 @@ if [[ -f "$HOME/.base_path" ]]; then
         oldpwd=$(pwd)
         base
         echo -e "\n\nU P D A T I N G   B A S E   R E P O"
-        _swps=$(swps)
-        if [[ -n "$_swps" ]]; then
-            echo -e "\nThere are swp files found in 'base' dir, not updating"
-            echo -e "\n$_swps"
-            cd "$oldpwd"
-            return 1
-        fi
         commit_id_before=$(git reflog -1 | awk '{print $1}')
-        repos-update
+        repos-update--skip-swps
         commit_id_after=$(git reflog -1 | awk '{print $1}')
         echo -e "\n\nC U R R E N T   S T A T U S"
         repos-status
@@ -52,15 +45,8 @@ if [[ -f "$HOME/.dotfiles_path" ]]; then
         oldpwd=$(pwd)
         dotfiles
         echo -e "\n\nU P D A T I N G   D O T F I L E S   R E P O"
-        _swps=$(swps)
-        if [[ -n "$_swps" ]]; then
-            echo -e "\nThere are swp files found in 'dotfiles' dir, not updating"
-            echo -e "\n$_swps"
-            cd "$oldpwd"
-            return 1
-        fi
         commit_id_before=$(git reflog -1 | awk '{print $1}')
-        repos-update
+        repos-update--skip-swps
         commit_id_after=$(git reflog -1 | awk '{print $1}')
         echo -e "\n\nC U R R E N T   S T A T U S"
         repos-status
