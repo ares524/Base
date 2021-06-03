@@ -51,7 +51,8 @@ else
         echo -en "\n--------------------\nsave as\n> "
         read newfile
         if [[ -n "$newfile" ]]; then
-            mv -nv "$fname" "$newfile--$fname"
+            [[ ! "$newfile" =~ \.md$ ]] && newfile="${newfile}.md"
+            mv -nv "$fname" "$newfile"
         fi
     fi
 fi
