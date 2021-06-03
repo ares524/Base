@@ -8,6 +8,12 @@ if [[ -z "$note" ]]; then
     title="$(echo $note | tr '_' '-')"
     newdate="## $(date +'%r')"
     generated=yes
+elif [[ -n $(dirname $note) && -d $note ]]; then
+    cd $note
+    note="$(date +'%Y_%m%d--%a_hour_%H')"
+    title="$(pwd)/$(echo $note | tr '_' '-')"
+    newdate="## $(date +'%r')"
+    generated=yes
 else
     title="$note"
 fi
