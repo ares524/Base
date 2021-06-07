@@ -217,10 +217,12 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/tesseract-ocr/tesseract
     https://github.com/ttroy50/cmake-examples
     https://github.com/v8/v8
+    https://github.com/xmrig/xmrig
     https://github.com/zeromq/libzmq
 )
 
 OPEN_SOURCE_C_SHARP_REPOS=(
+    https://github.com/chocolatey/choco
     https://github.com/craftworkgames/MonoGame.Extended
     https://github.com/dotnet/csharplang
     https://github.com/monogame/monogame
@@ -248,6 +250,7 @@ OPEN_SOURCE_DOCKERFILE_REPOS=(
     https://github.com/alpine-docker/make
     https://github.com/alpine-docker/socat
     https://github.com/docker-library/official-images
+    https://github.com/docker/awesome-compose
     https://github.com/dockerfile/java
     https://github.com/dockerfile/nginx
     https://github.com/dockerfile/ubuntu
@@ -283,6 +286,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/chubin/awesome-console-services
     https://github.com/cjbarber/ToolsOfTheTrade
     https://github.com/danistefanovic/build-your-own-x
+    https://github.com/deepVector/geospatial-machine-learning
     https://github.com/docker-library/docs
     https://github.com/donnemartin/system-design-primer
     https://github.com/drobakowski/awesome-erlang
@@ -409,6 +413,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/grafana/grafana
     https://github.com/graphql-go/graphql
     https://github.com/grpc/grpc-go
+    https://github.com/gwuhaolin/livego
     https://github.com/hashicorp/consul
     https://github.com/hashicorp/hcl
     https://github.com/hashicorp/packer
@@ -530,6 +535,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/Netflix/vector
     https://github.com/Netflix/vizceral
     https://github.com/NickCarneiro/curlconverter
+    https://github.com/Rich-Harris/degit
     https://github.com/Unitech/pm2
     https://github.com/VulcanJS/Vulcan
     https://github.com/alpinejs/alpine
@@ -557,6 +563,8 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/facebook/create-react-app
     https://github.com/facebook/react
     https://github.com/facebook/react-native
+    https://github.com/fastify/fastify
+    https://github.com/fastify/fastify-cli
     https://github.com/freeCodeCamp/freeCodeCamp
     https://github.com/gatsbyjs/gatsby
     https://github.com/gatsbyjs/gatsby-starter-blog
@@ -573,12 +581,18 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/hubotio/hubot
     https://github.com/jfo8000/ScratchJr-Desktop
     https://github.com/knex/knex
+    https://github.com/koajs/joi-router
+    https://github.com/koajs/koa
+    https://github.com/koajs/router
     https://github.com/kriasoft/react-starter-kit
     https://github.com/krisk/Fuse/
     https://github.com/laurent22/joplin
     https://github.com/lodash/lodash
+    https://github.com/mermaid-js/mermaid
     https://github.com/mesosphere/reactjs-components
+    https://github.com/moment/moment
     https://github.com/neo4j/neo4j-javascript-driver
+    https://github.com/newsdev/archieml-js
     https://github.com/parse-community/parse-dashboard
     https://github.com/parse-community/parse-server
     https://github.com/philc/vimium
@@ -594,9 +608,12 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/serverless/serverless
     https://github.com/serverless/serverless-graphql
     https://github.com/serverless/serverless-kubeless
+    https://github.com/sideway/joi
     https://github.com/socketio/socket.io
     https://github.com/statsd/statsd
     https://github.com/strapi/strapi
+    https://github.com/sveltejs/rollup-plugin-svelte
+    https://github.com/sveltejs/svelte-loader
     https://github.com/tj/commander.js
     https://github.com/twitter/hogan.js
     https://github.com/twitter/labella.js
@@ -647,12 +664,14 @@ OPEN_SOURCE_JULIA_REPOS=(
 )
 
 OPEN_SOURCE_JUPYTER_REPOS=(
+    https://github.com/TrainingByPackt/SQL-for-Data-Analytics
     https://github.com/ageron/handson-ml
     https://github.com/aymericdamien/TensorFlow-Examples
     https://github.com/binder-examples/requirements
     https://github.com/donnemartin/data-science-ipython-notebooks
     https://github.com/donnemartin/interactive-coding-challenges
     https://github.com/fastai/fastai
+    https://github.com/ipython/ipython-in-depth
     https://github.com/jakevdp/PythonDataScienceHandbook
     https://github.com/norvig/pytudes
     https://github.com/trekhleb/homemade-machine-learning
@@ -731,6 +750,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/apache/airflow
     https://github.com/apache/superset
     https://github.com/asciinema/asciinema
+    https://github.com/asweigart/pyautogui
     https://github.com/aws/aws-cli
     https://github.com/aws/chalice
     https://github.com/benoitc/gaffer
@@ -791,6 +811,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/jarun/pdd
     https://github.com/joke2k/faker
     https://github.com/jpadilla/pyjwt
+    https://github.com/jrnl-org/jrnl
     https://github.com/jupyter/jupyter
     https://github.com/jupyter/nbconvert
     https://github.com/jupyter/notebook
@@ -841,8 +862,10 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/python-pillow/Pillow
     https://github.com/python-poetry/poetry
     https://github.com/python-telegram-bot/python-telegram-bot
+    https://github.com/pythonprofilers/memory_profiler
     https://github.com/pytorch/examples
     https://github.com/pytorch/pytorch
+    https://github.com/pyutils/line_profiler
     https://github.com/quantopian/pyfolio
     https://github.com/quantopian/qdb
     https://github.com/quantopian/qgrid
@@ -866,6 +889,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/sqlalchemy/alembic
     https://github.com/sqlalchemy/sqlalchemy
     https://github.com/sqlmapproject/sqlmap
+    https://github.com/srounet/Pymem
     https://github.com/sshuttle/sshuttle
     https://github.com/stub42/pytz
     https://github.com/sympy/sympy
@@ -984,6 +1008,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/acmesh-official/acme.sh
     https://github.com/alpinelinux/alpine-chroot-install
     https://github.com/asdf-vm/asdf
+    https://github.com/gabrielelana/awesome-terminal-fonts
     https://github.com/graphql/graphql-spec
     https://github.com/iredmail/iRedMail
     https://github.com/jakeday/linux-surface
@@ -1054,6 +1079,7 @@ OPEN_SOURCE_TERRAFORM_REPOS=(
 OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/APIs-guru/graphql-lodash
     https://github.com/APIs-guru/graphql-voyager
+    https://github.com/FoalTS/foal
     https://github.com/FormidableLabs/urql
     https://github.com/angular/angular
     https://github.com/angular/protractor
@@ -1072,6 +1098,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/elastic/kibana
     https://github.com/electron/fiddle
     https://github.com/electron/i18n
+    https://github.com/feathersjs/feathers
     https://github.com/graphql-editor/graphql-editor
     https://github.com/graphql/graphiql
     https://github.com/graphql/graphql-js
@@ -1082,6 +1109,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/learnapollo/learnapollo
     https://github.com/microsoft/TypeScript
     https://github.com/mrdoob/three.js
+    https://github.com/nestjs/nest
     https://github.com/nodejs/llhttp
     https://github.com/onelang/OneLang
     https://github.com/percona/grafana-dashboards
@@ -1094,6 +1122,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/sindresorhus/p-queue
     https://github.com/sindresorhus/refined-github
     https://github.com/stream-labs/streamlabs-obs
+    https://github.com/sveltejs/sapper
     https://github.com/teambit/bit
     https://github.com/typeorm/typeorm
     https://github.com/typicode/husky
@@ -1112,7 +1141,9 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
 OPEN_SOURCE_VIMSCRIPT_REPOS=(
     https://github.com/VundleVim/Vundle.vim
     https://github.com/christoomey/vim-tmux-navigator
+    https://github.com/ctrlpvim/ctrlp.vim
     https://github.com/spf13/spf13-vim
+    https://github.com/vim-airline/vim-airline
 )
 
 OPEN_SOURCE_YAML_REPOS=(
