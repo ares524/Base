@@ -38,6 +38,7 @@ OPEN_SOURCE_TERRAFORM_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/terraform"
 OPEN_SOURCE_TYPESCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/typescript"
 OPEN_SOURCE_VIMSCRIPT_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/vimscript"
 OPEN_SOURCE_YAML_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/yaml"
+OPEN_SOURCE_MIXED_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/mixed"
 
 OPEN_SOURCE_ALGORITHMS_REPOS=(
     https://github.com/TheAlgorithms/AArch64_Assembly
@@ -1153,6 +1154,11 @@ OPEN_SOURCE_YAML_REPOS=(
     https://github.com/fluxcd/helm-operator-get-started
 )
 
+OPEN_SOURCE_MIXED_REPOS=(
+    https://github.com/microservices-demo/microservices-demo
+    https://github.com/pixie-labs/pixie
+)
+
 clone-opensource() {
     oldpwd=$(pwd)
     mkdir -p "$OPEN_SOURCE_ALGORITHMS_REPOS_DIR"
@@ -1335,6 +1341,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_YAML_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_MIXED_REPOS_DIR"
+    cd "$OPEN_SOURCE_MIXED_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_MIXED_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     cd "$oldpwd"
 }
 
@@ -1375,3 +1386,4 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR" ]] && opensource-typescript-repos() { cd "$OPEN_SOURCE_TYPESCRIPT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR" ]] && opensource-vimscript-repos() { cd "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_YAML_REPOS_DIR" ]] && opensource-yaml-repos() { cd "$OPEN_SOURCE_YAML_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_MIXED_REPOS_DIR" ]] && opensource-mixed-repos() { cd "$OPEN_SOURCE_MIXED_REPOS_DIR"; }
