@@ -21,10 +21,10 @@ import subprocess
 
 DEFAULT_EXCLUDES = [
     'env', 'venv', '.pyenv', '__pycache__', '.npm', '.nvm', 'node_modules',
-    '.node-gyp',
+    '.node-gyp', 'opensource',
     '*.swp', '.cache', 'cache', '.mozilla', 'chromium', '.plugin_install_dir',
     '.macromedia', '.pki', '.local', '.dbus', '.linuxmint', '.cinnamon',
-    '.minetest',
+    '.minetest', '.ecryptfs',
     '.Trashes', '.Spotlight-V100', '__MACOSX', '.TemporaryItems', '.fseventsd',
     '.Trash', '.DS_Store', 'Library'
 ]
