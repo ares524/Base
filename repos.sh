@@ -114,6 +114,8 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/libevent/libevent
     https://github.com/libuv/libuv
     https://github.com/lua/lua
+    https://github.com/mintty/mintty
+    https://github.com/mintty/wsltty
     https://github.com/mirror/busybox
     https://github.com/mirror/dd-wrt
     https://github.com/mirror/ncurses
@@ -388,6 +390,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/caddyserver/caddy
     https://github.com/candid82/joker
     https://github.com/containernetworking/cni
+    https://github.com/coocood/freecache
     https://github.com/dgraph-io/dgraph
     https://github.com/dmacvicar/terraform-provider-libvirt
     https://github.com/docker/docker-ce
@@ -416,6 +419,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/grpc/grpc-go
     https://github.com/gwuhaolin/livego
     https://github.com/hashicorp/consul
+    https://github.com/hashicorp/golang-lru
     https://github.com/hashicorp/hcl
     https://github.com/hashicorp/packer
     https://github.com/hashicorp/terraform
@@ -425,6 +429,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/influxdata/telegraf
     https://github.com/istio/istio
     https://github.com/itchyny/gojq
+    https://github.com/jetstack/cert-manager
     https://github.com/jwilder/docker-gen
     https://github.com/keybase/client
     https://github.com/kubeless/kubeless
@@ -581,6 +586,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/hoppscotch/hoppscotch
     https://github.com/hubotio/hubot
     https://github.com/jfo8000/ScratchJr-Desktop
+    https://github.com/joemccann/dillinger
     https://github.com/knex/knex
     https://github.com/koajs/joi-router
     https://github.com/koajs/koa
@@ -615,6 +621,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/strapi/strapi
     https://github.com/sveltejs/rollup-plugin-svelte
     https://github.com/sveltejs/svelte-loader
+    https://github.com/tanabe/markdown-live-preview
     https://github.com/tj/commander.js
     https://github.com/twitter/hogan.js
     https://github.com/twitter/labella.js
@@ -1155,6 +1162,7 @@ OPEN_SOURCE_YAML_REPOS=(
 )
 
 OPEN_SOURCE_MIXED_REPOS=(
+    https://github.com/github/gitignore
     https://github.com/microservices-demo/microservices-demo
     https://github.com/pixie-labs/pixie
 )
