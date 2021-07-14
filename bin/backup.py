@@ -21,7 +21,7 @@ import subprocess
 
 DEFAULT_EXCLUDES = [
     'env', 'venv', '.pyenv', '__pycache__', '.npm', '.nvm', 'node_modules',
-    '.node-gyp', 'opensource',
+    '.node-gyp', 'opensource', 'repos',
     '*.swp', '.cache', 'cache', '.mozilla', 'chromium', '.plugin_install_dir',
     '.macromedia', '.pki', '.local', '.dbus', '.linuxmint', '.cinnamon',
     '.minetest', '.ecryptfs',
