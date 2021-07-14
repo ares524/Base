@@ -69,6 +69,24 @@ When you source `~/commands.sh` or `~/commands.fish` (directly or indirectly):
 > Note: If you are in an interactive **fish shell**, do not source `install.sh`,
 > but invoke either `bash ./install.sh` OR `zsh ./install.sh`
 
+Near the end of process of running the `./install.sh` script, you will be
+prompted to select your prompt type
+
+```
+Select prompt mode
+1) verbose
+2) terse
+3) minimal
+#?
+```
+
+> The verbose prompt includes the username, hostname, full path to the current
+> working directory, and a newline for better visual separation. The terse
+> prompt has the hostname and the name of the current working directory. The
+> minimal prompt only has a single character and a newline. If you are unsure,
+> select option 1 (verbose). You can try other prompt styles by running the
+> `prompt-select-mode` command.
+
 The `install.sh` script behaves differently if any of the following strings are
 passed in:
 
