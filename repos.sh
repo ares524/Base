@@ -96,11 +96,13 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/Netflix/dynomite
     https://github.com/Perl/perl5
     https://github.com/PortAudio/portaudio
+    https://github.com/RedisAI/RedisAI
     https://github.com/X0rg/CPU-X
     https://github.com/antirez/load81
     https://github.com/antirez/rax
     https://github.com/antirez/redis
     https://github.com/awesomeWM/awesome
+    https://github.com/chirlu/sox
     https://github.com/curl/curl
     https://github.com/git/git
     https://github.com/hugsy/proxenet
@@ -252,6 +254,7 @@ OPEN_SOURCE_DOCKERFILE_REPOS=(
     https://github.com/alpine-docker/k8s
     https://github.com/alpine-docker/make
     https://github.com/alpine-docker/socat
+    https://github.com/dentych/docker-firebase
     https://github.com/docker-library/official-images
     https://github.com/docker/awesome-compose
     https://github.com/dockerfile/java
@@ -598,6 +601,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/mermaid-js/mermaid
     https://github.com/mesosphere/reactjs-components
     https://github.com/moment/moment
+    https://github.com/mozilla/readability
     https://github.com/neo4j/neo4j-javascript-driver
     https://github.com/newsdev/archieml-js
     https://github.com/parse-community/parse-dashboard
@@ -767,6 +771,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/bokeh/bokeh
     https://github.com/boto/boto3
     https://github.com/bottlepy/bottle
+    https://github.com/buriy/python-readability
     https://github.com/celery/celery
     https://github.com/certbot/certbot
     https://github.com/chubin/cheat.sh
@@ -975,6 +980,7 @@ OPEN_SOURCE_RUBY_REPOS=(
     https://github.com/jekyll/jekyll
     https://github.com/mperham/sidekiq
     https://github.com/mustache/mustache
+    https://github.com/nixme/pry-debugger
     https://github.com/pry/pry
     https://github.com/rails/rails
     https://github.com/resque/resque
@@ -1106,6 +1112,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/elastic/kibana
     https://github.com/electron/fiddle
     https://github.com/electron/i18n
+    https://github.com/firebase/firebase-tools
     https://github.com/feathersjs/feathers
     https://github.com/graphql-editor/graphql-editor
     https://github.com/graphql/graphiql
