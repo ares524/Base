@@ -1126,7 +1126,6 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/mrdoob/three.js
     https://github.com/nestjs/nest
     https://github.com/nodejs/llhttp
-    https://github.com/onelang/OneLang
     https://github.com/percona/grafana-dashboards
     https://github.com/prevwong/craft.js
     https://github.com/prisma-labs/graphql-playground
