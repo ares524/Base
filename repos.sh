@@ -230,7 +230,7 @@ OPEN_SOURCE_C_SHARP_REPOS=(
     https://github.com/chocolatey/choco
     https://github.com/craftworkgames/MonoGame.Extended
     https://github.com/dotnet/csharplang
-    https://github.com/monogame/monogame
+    # https://github.com/monogame/monogame
     https://github.com/monogame/monogame.samples
 )
 
@@ -1126,6 +1126,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/mrdoob/three.js
     https://github.com/nestjs/nest
     https://github.com/nodejs/llhttp
+    # https://github.com/onelang/OneLang
     https://github.com/percona/grafana-dashboards
     https://github.com/prevwong/craft.js
     https://github.com/prisma-labs/graphql-playground
