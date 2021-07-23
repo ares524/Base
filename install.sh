@@ -144,6 +144,9 @@ do_install() {
         echo "  - https://docs.microsoft.com/en-us/windows/wsl/install-win10"
         echo "  - https://docs.microsoft.com/en-us/windows/wsl/install-manual"
         exit 1
+    else
+        echo -e "\nNot sure what to do with $(uname) yet"
+        exit 1
     fi
 }
 
