@@ -137,6 +137,13 @@ do_install() {
             echo -e "\nAdding new version of bash to /etc/shells"
             sudo sh -c "echo '/usr/local/bin/bash' >> /etc/shells"
         fi
+    elif [[ $(uname) =~ MINGW.* ]]; then
+        echo -e "\nIt appears you are running MinGW (Minimalist GNU for Windows), likely"
+        echo "via the Git Bash shell. Not going to do anything"
+        echo -e "\nConsider enabling Windows Subsystem for Linux (WSL 2)"
+        echo "  - https://docs.microsoft.com/en-us/windows/wsl/install-win10"
+        echo "  - https://docs.microsoft.com/en-us/windows/wsl/install-manual"
+        exit 1
     fi
 }
 
