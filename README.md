@@ -9,8 +9,8 @@ base
 Use `base` as an **easy way** to install the minimum essential libs/programs
 for opensource exploration and development. Works for Linux (Debian-based
 for now with more distros coming), Mac (includes installing homebrew), and
-Windows (requires a Bash shell like MINGW via Git Bash/Docker Toolkit or
-Windows Subsystem for Linux to be setup already).
+Windows (requires Windows Subsystem for Linux 2 to be setup already with a Linux
+distro installed).
 
 - [Setup Linux Mint and Tips](https://github.com/kenjyco/kenjyco/blob/master/setup-linux-mint-and-tips.md)
 - [Setup Mac and Tips](https://github.com/kenjyco/kenjyco/blob/master/setup-mac-and-tips.md)
