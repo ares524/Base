@@ -21,7 +21,9 @@ distro installed).
 When you source the `install.sh` script, your package manager will install
 or update some packages, three symbolic links will be created in your
 `$HOME` directory, and `~/commands.sh` will be auto-sourced at the end
-(if using bash/zsh):
+(i.e. if using bash/zsh, the "shell functions" defined in `~/commands.sh` will
+be "loaded" into your shell whenever you start a session, allowing you to call
+any of those funcitons by name while using the terminal)
 
 - `~/bin-base` -> /path/to/base/bin
     - directory containing some executable shell scripts
