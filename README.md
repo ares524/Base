@@ -103,12 +103,11 @@ passed in:
 # Update
 
 ```
-% cd /path/to/base
-
-% source ./install.sh
+% base-update
 ```
 
-> Feel free to pass any of the above arguments to `./install.sh` when calling it
+> That command will `cd` to wherever you initially cloned this base repository,
+> pull in the latest changes via `git`, and re-source the install.sh file.
 
 # Usage
 
