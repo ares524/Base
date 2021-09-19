@@ -500,6 +500,12 @@ manually-installed() {
 
 #################### Tools ####################
 
+tools-py-install-all() {
+    [[ "$1" == "clean" ]] && rm -rf "$HOME/tools-py"
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install asciinema awscli flake8 twine httpie yt-helper jupyter grip rdbtools python-lzf
+}
+
 asciinema-install() {
     [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
     "$HOME/tools-py/venv/bin/pip3" install asciinema
