@@ -503,7 +503,7 @@ manually-installed() {
 tools-py-install-all() {
     [[ "$1" == "clean" ]] && rm -rf "$HOME/tools-py"
     [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
-    "$HOME/tools-py/venv/bin/pip3" install asciinema awscli flake8 twine httpie yt-helper jupyter grip rdbtools python-lzf
+    "$HOME/tools-py/venv/bin/pip3" install asciinema awscli flake8 twine httpie yt-helper jupyter grip rdbtools python-lzf sql-helper
 }
 
 asciinema-install() {
@@ -575,6 +575,19 @@ if [[ -s "$HOME/tools-py/venv/bin/flake8" ]]; then
     flakeit() {
         flake8 --exclude='venv/*' . |
         egrep -v '(line too long|import not at top of file|imported but unused|do not assign a lambda)'
+    }
+fi
+
+sql-install() {
+    [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
+    "$HOME/tools-py/venv/bin/pip3" install sql-helper
+    source $HOME/commands.sh
+}
+
+found_sql=$(ls -d ~/tools-py/venv/lib/python3.*/site-packages/sql_helper)
+if [[ -n "$found_sql" ]]; then
+    sql-ipython() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/python -c "from sql_helper import SQL; import input_helper as ih; ih.start_ipython(sql=SQL)"
     }
 fi
 
