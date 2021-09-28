@@ -24,7 +24,7 @@ DEFAULT_EXCLUDES = [
     '.node-gyp', 'opensource', 'repos',
     '*.swp', '.cache', 'cache', '.mozilla', 'chromium', '.plugin_install_dir',
     '.macromedia', '.pki', '.local', '.dbus', '.linuxmint', '.cinnamon',
-    '.minetest', '.ecryptfs',
+    '.minetest', '.ecryptfs', '.zoom',
     '.Trashes', '.Spotlight-V100', '__MACOSX', '.TemporaryItems', '.fseventsd',
     '.Trash', '.DS_Store', 'Library'
 ]
