@@ -128,11 +128,6 @@ do_install() {
             fi
         fi
 
-        if [[ ! -d /Applications/Docker.app/ ]]; then
-            echo -e "\nInstalling docker..."
-            brew install docker
-        fi
-
         if [[ -z $(grep "/usr/local/bin/bash" /etc/shells) ]]; then
             echo -e "\nAdding new version of bash to /etc/shells"
             sudo sh -c "echo '/usr/local/bin/bash' >> /etc/shells"
