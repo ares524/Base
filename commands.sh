@@ -1818,7 +1818,7 @@ fi
 if [[ -d ~/.ssh ]]; then
     if type ssh-agent &>/dev/null; then
         sshlazy() {
-            found=($(find "$HOME/.ssh" -type f \( -name '*.pub' -o -name '*.pem' -o -name 'config*' -o -name 'known_hosts*' -o -name 'authorized_keys*' \) -prune -o -type f -print | sort))
+            found=($(find "$HOME/.ssh" -type f \( -name '*.pub' -o -name '*.pem' -o -name '*.cer' -o -name 'config*' -o -name 'known_hosts*' -o -name 'authorized_keys*' \) -prune -o -type f -print | sort))
             unset filtered
             if [[ -n "$1" ]]; then
                 for fnd in "${found[@]}"; do
@@ -1852,7 +1852,7 @@ if [[ -d ~/.ssh ]]; then
         }
 
         sshlazy-select() {
-            found=($(find "$HOME/.ssh" -type f \( -name '*.pub' -o -name '*.pem' -o -name 'config*' -o -name 'known_hosts*' -o -name 'authorized_keys*' \) -prune -o -type f -print | sort))
+            found=($(find "$HOME/.ssh" -type f \( -name '*.pub' -o -name '*.pem' -o -name '*.cer' -o -name 'config*' -o -name 'known_hosts*' -o -name 'authorized_keys*' \) -prune -o -type f -print | sort))
             select choice in "${found[@]}"; do
                 break
             done
