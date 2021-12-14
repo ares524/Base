@@ -502,10 +502,26 @@ manually-installed() {
 
 #################### Tools ####################
 
+_postgresql-install() {
+    if ! type pg_config &>/dev/null; then
+        if type apt-get &>/dev/null; then
+            sudo apt-get install -y libpq-dev || return 1
+        elif type brew &>/dev/null; then
+            brew install postgresql || return 1
+        else
+            echo -e "\nNot sure how to install postgresql for your system."
+            echo "You need to get the pg_config executable"
+            return 1
+        fi
+    fi
+}
+
 tools-py-install-all() {
     [[ "$1" == "clean" ]] && rm -rf "$HOME/tools-py"
     [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
-    "$HOME/tools-py/venv/bin/pip3" install asciinema awscli flake8 twine httpie yt-helper jupyter grip rdbtools python-lzf sql-helper
+    package_names=(asciinema awscli flake8 twine httpie yt-helper jupyter grip rdbtools python-lzf)
+    _postgresql-install && package_names+=(sql-helper)
+    "$HOME/tools-py/venv/bin/pip3" install ${package_names[@]}
 }
 
 asciinema-install() {
@@ -582,7 +598,7 @@ fi
 
 sql-install() {
     [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
-    "$HOME/tools-py/venv/bin/pip3" install sql-helper
+    _postgresql-install && "$HOME/tools-py/venv/bin/pip3" install sql-helper
     source $HOME/commands.sh
 }
 
