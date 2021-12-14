@@ -1144,7 +1144,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/vercel/async-sema
     https://github.com/vercel/commerce
     https://github.com/vercel/hyper
-    https://github.com/vercel/integrations
+    # https://github.com/vercel/integrations
     https://github.com/vercel/og-image
     https://github.com/vercel/react-keyframes
     https://github.com/vercel/static-fun
