@@ -76,13 +76,16 @@ do_install() {
             sudo apt-get install -y gparted emelfm2 evince okular retext libreoffice
         fi
     elif [[ $(uname) == "Darwin" ]]; then
-        if [[ ! -f /usr/local/bin/brew ]]; then
+        if [[ ! -f /usr/local/bin/brew && ! -f /opt/homebrew/bin/brew ]]; then
             echo -e "\nInstalling homebrew..."
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
-        elif [[ ! -w /usr/local/Cellar ]]; then
+        elif [[ ! -w /usr/local/Cellar && ! -w /opt/homebrew/Cellar ]]; then
             echo -e "\nNot attempting to install/upgrade packages with brew..."
             return
         fi
+
+        homebrew_base_path="/usr/local"
+        [[ -d /opt/homebrew/bin ]] && export PATH="/opt/homebrew/bin:$PATH" && homebrew_base_path="/opt/homebrew"
 
         echo -e "\nGetting the list of packages already installed with brew..."
         _installed=$(brew list -1)
@@ -128,9 +131,9 @@ do_install() {
             fi
         fi
 
-        if [[ -z $(grep "/usr/local/bin/bash" /etc/shells) ]]; then
+        if [[ -z $(grep "$homebrew_base_path/bin/bash" /etc/shells) ]]; then
             echo -e "\nAdding new version of bash to /etc/shells"
-            sudo sh -c "echo '/usr/local/bin/bash' >> /etc/shells"
+            sudo sh -c "echo '$homebrew_base_path/bin/bash' >> /etc/shells"
         fi
     elif [[ $(uname) =~ MINGW.* ]]; then
         echo -e "\nIt appears you are running MinGW (Minimalist GNU for Windows), likely"

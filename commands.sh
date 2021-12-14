@@ -90,6 +90,8 @@ if echo | grep -P '' &>/dev/null; then
     grep_perl=yes
 fi
 
+[[ -d /opt/homebrew/bin ]] && export PATH="/opt/homebrew/bin:$PATH"
+
 #################### bash/zsh setup ####################
 
 # Function to get name of current git branch
