@@ -440,8 +440,9 @@ pyenv-install() {
         export PATH="$PYENV_ROOT/bin:$PATH"
         eval "$(pyenv init -)"
     fi
-    echo -e "\nInstalling Python 3.9.4..."
-    pyenv install 3.9.4
+    echo -e "\n$(pyenv --version) is installed and ready to use"
+    echo -e "\nInstall a particular version of Python with the following:"
+    echo -e "\npyenv install 3.9.9"
 }
 
 # Prep pyenv (on linux)
