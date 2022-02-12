@@ -5,19 +5,20 @@ path=
 
 for repo in $(repos-list "$path" | tr '\n' '\0' | xargs -0); do
     cd "$repo"
+    branchname=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     status_branch=$(git status -sb | head -n 1)
     short_status=$(git -c color.status=always status -s)
     unpushed=$(git log --find-renames --no-merges --oneline @{u}.. 2>/dev/null)
     stashlist=$(git stash list)
     _swps=$(findit --pattern ".*sw[po]" --exclude_dirs "node_modules, venv, .git" --stamp 2>/dev/null | sort)
     if [[ -n "$short_status" || -n "$unpushed" || -n "$stashlist" ]]; then
-        echo -e "\n===============\n$repo\n$status_branch\n$short_status"
+        echo -e "\n===============\n$repo ($branchname)\n$status_branch\n$short_status"
         [[ -n "$unpushed" ]] && echo -e "\nUnpushed commits\n$unpushed"
         [[ -n "$stashlist" ]] && echo -e "\nStashes\n$stashlist"
     elif [[ -n "$(echo $status_branch | grep -E '(ahead|behind)')" ]]; then
-        echo -e "\n===============\n$repo\n$status_branch"
+        echo -e "\n===============\n$repo ($branchname)\n$status_branch"
     elif [[ -n "$_swps" ]]; then
-        echo -e "\n===============\n$repo\n$status_branch"
+        echo -e "\n===============\n$repo ($branchname)\n$status_branch"
     fi
     [[ -n "$_swps" ]] && echo -e "\n$_swps"
 done | less -rFX
