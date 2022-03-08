@@ -604,13 +604,6 @@ sql-install() {
     source $HOME/commands.sh
 }
 
-found_sql=$(ls -d ~/tools-py/venv/lib/python3.*/site-packages/sql_helper 2>/dev/null)
-if [[ -n "$found_sql" ]]; then
-    sql-ipython() {
-        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/python -c "from sql_helper import SQL; import input_helper as ih; ih.start_ipython(sql=SQL)"
-    }
-fi
-
 twine-install() {
     [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
     "$HOME/tools-py/venv/bin/pip3" install twine
