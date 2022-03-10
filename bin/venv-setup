@@ -33,10 +33,13 @@ fi
 [[ ! -d $env_name ]] && $PYTHON -m venv $env_name
 PYTHON=$(dirname $PIP)/python
 $PYTHON -m pip install --upgrade pip wheel
-[[ -f requirements.txt ]] && $PIP install -r requirements.txt ${pip_args[@]}
-if [[ ! $(uname) =~ "MINGW" ]]; then
-    $PIP install ipython pytest pdbpp ${pip_args[@]}
-else
-    $PIP install ipython pytest ${pip_args[@]}
+
+if [[ -f setup.py ]]; then
+    pip_args+=("--editable .")
+elif [[ -f requirements.txt ]]; then
+    pip_args+=("-r requirements.txt")
 fi
-[[ -f setup.py ]] && $PYTHON setup.py develop
+
+extra_packages=(ipython pytest)
+[[ ! $(uname) =~ "MINGW" ]] && extra_packages+=(pdbpp)
+$PIP install ${extra_packages[@]} ${pip_args[@]}
