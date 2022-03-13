@@ -594,7 +594,7 @@ if [[ -s "$HOME/tools-py/venv/bin/flake8" ]]; then
 
     flakeit() {
         flake8 --exclude='venv/*' . |
-        egrep -v '(line too long|import not at top of file|imported but unused|do not assign a lambda)'
+        egrep -v "(line too long|import not at top of file|imported but unused|do not assign a lambda|do not use bare 'except')"
     }
 fi
 
