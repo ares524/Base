@@ -608,6 +608,12 @@ sql-install() {
     source $HOME/commands.sh
 }
 
+if [[ -s "$HOME/tools-py/venv/bin/sql-ipython" ]]; then
+    sql-ipython() {
+        PYTHONPATH=$HOME $HOME/tools-py/venv/bin/sql-ipython "$@"
+    }
+fi
+
 twine-install() {
     [[ ! -d "$HOME/tools-py/venv" ]] && python3 -m venv "$HOME/tools-py/venv" && "$HOME/tools-py/venv/bin/pip3" install --upgrade pip wheel
     "$HOME/tools-py/venv/bin/pip3" install twine
