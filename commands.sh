@@ -596,6 +596,10 @@ if [[ -s "$HOME/tools-py/venv/bin/flake8" ]]; then
         flake8 --exclude='venv/*' . |
         egrep -v "(line too long|import not at top of file|imported but unused|do not assign a lambda|do not use bare 'except')"
     }
+
+    flakeit-full() {
+        flake8 --exclude='venv/*' .
+    }
 fi
 
 sql-install() {
