@@ -903,6 +903,15 @@ if type aws &>/dev/null; then
     }
 fi
 
+#################### cat ####################
+
+cat-with-titles() {
+    for fname in $(ls -1 $@); do
+        echo -e "\n===============\n$fname"
+        cat "$fname"
+    done | less -FX
+}
+
 #################### compgen ####################
 
 if type compgen &>/dev/null; then
