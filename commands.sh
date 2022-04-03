@@ -454,7 +454,9 @@ fi
 # Enable pyenv (on linux/mac)
 if type pyenv &>/dev/null; then
     eval "$(pyenv init -)"
-    export PATH="$HOME/.pyenv/shims:$PATH"
+    if [[ -z "$(echo $PATH | grep pyenv/shims)" ]]; then
+        export PATH="$HOME/.pyenv/shims:$PATH"
+    fi
 
     pyenv-list-installable() {
         pyenv install --list | grep '^  [2-4]' | less -FX
