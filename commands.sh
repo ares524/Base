@@ -1146,12 +1146,6 @@ duh() {
     du -sch ${args[@]} | sort -h | less -FX
 }
 
-#################### echo ####################
-
-paths() {
-    echo $PATH | tr ':' '\n'
-}
-
 #################### /etc ####################
 
 etc-group() {
@@ -2281,6 +2275,10 @@ if type xscreensaver-command &>/dev/null; then
 fi
 
 #################### PATH ####################
+
+paths() {
+    echo $PATH | tr ':' '\n'
+}
 
 if [[ -d "$HOME/bin-base" && -z "$(echo $PATH | grep bin-base)" ]]; then
     PATH="$HOME/bin-base:$PATH"
