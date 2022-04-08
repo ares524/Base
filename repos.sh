@@ -102,6 +102,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/antirez/rax
     https://github.com/antirez/redis
     https://github.com/awesomeWM/awesome
+    https://github.com/bitly/dablooms
     https://github.com/chirlu/sox
     https://github.com/curl/curl
     https://github.com/git/git
@@ -433,6 +434,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/istio/istio
     https://github.com/itchyny/gojq
     https://github.com/jetstack/cert-manager
+    https://github.com/junegunn/fzf
     https://github.com/jwilder/docker-gen
     https://github.com/keybase/client
     https://github.com/kubeless/kubeless
@@ -468,6 +470,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/uber/kraken
     https://github.com/uber/peloton
     https://github.com/uber/prototool
+    https://github.com/wagoodman/dive
     https://github.com/weaveworks/eksctl
     https://github.com/weaveworks/footloose
     https://github.com/weaveworks/ignite
@@ -598,6 +601,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/krisk/Fuse/
     https://github.com/laurent22/joplin
     https://github.com/lodash/lodash
+    https://github.com/mengshukeji/Luckysheet
     https://github.com/mermaid-js/mermaid
     https://github.com/mesosphere/reactjs-components
     https://github.com/moment/moment
@@ -788,6 +792,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/dbcli/litecli
     https://github.com/dbcli/mycli
     https://github.com/dbcli/pgcli
+    https://github.com/dbt-labs/dbt
     https://github.com/deepfakes/faceswap
     https://github.com/deepmind/sonnet
     https://github.com/django/channels
@@ -813,6 +818,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/google/python-fire
     https://github.com/graphql-python/graphene
     https://github.com/graphql-python/graphene-django
+    https://github.com/great-expectations/great_expectations
     https://github.com/home-assistant/core
     https://github.com/huggingface/transformers
     https://github.com/ipython/ipython
@@ -822,6 +828,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/jarun/googler
     https://github.com/jarun/imgp
     https://github.com/jarun/pdd
+    https://github.com/jazzband/tablib
     https://github.com/joke2k/faker
     https://github.com/jpadilla/pyjwt
     https://github.com/jrnl-org/jrnl
@@ -854,6 +861,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/nltk/nltk
     https://github.com/nteract/papermill
     https://github.com/numpy/numpy
+    https://github.com/nuno-faria/tiler
     https://github.com/odoo/odoo
     https://github.com/openai/gym
     https://github.com/pallets/click
@@ -991,7 +999,9 @@ OPEN_SOURCE_RUBY_REPOS=(
 )
 
 OPEN_SOURCE_RUST_REPOS=(
+    https://github.com/BurntSushi/ripgrep
     https://github.com/RedBeardLab/rediSQL
+    https://github.com/XAMPPRocky/tokei
     https://github.com/actix/actix-web
     https://github.com/erickt/rust-zmq
     https://github.com/firecracker-microvm/firecracker
@@ -1011,6 +1021,7 @@ OPEN_SOURCE_SCALA_REPOS=(
     https://github.com/RedisLabs/spark-redis
     https://github.com/apache/spark
     https://github.com/prisma/prisma
+    https://github.com/snowplow/snowplow
 )
 
 OPEN_SOURCE_SHELL_REPOS=(
@@ -1022,6 +1033,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/acmesh-official/acme.sh
     https://github.com/alpinelinux/alpine-chroot-install
     https://github.com/asdf-vm/asdf
+    https://github.com/conda-forge/miniforge
     https://github.com/gabrielelana/awesome-terminal-fonts
     https://github.com/graphql/graphql-spec
     https://github.com/iredmail/iRedMail
@@ -1039,6 +1051,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/ohmyzsh/ohmyzsh
     https://github.com/paoloantinori/hhighlighter
     https://github.com/pyenv/pyenv
+    https://github.com/romkatv/powerlevel10k
     https://github.com/rupa/z
     https://github.com/security-cheatsheet/reverse-shell-cheatsheet
     https://github.com/sindresorhus/pure
@@ -1112,6 +1125,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/elastic/kibana
     https://github.com/electron/fiddle
     https://github.com/electron/i18n
+    https://github.com/facebook/docusaurus
     https://github.com/firebase/firebase-tools
     https://github.com/feathersjs/feathers
     https://github.com/graphql-editor/graphql-editor
@@ -1170,6 +1184,7 @@ OPEN_SOURCE_YAML_REPOS=(
 
 OPEN_SOURCE_MIXED_REPOS=(
     https://github.com/github/gitignore
+    https://github.com/lambci/docker-lambda
     https://github.com/microservices-demo/microservices-demo
     https://github.com/pixie-labs/pixie
 )
