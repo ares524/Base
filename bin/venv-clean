@@ -2,8 +2,12 @@
 
 [[ -d "$1" && (-d "$1/bin" || -d "$1/Scripts") ]] && env_name=$1 && shift
 [[ -z "$env_name" ]] && env_name="venv"
-[[ ! -d $env_name ]] && echo "Can't find '$env_name'" && exit 1
+[[ ! -d $env_name ]] && env_name=
+if [[ -z "$env_name" && ! -f "setup.py" ]]; then
+    echo "Can't find a venv and there is no setup.py file"
+    exit 1
+fi
 
-rm -rfv "$env_name"
-find . \( -name __pycache__ -o -name '.eggs' -o -name '*.egg-info' \ -o -name 'build' -o -name 'dist' \) -print0 |
+[[ -n "$env_name" ]] && rm -rfv "$env_name"
+find . \( -name __pycache__ -o -name '.eggs' -o -name '*.egg-info' -o -name 'build' -o -name 'dist' \) -print0 |
     xargs -0 rm -rfv
