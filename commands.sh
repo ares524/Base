@@ -2164,6 +2164,25 @@ venv-site-packages() {
 
 if type vim &>/dev/null; then
     [[ -z "$EDITOR" ]] && export EDITOR=$(which vim)
+
+    if [[ -d "$HOME/.plugin_install_dir/vundle/vim-dirdiff" ]]; then
+        vimdiff-dirs() {
+            if [[ $# -ne 2 ]]; then
+                echo "Exactly 2 arguments are expected to vimdiff-dirs"
+                return 1
+            else
+                if [[ -d "$1" && -d "$2" ]]; then
+                    # Shell-escape each path
+                    dir1=$(printf '%q' "$1"); shift
+                    dir2=$(printf '%q' "$1"); shift
+                else
+                    echo "Both arguments MUST be directories"
+                    return 1
+                fi
+            fi
+            vim -c "DirDiff $dir1 $dir2"
+        }
+    fi
 fi
 
 #################### vlc ####################
