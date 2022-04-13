@@ -5,6 +5,6 @@ path=
 
 for repo in $(repos-list "$path" | tr '\n' '\0' | xargs -0); do
     cd "$repo"
-    output=$(git tag --sort="-version:refname" | head -n 1)
+    output=$(git tag --sort="-taggerdate" | head -n 1)
     [[ -n "$output" ]] && echo -e "\n===============\n$repo\n$output"
 done | less -rFX
