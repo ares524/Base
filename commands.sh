@@ -1242,6 +1242,10 @@ swps() {
     findit-default-excludes "$@" --type f --exts "sw[po]" --stamp 2>/dev/null | sort
 }
 
+swps-delete() {
+    swps --pipesort "rm -v {}"
+}
+
 findit-py() {
     findit-default-excludes "$@" --type f --exts "py"
 }
