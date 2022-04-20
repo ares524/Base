@@ -90,7 +90,11 @@ if echo | grep -P '' &>/dev/null; then
     grep_perl=yes
 fi
 
-[[ -d /opt/homebrew/bin ]] && export PATH="/opt/homebrew/bin:$PATH"
+if [[ -d /opt/homebrew/bin ]]; then
+    if [[ -z "$(echo $PATH | grep /opt/homebrew/bin)" ]]; then
+        export PATH="/opt/homebrew/bin:$PATH"
+    fi
+fi
 
 #################### bash/zsh setup ####################
 
