@@ -2163,6 +2163,8 @@ venv-site-packages() {
         cd "$env_name/lib/python3.8/site-packages"
     elif [[ -d "$env_name/lib/python3.9/site-packages" ]]; then
         cd "$env_name/lib/python3.9/site-packages"
+    elif [[ -d "$env_name/lib/python3.10/site-packages" ]]; then
+        cd "$env_name/lib/python3.10/site-packages"
     elif [[ -d "$env_name/Lib/site-packages" ]]; then
         cd "$env_name/Lib/site-packages"
     fi
