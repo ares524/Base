@@ -323,6 +323,7 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/learnbyexample/scripting_course
     https://github.com/learnbyexample/vim_reference
     https://github.com/letsencrypt/website
+    https://github.com/linkedin/school-of-sre
     https://github.com/lk-geimfari/awesomo
     https://github.com/luong-komorebi/Awesome-Linux-Software
     https://github.com/machinelearningmindset/TensorFlow-Course
@@ -872,6 +873,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/pinterest/mysql_utils
     https://github.com/postmanlabs/httpbin
     https://github.com/powerline/powerline
+    https://github.com/prefecthq/prefect
     https://github.com/psf/black
     https://github.com/psf/requests
     https://github.com/psycopg/psycopg2
@@ -919,6 +921,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/tensorflow/tensor2tensor
     https://github.com/tensorflow/tensorflow
     https://github.com/thumbor/thumbor
+    https://github.com/tokern/piicatcher
     https://github.com/tox-dev/tox
     https://github.com/tqdm/tqdm
     https://github.com/trailofbits/algo
@@ -1033,6 +1036,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/acmesh-official/acme.sh
     https://github.com/alpinelinux/alpine-chroot-install
     https://github.com/asdf-vm/asdf
+    https://github.com/calogica/dbt-expectations
     https://github.com/conda-forge/miniforge
     https://github.com/gabrielelana/awesome-terminal-fonts
     https://github.com/graphql/graphql-spec
@@ -1183,6 +1187,8 @@ OPEN_SOURCE_YAML_REPOS=(
 )
 
 OPEN_SOURCE_MIXED_REPOS=(
+    https://github.com/datahub-project/datahub
+    https://github.com/feast-dev/feast
     https://github.com/github/gitignore
     https://github.com/lambci/docker-lambda
     https://github.com/microservices-demo/microservices-demo
