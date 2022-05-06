@@ -12,7 +12,7 @@ Defaults:
   - source: current directory
   - destination: environment variable BACKUP_DIR
 
-https://raw.githubusercontent.com/kenjyco/dotfiles/master/bin/backup.py
+https://raw.githubusercontent.com/kenjyco/base/master/bin/backup.py
 """
 
 import os
