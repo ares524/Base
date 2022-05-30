@@ -472,6 +472,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/uber/peloton
     https://github.com/uber/prototool
     https://github.com/wagoodman/dive
+    https://github.com/wailsapp/wails
     https://github.com/weaveworks/eksctl
     https://github.com/weaveworks/footloose
     https://github.com/weaveworks/ignite
@@ -485,6 +486,7 @@ OPEN_SOURCE_GO_REPOS=(
 
 OPEN_SOURCE_HASKELL_REPOS=(
     https://github.com/jgm/pandoc
+    https://github.com/unisonweb/unison
 )
 
 OPEN_SOURCE_HTML_REPOS=(
@@ -777,6 +779,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/boto/boto3
     https://github.com/bottlepy/bottle
     https://github.com/buriy/python-readability
+    https://github.com/capitalone/DataProfiler
     https://github.com/celery/celery
     https://github.com/certbot/certbot
     https://github.com/chubin/cheat.sh
@@ -936,6 +939,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/warner/magic-wormhole
     https://github.com/weaveworks/grafanalib
     https://github.com/weaveworks/kubediff
+    https://github.com/whylabs/whylogs
     https://github.com/ycm-core/YouCompleteMe
     # https://github.com/ytdl-org/youtube-dl
     https://github.com/yunjey/pytorch-tutorial
@@ -1006,13 +1010,16 @@ OPEN_SOURCE_RUST_REPOS=(
     https://github.com/RedBeardLab/rediSQL
     https://github.com/XAMPPRocky/tokei
     https://github.com/actix/actix-web
+    https://github.com/bevyengine/bevy
     https://github.com/erickt/rust-zmq
     https://github.com/firecracker-microvm/firecracker
     https://github.com/gyscos/cursive
     https://github.com/hyperium/hyper
     https://github.com/mitsuhiko/redis-rs
+    https://github.com/oxidecomputer/hubris
     https://github.com/rust-lang/cargo
     https://github.com/rust-lang/rust
+    https://github.com/tauri-apps/tauri
     https://github.com/tokio-rs/tokio
 )
 
@@ -1036,6 +1043,7 @@ OPEN_SOURCE_SHELL_REPOS=(
     https://github.com/acmesh-official/acme.sh
     https://github.com/alpinelinux/alpine-chroot-install
     https://github.com/asdf-vm/asdf
+    https://github.com/boostchicken-dev/udm-utilities
     https://github.com/calogica/dbt-expectations
     https://github.com/conda-forge/miniforge
     https://github.com/gabrielelana/awesome-terminal-fonts
