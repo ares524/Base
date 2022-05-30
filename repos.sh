@@ -300,9 +300,9 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/droptheplot/awesome-phoenix
     https://github.com/dylanaraps/pure-bash-bible
     https://github.com/ericdouglas/ES6-Learning
-    https://github.com/fluxcd/gitops-working-group
     https://github.com/getify/You-Dont-Know-JS
     https://github.com/git-tips/tips
+    https://github.com/gitops-working-group/gitops-working-group
     https://github.com/golang-standards/project-layout
     https://github.com/gto76/python-cheatsheet
     https://github.com/h4cc/awesome-elixir
