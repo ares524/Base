@@ -1818,6 +1818,12 @@ if type pstree &>/dev/null; then
     }
 fi
 
+#################### pwd ####################
+
+here() {
+    basename $(pwd)
+}
+
 #################### recordmydesktop ####################
 
 if type recordmydesktop &>/dev/null; then
