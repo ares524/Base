@@ -1362,6 +1362,14 @@ show-mac-garbage() {
 delete-mac-garbage() {
     show-mac-garbage -print0 | xargs -0 rm -rfv
 }
+
+#################### fontsize ####################
+
+fontsize() {
+    printf '\33]50;%s' "xft:Inconsolata:size=$1"
+    export FONT_SIZE=$1
+}
+
 #################### git ####################
 
 if type git &>/dev/null; then
@@ -1408,13 +1416,6 @@ if type git &>/dev/null; then
         fi
     }
 fi
-
-#################### fontsize ####################
-
-fontsize() {
-    printf '\33]50;%s' "xft:Inconsolata:size=$1"
-    export FONT_SIZE=$1
-}
 
 #################### git ####################
 
