@@ -1006,7 +1006,9 @@ if type banner &>/dev/null; then
 fi
 
 utcnow() {
-    python -c 'from datetime import datetime; print(datetime.utcnow())'
+    python -c 'from datetime import datetime; print(datetime.utcnow())' 2>/dev/null
+    [[ $? -ne 0 ]] && python3 -c 'from datetime import datetime; print(datetime.utcnow())'
+
 }
 
 #################### df ####################
