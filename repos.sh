@@ -343,9 +343,11 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/serhii-londar/open-source-mac-os-apps
     https://github.com/sindresorhus/awesome
     https://github.com/sindresorhus/awesome-nodejs
+    https://github.com/snoopysecurity/awesome-burp-extensions
     https://github.com/sorrycc/awesome-javascript
     https://github.com/swisskyrepo/PayloadsAllTheThings
     https://github.com/thoughtbot/guides
+    https://github.com/tldr-pages/tldr
     https://github.com/trimstray/the-book-of-secret-knowledge
     https://github.com/tuvtran/project-based-learning
     https://github.com/unitedstates/APIs
@@ -386,6 +388,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/Netflix/chaosmonkey
     https://github.com/alecthomas/chroma
     https://github.com/apex/up
+    https://github.com/argoproj/argo-cd
     https://github.com/aws/aws-sdk-go
     https://github.com/bazelbuild/bazel-gazelle
     https://github.com/bazelbuild/bazel-watcher
@@ -394,8 +397,10 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/bazelbuild/rules_webtesting
     https://github.com/caddyserver/caddy
     https://github.com/candid82/joker
+    https://github.com/coder/coder
     https://github.com/containernetworking/cni
     https://github.com/coocood/freecache
+    https://github.com/crossplane/crossplane
     https://github.com/dgraph-io/dgraph
     https://github.com/dmacvicar/terraform-provider-libvirt
     https://github.com/docker/docker-ce
@@ -451,6 +456,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/kudobuilder/kuttl
     https://github.com/letsencrypt/boulder
     https://github.com/linkerd/linkerd2
+    https://github.com/minio/minio
     https://github.com/moby/moby
     https://github.com/mongodb/mongo-go-driver
     https://github.com/muesli/smartcrop
@@ -467,6 +473,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/spf13/cobra
     https://github.com/spf13/viper
     https://github.com/syncthing/syncthing
+    https://github.com/treeverse/lakeFS
     https://github.com/uber/aresdb
     https://github.com/uber/kraken
     https://github.com/uber/peloton
@@ -524,6 +531,7 @@ OPEN_SOURCE_JAVA_REPOS=(
     https://github.com/neo4j/graph-data-science
     https://github.com/neo4j/neo4j
     https://github.com/nginx-clojure/nginx-clojure
+    https://github.com/portswigger/backslash-powered-scanner
     https://github.com/seata/seata
     https://github.com/signalapp/Signal-Android
     https://github.com/square/okhttp
@@ -550,6 +558,7 @@ OPEN_SOURCE_JAVASCRIPT_REPOS=(
     https://github.com/Netflix/vector
     https://github.com/Netflix/vizceral
     https://github.com/NickCarneiro/curlconverter
+    https://github.com/RapidAPI/DevRel-Examples-External
     https://github.com/Rich-Harris/degit
     https://github.com/Unitech/pm2
     https://github.com/VulcanJS/Vulcan
@@ -790,6 +799,8 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/coleifer/walrus
     https://github.com/conda/conda
     https://github.com/cython/cython
+    https://github.com/dask/dask
+    https://github.com/datafold/data-diff
     https://github.com/dateutil/dateutil
     https://github.com/davidsandberg/facenet
     https://github.com/dbader/schedule
@@ -843,6 +854,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/jupyterhub/jupyterhub
     https://github.com/jupyterhub/the-littlest-jupyterhub
     https://github.com/kaxap/arl
+    https://github.com/kedro-org/kedro
     https://github.com/keon/algorithms
     https://github.com/keras-team/keras
     https://github.com/kivy/kivy
@@ -864,6 +876,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/nicolargo/glances
     https://github.com/nltk/nltk
     https://github.com/nteract/papermill
+    https://github.com/numba/numba
     https://github.com/numpy/numpy
     https://github.com/nuno-faria/tiler
     https://github.com/odoo/odoo
@@ -905,6 +918,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/samuelcolvin/pydantic
     https://github.com/sanand0/xmljson
     https://github.com/scikit-learn/scikit-learn
+    https://github.com/scottrogowski/code2flow
     https://github.com/scrapy/scrapy
     https://github.com/seatgeek/fuzzywuzzy
     # https://github.com/seperman/deepdiff
@@ -919,6 +933,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/sshuttle/sshuttle
     https://github.com/stub42/pytz
     https://github.com/sympy/sympy
+    https://github.com/tdda/tdda
     https://github.com/tensorflow/magenta
     https://github.com/tensorflow/models
     https://github.com/tensorflow/tensor2tensor
@@ -928,9 +943,9 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/tox-dev/tox
     https://github.com/tqdm/tqdm
     https://github.com/trailofbits/algo
+    https://github.com/uber/focuson
     https://github.com/uber/h3-py
     https://github.com/uber/h3-py-notebooks
-    https://github.com/uber/focuson
     https://github.com/uber/ludwig
     https://github.com/ubuntu/microk8s
     https://github.com/ultrajson/ultrajson
@@ -1007,9 +1022,11 @@ OPEN_SOURCE_RUBY_REPOS=(
 
 OPEN_SOURCE_RUST_REPOS=(
     https://github.com/BurntSushi/ripgrep
+    https://github.com/Qovery/replibyte
     https://github.com/RedBeardLab/rediSQL
     https://github.com/XAMPPRocky/tokei
     https://github.com/actix/actix-web
+    https://github.com/alacritty/alacritty
     https://github.com/bevyengine/bevy
     https://github.com/erickt/rust-zmq
     https://github.com/firecracker-microvm/firecracker
@@ -1019,6 +1036,8 @@ OPEN_SOURCE_RUST_REPOS=(
     https://github.com/oxidecomputer/hubris
     https://github.com/rust-lang/cargo
     https://github.com/rust-lang/rust
+    https://github.com/sharkdp/bat
+    https://github.com/sharkdp/fd
     https://github.com/tauri-apps/tauri
     https://github.com/tokio-rs/tokio
 )
@@ -1108,6 +1127,7 @@ OPEN_SOURCE_STARLARK_REPOS=(
 )
 
 OPEN_SOURCE_SWIFT_REPOS=(
+    https://github.com/p0deje/Maccy
     https://github.com/sindresorhus/Gifski
 )
 
@@ -1131,6 +1151,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/apollographql/graphql-tools
     https://github.com/apollographql/react-apollo
     https://github.com/botpress/botpress
+    https://github.com/coder/code-server
     https://github.com/conwnet/github1s
     https://github.com/devhubapp/devhub
     https://github.com/dotansimha/graphql-code-generator
@@ -1195,9 +1216,11 @@ OPEN_SOURCE_YAML_REPOS=(
 )
 
 OPEN_SOURCE_MIXED_REPOS=(
+    https://github.com/PostHog/posthog
     https://github.com/datahub-project/datahub
     https://github.com/feast-dev/feast
     https://github.com/github/gitignore
+    https://github.com/kovidgoyal/kitty
     https://github.com/lambci/docker-lambda
     https://github.com/microservices-demo/microservices-demo
     https://github.com/pixie-labs/pixie
