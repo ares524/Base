@@ -43,6 +43,7 @@ bin/repos-tags-messages
 bin/repos-untracked-files
 bin/repos-update
 bin/repos-update--skip-swps
+bin/venv-clean
 bin/venv-deptree
 bin/venv-freeze
 bin/venv-ipython
