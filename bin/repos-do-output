@@ -9,4 +9,4 @@ for repo in $(repos-list | tr '\n' '\0' | xargs -0); do
     branchname=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     output=$(eval "$@" 2>/dev/null)
     [[ -n "$output" ]] && echo -e "\n===============\n$repo ($branchname)\n$output"
-done | $_colordiff| less -rFX
+done | $_colordiff  # | less -rFX
