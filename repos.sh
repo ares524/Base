@@ -1454,3 +1454,10 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR" ]] && opensource-vimscript-repos() { cd "$OPEN_SOURCE_VIMSCRIPT_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_YAML_REPOS_DIR" ]] && opensource-yaml-repos() { cd "$OPEN_SOURCE_YAML_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_MIXED_REPOS_DIR" ]] && opensource-mixed-repos() { cd "$OPEN_SOURCE_MIXED_REPOS_DIR"; }
+
+if [[ -d "$OPEN_SOURCE_REPOS_DIR" ]]; then
+    opensource-update-all() {
+        cd "$OPEN_SOURCE_REPOS_DIR"
+        repos-update 2>&1 | tee update-all--$(date +'%Y-%m%d--%a--%H%M').txt
+    }
+fi
