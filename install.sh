@@ -1,5 +1,5 @@
 # Source this script with optional args: "clean" "extras" "gui" "all"
-#    - all means "clean extra gui"
+#    - all means "clean extras gui"
 
 # Create symbolic link to commands.sh and bin/
 [[ -L "$HOME/commands.sh" ]] && rm "$HOME/commands.sh"
