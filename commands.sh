@@ -1770,8 +1770,8 @@ if type pandoc &>/dev/null; then
 
     to_rst() {
         fname="$1"
-        [[ -z "$fname" ]] && echo "No filename specified" && exit 1
-        [[ ! "$fname" =~ .*[mM][dD] ]] && echo "Not a markdown file" && exit 1
+        [[ -z "$fname" ]] && echo "No filename specified" && return 1
+        [[ ! "$fname" =~ .*[mM][dD] ]] && echo "Not a markdown file" && return 1
         pandoc --from=markdown --to=rst --output="${fname%.*}.rst" "$fname"
     }
 fi
