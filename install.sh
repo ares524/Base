@@ -37,7 +37,7 @@ do_install() {
         sudo apt-get update || return 1
 
         echo -e "\nInstalling/upgrading packages needed for pyenv..."
-        sudo apt-get install -y make build-essential git wget curl llvm xz-utils libssl-dev zlib1g-dev libbz2-dev
+        sudo apt-get install -y make build-essential git wget curl llvm xz-utils libssl-dev zlib1g-dev libbz2-dev tk-dev
         sudo apt-get install -y libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev python-openssl
 
         if [[ -n "$extras" ]]; then
