@@ -75,6 +75,41 @@ do_install() {
             sudo apt-get install -y recordmydesktop guvcview audacity inkscape gimp gifsicle ripperx lame
             sudo apt-get install -y gparted emelfm2 evince okular retext libreoffice
         fi
+    elif [[ -f /usr/bin/yum && -n "$(groups | grep -E '(sudo|root|wheel)')" ]]; then
+        echo -e "\nInstalling/upgrading packages needed for pyenv..."
+        sudo yum install -y make tar patch gcc git wget curl llvm xz zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel
+
+        echo -e "\nInstalling/upgrading packages needed for modern bash..."
+        sudo yum install -y bash-completion
+
+        if [[ -n "$extras" ]]; then
+            echo -e "\nInstalling/upgrading other useful CLI packages..."
+            sudo yum install -y vim-enhanced zsh zsh-syntax-highlighting fish tmux htop glances jq pmount acpi dkms openssh-server colordiff tree ncdu ranger nnn w3m w3m-img nmap mtr ImageMagick pandoc ctags
+            sudo yum install -y lshw lsof banner rsync
+        fi
+
+        echo -e "\nInstalling ntp..."
+        sudo yum install -y ntp
+
+        if [[ -z "$wsl" ]]; then
+            echo -e "\nInstalling/upgrading docker and docker-compose..."
+            sudo yum install -y yum-utils
+            sudo yum-config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+            sudo yum install -y docker-ce docker-compose
+            sudo usermod -aG docker ${USER}
+            sudo systemctl enable docker.service
+            sudo systemctl enable containerd.service
+        fi
+        if [[ -n "$gui" ]]; then
+            if [[ -z "$wsl" ]]; then
+                echo -e "\nInstalling Xorg..."
+                sudo yum install -y xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-drivers xorg-x11-drv-intel xorg-x11-font-utils xorg-x11-server-utils libinput xorg-x11-drv-libinput xorg-x11-server-Xdmx xorg-x11-server-Xvfb
+            fi
+            echo -e "\nInstalling GUI packages..."
+                sudo yum install -y xorg-x11-xinit xclip xbindkeys awesome rxvt-unicode feh vlc
+                sudo yum install -y guvcview awesome rxvt-unicode feh
+                sudo yum install -y rr wodim audacity inkscape gimp lame gparted emelfm2 okular retext libreoffice
+        fi
     elif [[ $(uname) == "Darwin" ]]; then
         if [[ ! -f /usr/local/bin/brew && ! -f /opt/homebrew/bin/brew ]]; then
             echo -e "\nInstalling homebrew..."

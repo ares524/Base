@@ -109,6 +109,8 @@ if [[ -n "$BASH_VERSION" ]]; then
         source /etc/bash_completion
     elif [[ -f /usr/local/etc/bash_completion ]]; then
         source /usr/local/etc/bash_completion
+    elif [[ -f /usr/share/bash-completion/bash_completion ]]; then
+        source /usr/share/bash-completion/bash_completion
     else
         fname=$(brew --prefix 2>/dev/null)/etc/bash_completion
         [[ -f "$fname" ]] && source "$fname"
@@ -265,10 +267,13 @@ prompt-select-mode() {
 
 bash_completion_dir="$(brew --prefix 2>/dev/null)/etc/bash_completion.d"
 bash_completion_file="$(dirname $bash_completion_dir)/bash_completion"
-if [[ $(uname) != "Darwin" && -z "$(groups | grep -E '(sudo|root)')" ]]; then
+if [[ $(uname) != "Darwin" && -z "$(groups | grep -E '(sudo|root|admin|wheel)')" ]]; then
     bash_completion_dir="$HOME/.downloaded-completions"
     mkdir -p "$bash_completion_dir" 2>/dev/null
     bash_completion_file="$HOME/.bash_completion"
+fi
+if [[ ! -s "$bash_completion_file" ]]; then
+    [[ -f /usr/share/bash-completion/bash_completion ]] && bash_completion_file=/usr/share/bash-completion/bash_completion
 fi
 
 _get_zsh_custom_fpath() {
@@ -300,7 +305,7 @@ get-completions() {
 
     if [[ "$1" == "clean" ]]; then
         if [[ ! "$bash_completion_dir" =~ ${HOME}.* && ! "$bash_completion_dir" =~ \/root\/.* ]]; then
-            if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+            if [[ -n "$(groups | grep -E '(sudo|root|admin|wheel)')" ]]; then
                 echo -e "\nDeleting from $bash_completion_dir: docker, docker-compose, git-completion.bash"
                 sudo rm -f $bash_completion_dir/docker $bash_completion_dir/docker-compose $bash_completion_dir/git-completion.bash 2>/dev/null
             fi
@@ -500,11 +505,22 @@ if type apt-cache &>/dev/null; then
     }
 fi
 
+if type yum &>/dev/null; then
+    yum-search() {
+        yum search $1 | grep -i "^$1" | less -FX
+    }
+fi
+
 manually-installed() {
     if [[ -d /var/log/apt ]]; then
         cat /var/log/apt/history.log <(zcat /var/log/apt/history.log.*) | grep -E '(apt-get|apt) install' | sort -u
     elif type brew &>/dev/null; then
         brew list
+    else
+        for hist_num in $(yum history --reverse | awk '{print $1}' | grep '^[0-9]'); do
+            echo
+            yum history info $hist_num | grep -E '^(Command Line|Return-Code)'
+        done
     fi
 }
 
@@ -516,6 +532,8 @@ _postgresql-install() {
             sudo apt-get install -y libpq-dev || return 1
         elif type brew &>/dev/null; then
             brew install postgresql || return 1
+        elif type yum &>/dev/null; then
+            sudo yum install -y libpq-devel || return 1
         else
             echo -e "\nNot sure how to install postgresql for your system."
             echo "You need to get the pg_config executable"
@@ -788,7 +806,7 @@ kubectl-install() {
     fi
     if [[ -n "$(file kubectl | grep executable)" ]]; then
         chmod +x ./kubectl
-        if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+        if [[ -n "$(groups | grep -E '(sudo|root|admin|wheel)')" ]]; then
             echo -e "$ sudo mv ./kubectl /usr/local/bin/kubectl"
             sudo mv -v ./kubectl /usr/local/bin/kubectl
             if [[ $? -ne 0 ]]; then
@@ -816,7 +834,7 @@ kind-install() {
         curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.10.0/kind-linux-amd64
     fi
     chmod +x ./kind
-    if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+    if [[ -n "$(groups | grep -E '(sudo|root|admin|wheel)')" ]]; then
         echo -e "$ sudo mv ./kind /usr/local/bin/kind"
         sudo mv -v ./kind /usr/local/bin/kind
         if [[ $? -ne 0 ]]; then
@@ -1446,6 +1464,11 @@ system-info() {
         ifconfig | grep "inet [12]" | egrep -v "(127|172)" | awk '{print $2}'
         echo
     fi
+    if type ip &>/dev/null; then
+        echo -e "$prompt_char ip addr show | grep ... | awk '{print \$2}'"
+        ip addr show | grep "inet " | egrep -v " (127|172)" | awk '{print $2}'
+        echo
+    fi
     if type wget &>/dev/null; then
         echo -e "$prompt_char wget https://httpbin.org/ip -qO - | grep origin | perl -pe 's/^.*\"(.*)\".*\$/\$1/'"
         wget https://httpbin.org/ip -qO - | grep origin | perl -pe 's/^.*\"(.*)\".*$/$1/'
@@ -1457,7 +1480,7 @@ system-info() {
         echo
 
     fi
-    if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+    if [[ -n "$(groups | grep -E '(sudo|root|admin|wheel)')" ]]; then
         echo -e "$prompt_char sudo lsof -Pn -i4 | grep -E '(ESTABLISHED|LISTEN)'"
         sudo lsof -Pn -i4 | grep -E '(ESTABLISHED|LISTEN)'
         echo
@@ -1474,6 +1497,9 @@ system-info() {
         if type getent &>/dev/null; then
             echo -e "$prompt_char getent group sudo"
             getent group sudo
+            echo
+            echo -e "$prompt_char getent group wheel"
+            getent group wheel
             echo
         fi
         if [[ -s /etc/shadow ]]; then
@@ -1929,7 +1955,7 @@ fi
 
 #################### sudo ####################
 
-if [[ -n "$(groups | grep -E '(sudo|root|admin)')" ]]; then
+if [[ -n "$(groups | grep -E '(sudo|root|admin|wheel)')" ]]; then
     lsof-ports-ipv4() {
         sudo lsof -Pn -i4
     }

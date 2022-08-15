@@ -5,4 +5,6 @@ if type networksetup &>/dev/null; then
 elif type ifconfig &>/dev/null; then
     ifconfig | grep "inet addr" | egrep -v ":(127|172)" | awk '{print $2}' | cut -c 6-
     ifconfig | grep "inet [12]" | egrep -v " (127|172)" | awk '{print $2}'
+elif type ip &>/dev/null; then
+    ip addr show | grep "inet " | egrep -v " (127|172)" | awk '{print $2}'
 fi
