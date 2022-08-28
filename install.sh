@@ -42,7 +42,8 @@ do_install() {
 
         if [[ -n "$extras" ]]; then
             echo -e "\nInstalling/upgrading other useful CLI packages..."
-            sudo apt-get install -y vim zsh zsh-syntax-highlighting fish tmux htop glances jq pmount acpi dkms openssh-server colordiff tree ncdu ranger nnn w3m w3m-img nmap mtr sqlite3 imagemagick pandoc lynx exuberant-ctags
+            sudo apt-get install -y vim zsh zsh-syntax-highlighting fish tmux htop glances jq pmount acpi dkms openssh-server colordiff tree ncdu ranger nnn w3m w3m-img nmap mtr tldr sqlite3 imagemagick pandoc lynx exuberant-ctags
+            sudo apt-get install -y gtypist typespeed
         fi
 
         echo -e "\nInstalling ntp..."
@@ -68,7 +69,7 @@ do_install() {
         if [[ -n "$gui" ]]; then
             if [[ -z "$wsl" ]]; then
                 echo -e "\nInstalling Xorg..."
-                sudo apt-get install -y xserver-xorg-core xserver-xorg-video-intel xserver-xorg-input-kbd xserver-xorg-input-libinput
+                sudo apt-get install -y xserver-xorg-core xserver-xorg-video-intel xserver-xorg-input-kbd xserver-xorg-input-libinput xvfb
             fi
             echo -e "\nInstalling GUI packages..."
             sudo apt-get install -y xinit xclip xbindkeys awesome rxvt-unicode-256color feh scrot fonts-inconsolata vlc
@@ -79,12 +80,16 @@ do_install() {
         echo -e "\nInstalling/upgrading packages needed for pyenv..."
         sudo yum install -y make tar patch gcc git wget curl llvm xz zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel
 
+        echo -e "\nInstalling perl..."
+        sudo yum install -y perl
+
         echo -e "\nInstalling/upgrading packages needed for modern bash..."
         sudo yum install -y bash-completion
 
         if [[ -n "$extras" ]]; then
             echo -e "\nInstalling/upgrading other useful CLI packages..."
-            sudo yum install -y vim-enhanced zsh zsh-syntax-highlighting fish tmux htop glances jq pmount acpi dkms openssh-server colordiff tree ncdu ranger nnn w3m w3m-img nmap mtr ImageMagick pandoc ctags
+            sudo yum install -y vim-enhanced zsh zsh-syntax-highlighting fish tmux htop glances jq pmount acpi dkms openssh-server colordiff tree ncdu ranger nnn w3m w3m-img nmap mtr tldr ImageMagick pandoc lynx ctags
+            sudo yum install -y gtypist typespeed
             sudo yum install -y lshw lsof banner rsync
         fi
 
@@ -106,9 +111,9 @@ do_install() {
                 sudo yum install -y xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-drivers xorg-x11-drv-intel xorg-x11-font-utils xorg-x11-server-utils libinput xorg-x11-drv-libinput xorg-x11-server-Xdmx xorg-x11-server-Xvfb
             fi
             echo -e "\nInstalling GUI packages..."
-                sudo yum install -y xorg-x11-xinit xclip xbindkeys awesome rxvt-unicode feh vlc
-                sudo yum install -y guvcview awesome rxvt-unicode feh
-                sudo yum install -y rr wodim audacity inkscape gimp lame gparted emelfm2 okular retext libreoffice
+                sudo yum install -y xorg-x11-xinit xclip xbindkeys awesome rxvt-unicode feh levien-inconsolata-fonts vlc
+                sudo yum install -y rr wodim guvcview audacity inkscape gimp gifsicle lame
+                sudo yum install -y gparted emelfm2 evince okular retext libreoffice
         fi
     elif [[ $(uname) == "Darwin" ]]; then
         if [[ ! -f /usr/local/bin/brew && ! -f /opt/homebrew/bin/brew ]]; then
@@ -151,7 +156,8 @@ do_install() {
 
         if [[ -n "$extras" ]]; then
             echo -e "\nInstalling/upgrading other useful CLI packages ..."
-            _brew_install_or_upgrade coreutils findutils grep wget watch vim zsh-syntax-highlighting fish htop glances pstree jq openssh colordiff tree ncdu ranger nnn w3m nmap mtr sqlite3 imagemagick pandoc lynx ctags
+            _brew_install_or_upgrade coreutils findutils grep wget watch vim zsh-syntax-highlighting fish htop glances pstree jq openssh colordiff tree ncdu ranger nnn w3m nmap mtr tldr sqlite3 imagemagick pandoc lynx ctags
+            _brew_install_or_upgrade gtypist typespeed
         fi
 
         if [[ -n "$gui" ]]; then
