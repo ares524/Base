@@ -6,6 +6,7 @@ OPEN_SOURCE_ALGORITHMS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/algorithms"
 OPEN_SOURCE_BOOKS_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/books"
 OPEN_SOURCE_C_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c"
 OPEN_SOURCE_CLOJURE_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/clojure"
+OPEN_SOURCE_CRYSTAL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/crystal"
 OPEN_SOURCE_CPP_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c++"
 OPEN_SOURCE_C_SHARP_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/c_sharp"
 OPEN_SOURCE_DART_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/dart"
@@ -23,6 +24,7 @@ OPEN_SOURCE_JUPYTER_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/jupyter"
 OPEN_SOURCE_KOTLIN_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/kotlin"
 OPEN_SOURCE_LUA_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/lua"
 OPEN_SOURCE_MAKEFILE_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/makefiles"
+OPEN_SOURCE_NIM_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/nim"
 OPEN_SOURCE_PERL_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/perl"
 OPEN_SOURCE_PYTHON_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python"
 OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR="$OPEN_SOURCE_REPOS_DIR/python_async"
@@ -91,6 +93,7 @@ OPEN_SOURCE_C_REPOS=(
     https://git.savannah.gnu.org/git/tar.git
     https://git.savannah.gnu.org/git/wget.git
     https://github.com/AndyA/rsync
+    https://github.com/Enselic/recordmydesktop
     https://github.com/Gnucash/gnucash
     https://github.com/JoshData/historical-state-population-csv
     https://github.com/Netflix/dynomite
@@ -127,6 +130,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/mit-pdos/xv6-riscv
     https://github.com/nanomsg/nanomsg
     https://github.com/nanomsg/nng
+    https://github.com/nim-lang/csources
     https://github.com/neurobin/shc
     https://github.com/nginx/nginx
     https://github.com/nodejs/http-parser
@@ -201,6 +205,13 @@ OPEN_SOURCE_CLOJURE_REPOS=(
     https://github.com/weavejester/ragtime
 )
 
+OPEN_SOURCE_CRYSTAL_REPOS=(
+    https://github.com/crystal-community/icr
+    https://github.com/crystal-lang/crystal
+    https://github.com/crystal-lang/crystal-db
+    https://github.com/veelenga/awesome-crystal
+)
+
 OPEN_SOURCE_CPP_REPOS=(
     https://github.com/alembic/alembic
     https://github.com/apache/arrow
@@ -225,6 +236,7 @@ OPEN_SOURCE_CPP_REPOS=(
     https://github.com/v8/v8
     https://github.com/xmrig/xmrig
     https://github.com/zeromq/libzmq
+    https://salsa.debian.org/apt-team/apt
 )
 
 OPEN_SOURCE_C_SHARP_REPOS=(
@@ -292,10 +304,12 @@ OPEN_SOURCE_DOCS_REPOS=(
     https://github.com/chentsulin/awesome-graphql
     https://github.com/chubin/awesome-console-services
     https://github.com/cjbarber/ToolsOfTheTrade
+    https://github.com/codecrafters-io/build-your-own-x
     https://github.com/danistefanovic/build-your-own-x
     https://github.com/deepVector/geospatial-machine-learning
     https://github.com/docker-library/docs
     https://github.com/donnemartin/system-design-primer
+    https://github.com/dreamingechoes/awesome-mental-health
     https://github.com/drobakowski/awesome-erlang
     https://github.com/droptheplot/awesome-phoenix
     https://github.com/dylanaraps/pure-bash-bible
@@ -390,6 +404,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/apex/up
     https://github.com/argoproj/argo-cd
     https://github.com/aws/aws-sdk-go
+    https://github.com/aws/karpenter
     https://github.com/bazelbuild/bazel-gazelle
     https://github.com/bazelbuild/bazel-watcher
     https://github.com/bazelbuild/bazelisk
@@ -434,6 +449,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/hashicorp/packer
     https://github.com/hashicorp/terraform
     https://github.com/hashicorp/vault
+    https://github.com/hazbo/the-super-tiny-compiler
     https://github.com/helm/charts
     https://github.com/helm/helm
     https://github.com/influxdata/telegraf
@@ -725,6 +741,16 @@ OPEN_SOURCE_MAKEFILE_REPOS=(
     https://github.com/theos/theos
 )
 
+OPEN_SOURCE_NIM_REPOS=(
+    https://github.com/nim-lang/Nim
+    https://github.com/nim-lang/c2nim
+    https://github.com/nim-lang/nimble
+    https://github.com/nim-lang/nimforum
+    https://github.com/nim-lang/packages
+    https://github.com/nim-works/nimskull
+    https://github.com/ringabout/awesome-nim
+)
+
 OPEN_SOURCE_PERL_REPOS=(
     https://github.com/HariSekhon/DevOps-Perl-tools
     https://github.com/HariSekhon/lib
@@ -771,6 +797,9 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/Netflix/security_monkey
     https://github.com/Netflix/vmaf
     https://github.com/Supervisor/supervisor
+    https://github.com/Textualize/rich
+    https://github.com/Textualize/rich-cli
+    https://github.com/Textualize/textual
     https://github.com/Zulko/moviepy
     https://github.com/ageitgey/face_recognition
     https://github.com/andymccurdy/redis-py
@@ -843,6 +872,10 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/jarun/googler
     https://github.com/jarun/imgp
     https://github.com/jarun/pdd
+    https://github.com/jazzband/geojson
+    https://github.com/jazzband/jsonmodels
+    https://github.com/jazzband/pip-tools
+    https://github.com/jazzband/prettytable
     https://github.com/jazzband/tablib
     https://github.com/joke2k/faker
     https://github.com/jpadilla/pyjwt
@@ -866,6 +899,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/mail-in-a-box/mailinabox
     https://github.com/marshmallow-code/marshmallow
     https://github.com/matplotlib/matplotlib
+    https://github.com/mindsdb/mindsdb
     https://github.com/mirumee/saleor
     https://github.com/mitmproxy/mitmproxy
     https://github.com/mongodb/mongo-python-driver
@@ -891,6 +925,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/powerline/powerline
     https://github.com/prefecthq/prefect
     https://github.com/psf/black
+    https://github.com/psf/pyperf
     https://github.com/psf/requests
     https://github.com/psycopg/psycopg2
     https://github.com/pyca/bcrypt
@@ -901,6 +936,11 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/python-pillow/Pillow
     https://github.com/python-poetry/poetry
     https://github.com/python-telegram-bot/python-telegram-bot
+    https://github.com/python/importlib_metadata
+    https://github.com/python/importlib_resources
+    https://github.com/python/mypy
+    https://github.com/python/pyperformance
+    https://github.com/python/typeshed
     https://github.com/pythonprofilers/memory_profiler
     https://github.com/pytorch/examples
     https://github.com/pytorch/pytorch
@@ -914,6 +954,8 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/ranger/ranger
     https://github.com/ray-project/ray
     https://github.com/readthedocs/readthedocs.org
+    https://github.com/realpython/codetiming
+    https://github.com/rpm-software-management/dnf
     https://github.com/rq/rq
     https://github.com/samuelcolvin/pydantic
     https://github.com/sanand0/xmljson
@@ -1248,6 +1290,11 @@ clone-opensource() {
     for repo in "${OPEN_SOURCE_CLOJURE_REPOS[@]}"; do
         git clone --recursive $repo
     done
+    mkdir -p "$OPEN_SOURCE_CRYSTAL_REPOS_DIR"
+    cd "$OPEN_SOURCE_CRYSTAL_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_CRYSTAL_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
     mkdir -p "$OPEN_SOURCE_CPP_REPOS_DIR"
     cd "$OPEN_SOURCE_CPP_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_CPP_REPOS[@]}"; do
@@ -1331,6 +1378,11 @@ clone-opensource() {
     mkdir -p "$OPEN_SOURCE_MAKEFILE_REPOS_DIR"
     cd "$OPEN_SOURCE_MAKEFILE_REPOS_DIR" || return 1
     for repo in "${OPEN_SOURCE_MAKEFILE_REPOS[@]}"; do
+        git clone --recursive $repo
+    done
+    mkdir -p "$OPEN_SOURCE_NIM_REPOS_DIR"
+    cd "$OPEN_SOURCE_NIM_REPOS_DIR" || return 1
+    for repo in "${OPEN_SOURCE_NIM_REPOS[@]}"; do
         git clone --recursive $repo
     done
     mkdir -p "$OPEN_SOURCE_PERL_REPOS_DIR"
@@ -1421,6 +1473,7 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_BOOKS_REPOS_DIR" ]] && opensource-books-repos() { cd "$OPEN_SOURCE_BOOKS_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_C_REPOS_DIR" ]] && opensource-c-repos() { cd "$OPEN_SOURCE_C_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_CLOJURE_REPOS_DIR" ]] && opensource-clojure-repos() { cd "$OPEN_SOURCE_CLOJURE_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_CRYSTAL_REPOS_DIR" ]] && opensource-crystal-repos() { cd "$OPEN_SOURCE_CRYSTAL_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_CPP_REPOS_DIR" ]] && opensource-cpp-repos() { cd "$OPEN_SOURCE_CPP_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_C_SHARP_REPOS_DIR" ]] && opensource-csharp-repos() { cd "$OPEN_SOURCE_C_SHARP_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_DART_REPOS_DIR" ]] && opensource-dart-repos() { cd "$OPEN_SOURCE_DART_REPOS_DIR"; }
@@ -1438,6 +1491,7 @@ clone-opensource() {
 [[ -d "$OPEN_SOURCE_KOTLIN_REPOS_DIR" ]] && opensource-kotlin-repos() { cd "$OPEN_SOURCE_KOTLIN_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_LUA_REPOS_DIR" ]] && opensource-lua-repos() { cd "$OPEN_SOURCE_LUA_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_MAKEFILE_REPOS_DIR" ]] && opensource-makefile-repos() { cd "$OPEN_SOURCE_MAKEFILE_REPOS_DIR"; }
+[[ -d "$OPEN_SOURCE_NIM_REPOS_DIR" ]] && opensource-nim-repos() { cd "$OPEN_SOURCE_NIM_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_PERL_REPOS_DIR" ]] && opensource-perl-repos() { cd "$OPEN_SOURCE_PERL_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_PYTHON_REPOS_DIR" ]] && opensource-python-repos() { cd "$OPEN_SOURCE_PYTHON_REPOS_DIR"; }
 [[ -d "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR" ]] && opensource-python-async-repos() { cd "$OPEN_SOURCE_PYTHON_ASYNC_REPOS_DIR"; }
