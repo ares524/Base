@@ -2221,6 +2221,17 @@ venv-site-packages() {
     fi
 }
 
+venv-quick() {
+    unset _python
+    if type python3 &>/dev/null; then
+        _python="python3"
+    elif type python &>/dev/null; then
+        _python="python"
+    fi
+    $_python -m venv venv
+    venv/bin/pip install --upgrade pip wheel
+}
+
 #################### vim ####################
 
 if type vim &>/dev/null; then
