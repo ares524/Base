@@ -870,7 +870,10 @@ terraform-install() {
     select choice in "${choices[@]}"; do
         break
     done
-    [[ -n "$choice" ]] && rm terraform 2>/dev/null && ln -s $choice terraform
+    if [[ -n "$choice" ]]; then
+        rm terraform 2>/dev/null
+        ln -s $choice terraform
+    fi
     cd "$oldpwd"
 }
 
