@@ -1784,6 +1784,25 @@ man-grep() {
         less -rFX
 }
 
+#################### nmcli ####################
+
+if type nmcli &>/dev/null; then
+    nmcli-list-networks() {
+        nmcli dev wifi list | cut -c 28-55 | grep -vE "^(\-\-|SSID)"
+    }
+
+    nmcli-status() {
+        nmcli dev status
+    }
+
+    nmcli-connect-to() {
+        ssid="$1"
+        [[ -z "$ssid" ]] && echo "No SSID specified" && return 1
+        sudo nmcli --ask dev wifi connect "$ssid"
+    }
+
+fi
+
 #################### pandoc ####################
 
 if type pandoc &>/dev/null; then
