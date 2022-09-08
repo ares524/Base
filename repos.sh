@@ -128,6 +128,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/mirror/xmlrpc-c
     https://github.com/mit-pdos/xv6-public
     https://github.com/mit-pdos/xv6-riscv
+    https://github.com/mrabarnett/mrab-regex
     https://github.com/nanomsg/nanomsg
     https://github.com/nanomsg/nng
     https://github.com/nim-lang/csources
@@ -150,6 +151,7 @@ OPEN_SOURCE_C_REPOS=(
     https://github.com/twitter/pelikan
     https://github.com/twitter/twemproxy
     https://github.com/uber/h3
+    https://github.com/universal-ctags/ctags
     https://github.com/vim/vim
     https://github.com/wmcbrine/PDCurses
     https://github.com/zsh-users/zsh
@@ -398,6 +400,7 @@ OPEN_SOURCE_ERLANG_REPOS=(
 
 OPEN_SOURCE_GO_REPOS=(
     https://github.com/99designs/gqlgen
+    https://github.com/DarthSim/overmind
     https://github.com/HariSekhon/DevOps-Golang-tools
     https://github.com/Netflix/chaosmonkey
     https://github.com/alecthomas/chroma
@@ -416,6 +419,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/containernetworking/cni
     https://github.com/coocood/freecache
     https://github.com/crossplane/crossplane
+    https://github.com/cue-lang/cue
     https://github.com/dgraph-io/dgraph
     https://github.com/dmacvicar/terraform-provider-libvirt
     https://github.com/docker/docker-ce
@@ -483,6 +487,7 @@ OPEN_SOURCE_GO_REPOS=(
     https://github.com/pingcap/tidb
     https://github.com/rancher/k3s
     https://github.com/rancher/rancher
+    https://github.com/sachaos/viddy
     https://github.com/skx/sysbox
     https://github.com/spf13/afero
     https://github.com/spf13/cast
@@ -780,6 +785,7 @@ OPEN_SOURCE_PERL_REPOS=(
 OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/3b1b/manim
     https://github.com/AlexIoannides/pyspark-example-project
+    https://github.com/Bogdanp/dramatiq
     https://github.com/HariSekhon/DevOps-Python-tools
     https://github.com/JoshData/python-email-validator
     https://github.com/Julian/jsonschema
@@ -849,6 +855,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/encode/django-rest-framework
     https://github.com/epsagon/clear-lambda-storage
     https://github.com/eriklindernoren/ML-From-Scratch
+    https://github.com/ewels/rich-codex
     https://github.com/explosion/spaCy
     https://github.com/fabric/fabric
     https://github.com/facebook/prophet
@@ -877,6 +884,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/jazzband/pip-tools
     https://github.com/jazzband/prettytable
     https://github.com/jazzband/tablib
+    https://github.com/jeffkaufman/icdiff
     https://github.com/joke2k/faker
     https://github.com/jpadilla/pyjwt
     https://github.com/jrnl-org/jrnl
@@ -896,6 +904,7 @@ OPEN_SOURCE_PYTHON_REPOS=(
     https://github.com/localstack/localstack
     https://github.com/locustio/locust
     https://github.com/lxml/lxml
+    https://github.com/mahmoud/glom
     https://github.com/mail-in-a-box/mailinabox
     https://github.com/marshmallow-code/marshmallow
     https://github.com/matplotlib/matplotlib
@@ -1017,6 +1026,7 @@ OPEN_SOURCE_PYTHON_ASYNC_REPOS=(
     https://github.com/encode/orm
     https://github.com/encode/starlette
     https://github.com/encode/uvicorn
+    https://github.com/fastapi-users/fastapi-users
     https://github.com/huge-success/sanic
     https://github.com/mongodb/motor
     https://github.com/taoufik07/responder
@@ -1197,6 +1207,7 @@ OPEN_SOURCE_TYPESCRIPT_REPOS=(
     https://github.com/conwnet/github1s
     https://github.com/devhubapp/devhub
     https://github.com/dotansimha/graphql-code-generator
+    https://github.com/eclipsesource/jsonforms
     https://github.com/elastic/kibana
     https://github.com/electron/fiddle
     https://github.com/electron/i18n
